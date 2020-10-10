@@ -8,6 +8,7 @@ import { ResultsComponent } from './game/results/results.component';
 import { AddCardComponent } from './add-card/add-card.component';
 import { CardListComponent } from './card-list/card-list.component';
 import { ScoreComponent } from './score/score.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ScoreComponent } from './score/score.component';
     ResultsComponent,
     AddCardComponent,
     CardListComponent,
-    ScoreComponent
+    ScoreComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
