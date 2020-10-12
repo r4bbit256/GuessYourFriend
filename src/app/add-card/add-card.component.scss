@@ -1,3 +1,20 @@
+.add-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-card-container {
+  width: 350px;
+}
+
 .radio {
   margin-left: 16px;
 }
