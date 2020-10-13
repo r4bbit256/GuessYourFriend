@@ -1,5 +1,5 @@
-export interface Card {
-  id: number;
+export class Card {
+  id: string;
   firstName: string;
   lastName: string;
   gender: string;
