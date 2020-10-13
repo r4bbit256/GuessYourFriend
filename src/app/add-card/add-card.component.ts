@@ -22,15 +22,13 @@ export class AddCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getCard(key: string): Card {
-    return JSON.parse(this.cardService.getCard(key));
+  onSubmit(): void {
+    const card = new Card();
+    // TODO: set card
+    this.addCard(card);
   }
 
   addCard(card: Card): void {
     this.cardService.addCard(card);
-  }
-
-  deleteCard(key: string): void {
-    this.cardService.deleteCard(key);
   }
 }

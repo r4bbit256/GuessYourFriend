@@ -4,7 +4,7 @@
       <mat-card-title>Add Card</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form class="card-form" [formGroup]="newCard">
+      <form class="card-form" [formGroup]="newCard" (ngSubmit)="onSubmit($event)">
         <mat-form-field>
           <mat-label>First Name</mat-label>
           <input matInput type="text" required placeholder="John" formControlName="firstName">
