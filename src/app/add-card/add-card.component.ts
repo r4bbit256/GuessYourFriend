@@ -20,18 +20,17 @@ export class AddCardComponent implements OnInit {
               private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
-    this.getCard();
   }
 
-  getCard(): void {
-    // TODO: use card.service to get card from the storage
+  getCard(key: string): Card {
+    return JSON.parse(this.cardService.getCard(key));
   }
 
   addCard(card: Card): void {
     this.cardService.addCard(card);
   }
 
-  deleteCard(card: Card): void {
-    // TODO: use card.service to remove card from the storage
+  deleteCard(key: string): void {
+    this.cardService.deleteCard(key);
   }
 }
