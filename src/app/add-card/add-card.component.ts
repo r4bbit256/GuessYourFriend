@@ -28,9 +28,9 @@ export class AddCardComponent implements OnInit {
   }
 
   addCard(card: Card): void {
-    this.cardService.add(card);
+    this.cardService.addCard(card);
   }
-  
+
   deleteCard(card: Card): void {
     // TODO: use card.service to remove card from the storage
   }
