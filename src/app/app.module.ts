@@ -10,6 +10,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,7 +29,8 @@ const AngularMaterialModule = [
   MatInputModule,
   MatButtonModule,
   MatRadioModule,
-  MatIconModule
+  MatIconModule,
+  MatListModule
 ];
 
 @NgModule({

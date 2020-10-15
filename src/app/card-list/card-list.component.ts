@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CardService } from '../services/card/cards.service';
 import { Card } from '../models/card';
 
 @Component({
@@ -8,18 +9,19 @@ import { Card } from '../models/card';
   styleUrls: ['./card-list.component.scss']
 })
 export class CardListComponent implements OnInit {
+  cards: Card[];
 
-  constructor() { }
+  constructor(private cardService: CardService) { }
 
   ngOnInit(): void {
-    this.getCard();
+    this.getAll();
   }
 
-  getCard(): void {
-    // TODO: use card.service to get card from the storage
+  getAll(): void {
+    this.cards = this.cardService.getAll();
   }
 
-  deleteCard(card: Card): void {
-    // TODO: use card.service to remove card from the storage
+  deleteCard(key: string): void {
+    this.cardService.deleteCard(key);
   }
 }

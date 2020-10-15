@@ -1,1 +1,14 @@
-<p>card-list works!</p>
+<article class="card-list-wrapper">
+    <mat-list role="list">
+        <mat-list-item *ngFor="let card of cards">
+            <a routerLink="/detail/{{card.id}}" [class]="'card card-' + card.id">
+                {{card.firstName}}
+                {{card.lastName}}
+                {{card.gender}}
+            </a>
+            <button mat-button (click)="deleteCard(card.id)">
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-list-item>
+    </mat-list>
+</article>
