@@ -23,5 +23,6 @@ export class AddCardComponent implements OnInit {
 
   addCard(): void {
     this.cardService.addCard(this.newCard.value);
+    this.newCard.reset();
   }
 }
