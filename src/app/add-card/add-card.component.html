@@ -4,7 +4,7 @@
       <mat-card-title>Add Card</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form class="card-form" [formGroup]="newCard" (ngSubmit)="onSubmit($event)">
+      <form class="card-form" [formGroup]="newCard">
         <mat-form-field>
           <mat-label>First Name</mat-label>
           <input matInput type="text" required placeholder="John" formControlName="firstName">
@@ -15,16 +15,15 @@
           <input matInput type="text" required placeholder="Dow" formControlName="lastName">
         </mat-form-field>
 
-        <mat-radio-group aria-label="Select gender" formControlName="gender">
+        <mat-radio-group required aria-label="Select gender" formControlName="gender">
           <mat-label>Gender:</mat-label>
           <mat-radio-button class="radio" value="male">Male</mat-radio-button>
           <mat-radio-button class="radio" value="female">Female</mat-radio-button>
         </mat-radio-group>
-
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-flat-button color="primary" type="submit">Add</button>
+      <button mat-flat-button color="primary" type="submit" (click)="addCard()" [disabled]="!newCard.valid">Add</button>
     </mat-card-actions>
   </mat-card>
 </article>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { Card } from '../models/card';
 import { CardService } from '../services/card/cards.service';
 
 @Component({
@@ -13,7 +12,7 @@ export class AddCardComponent implements OnInit {
   newCard = this.formBuilder.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    gender: ['', Validators.required],
+    gender: ['male', Validators.required],
   });
 
   constructor(private cardService: CardService,
@@ -22,13 +21,7 @@ export class AddCardComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(): void {
-    const card = new Card();
-    // TODO: set card
-    this.addCard(card);
-  }
-
-  addCard(card: Card): void {
-    this.cardService.addCard(card);
+  addCard(): void {
+    this.cardService.addCard(this.newCard.value);
   }
 }
