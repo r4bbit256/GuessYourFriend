@@ -5,6 +5,9 @@
     </mat-card-header>
     <mat-card-content>
       <form class="card-form" [formGroup]="newCard">
+        <figure class="avatar-wrapper">
+          <img class="avatar" [src]="ava" alt="avatar">
+        </figure>
         <mat-form-field>
           <mat-label>First Name</mat-label>
           <input matInput type="text" required placeholder="John" formControlName="firstName">
@@ -17,8 +20,8 @@
 
         <mat-radio-group required aria-label="Select gender" formControlName="gender">
           <mat-label>Gender:</mat-label>
-          <mat-radio-button class="radio" value="male">Male</mat-radio-button>
-          <mat-radio-button class="radio" value="female">Female</mat-radio-button>
+          <mat-radio-button class="radio" value="male" (change)="genderChagned($event)">Male</mat-radio-button>
+          <mat-radio-button class="radio" value="female" (change)="genderChagned($event)">Female</mat-radio-button>
         </mat-radio-group>
       </form>
     </mat-card-content>

@@ -11,6 +11,17 @@
   flex-direction: column;
 }
 
+.avatar-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar {
+  flex: 1;
+  height: auto;
+  width: 270px;
+}
+
 .add-card-container {
   width: 350px;
 }
