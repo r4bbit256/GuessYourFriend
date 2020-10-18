@@ -10,6 +10,7 @@ import { Card } from '../models/card';
 })
 export class CardListComponent implements OnInit {
   cards: Card[];
+  allCards: Card[];
   searchText: string;
 
   constructor(private cardService: CardService) { }
@@ -19,7 +20,8 @@ export class CardListComponent implements OnInit {
   }
 
   getAll(): void {
-    this.cards = this.cardService.getAll();
+    this.allCards = this.cardService.getAll();
+    this.cards = this.allCards;
   }
 
   deleteCard(key: string): void {
@@ -31,12 +33,12 @@ export class CardListComponent implements OnInit {
       return [];
     }
     if (!this.searchText) {
-      return this.cards;
+      return this.cards = this.allCards;
     }
 
     this.searchText = this.searchText.toLocaleLowerCase();
 
-    return this.cards.filter(card => card.firstName.toLocaleLowerCase().includes(this.searchText)
+    return this.cards = this.allCards.filter(card => card.firstName.toLocaleLowerCase().includes(this.searchText)
       || card.lastName.toLocaleLowerCase().includes(this.searchText));
   }
 }
