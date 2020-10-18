@@ -1,12 +1,12 @@
 <article class="card-list-wrapper">
     <mat-list role="list">
-        <mat-list-item *ngFor="let card of cards">
-            <a routerLink="/detail/{{card.id}}" [class]="'card card-' + card.id">
+        <mat-list-item class="card-item" *ngFor="let card of cards">
+            <a routerLink="/detail/{{card.id}}" [class]="'card card-' + card.id" [title]="card.firstName + ' ' + card.lastName">
                 {{card.firstName}}
                 {{card.lastName}}
                 {{card.gender}}
             </a>
-            <button mat-button (click)="deleteCard(card.id)">
+            <button mat-flat-button (click)="deleteCard(card.id)">
                 <mat-icon>close</mat-icon>
             </button>
         </mat-list-item>

@@ -20,6 +20,7 @@ import { AddCardComponent } from './add-card/add-card.component';
 import { CardListComponent } from './card-list/card-list.component';
 import { ScoreComponent } from './score/score.component';
 import { HomeComponent } from './home/home.component';
+import { DetailsComponent } from './card-list/details/details.component';
 
 const AngularMaterialModule = [
   MatButtonModule,
@@ -41,7 +42,8 @@ const AngularMaterialModule = [
     AddCardComponent,
     CardListComponent,
     ScoreComponent,
-    HomeComponent
+    HomeComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
