@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { StorageService } from '../storage/storage.service';
 import { Card } from '../../models/card';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

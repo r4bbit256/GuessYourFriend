@@ -1,14 +1,26 @@
 <article class="card-list-wrapper">
-    <mat-list role="list">
-        <mat-list-item class="card-item" *ngFor="let card of cards">
-            <a routerLink="/detail/{{card.id}}" [class]="'card card-' + card.id" [title]="card.firstName + ' ' + card.lastName">
-                {{card.firstName}}
-                {{card.lastName}}
-                {{card.gender}}
-            </a>
-            <button mat-flat-button (click)="deleteCard(card.id)">
-                <mat-icon>close</mat-icon>
-            </button>
-        </mat-list-item>
-    </mat-list>
+    <h1 *ngIf="cards.length === 0; else cardsPresented">
+        No cards
+    </h1>
+    <ng-template #cardsPresented>
+        <form class="filter-form">
+            <mat-form-field class="example-full-width">
+              <mat-label>Filter</mat-label>
+              <input matInput placeholder="Enter text to search" [(ngModel)]="searchText" (keyup)="search()" name="cardFilter">
+              <p>{{searchText}}</p>
+            </mat-form-field>
+        </form>
+        <mat-list role="list">
+            <mat-list-item class="card-item" *ngFor="let card of cards">
+                <a routerLink="/detail/{{card.id}}" [class]="'card card-' + card.id" [title]="card.firstName + ' ' + card.lastName">
+                    {{card.firstName}}
+                    {{card.lastName}}
+                    {{card.gender}}
+                </a>
+                <button mat-flat-button (click)="deleteCard(card.id)">
+                    <mat-icon>close</mat-icon>
+                </button> 
+            </mat-list-item>
+        </mat-list>
+    </ng-template>
 </article>
