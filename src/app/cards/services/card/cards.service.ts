@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { v4 as uuidv4 } from 'uuid';
 
-import { StorageService } from '../storage/storage.service';
-import { Card } from '../../models/card';
+import { StorageService } from '../../../services/storage/storage.service';
+import { Card } from '../../../models/card';
 
 @Injectable({
   providedIn: 'root'
