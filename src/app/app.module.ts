@@ -6,10 +6,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GameComponent } from './game/game.component';
-import { ResultsComponent } from './game/results/results.component';
 import { HomeComponent } from './home/home.component';
 import { CardsModule } from './cards/cards.module';
+import { GameModule } from './game/game.module';
 
 const AngularMaterialModules = [
   MatToolbarModule
@@ -18,13 +17,12 @@ const AngularMaterialModules = [
 @NgModule({
   declarations: [
     AppComponent,
-    GameComponent,
-    ResultsComponent,
     HomeComponent
   ],
   imports: [
     BrowserModule,
     CardsModule,
+    GameModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AngularMaterialModules

@@ -11,7 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
 import { DetailsComponent } from './details/details.component';
-import { ScoreComponent } from '../score/score.component';
 import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
 import { CardsComponent } from './cards.component';
@@ -32,7 +31,6 @@ const AngularMaterialModule = [
   declarations: [
     CardsComponent,
     DetailsComponent,
-    ScoreComponent,
     ListComponent,
     AddComponent
   ],
