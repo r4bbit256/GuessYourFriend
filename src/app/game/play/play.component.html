@@ -1,19 +1,24 @@
-<app-results [correctAnswers]="correctAnswers"
-             [incorrectAnswers]="incorrectAnswers"></app-results>
-<article class="play-wrapper">
-  <mat-card class="card">
-    <figure class="avatar-wrapper">
-      <img class="avatar" src="{{card.photo}}" alt="Friend's photo">
-    </figure>
-    <h3>{{card.job}}</h3>
-    <button
-      class="card-btn"
-      type="button"
-      mat-stroked-button color="primary"
-      *ngFor="let card of cards"
-      (click)="verifyAnswer(card)"
-    >
-      {{card.firstName}} {{ card.lastName}}
-    </button>
-  </mat-card>
+<article *ngIf="cards.length === 0; else gameInterface">
+  <h1 class="warning-msg">Can't start game. There is not enogh cards.</h1>
 </article>
+<ng-template #gameInterface>
+  <app-results [correctAnswers]="correctAnswers"
+             [incorrectAnswers]="incorrectAnswers"></app-results>
+  <article class="play-wrapper">
+    <mat-card class="card">
+      <figure class="avatar-wrapper">
+        <img class="avatar" src="{{card.photo}}" alt="Friend's photo">
+      </figure>
+      <h3>{{card.job}}</h3>
+      <button
+        class="card-btn"
+        type="button"
+        mat-stroked-button color="primary"
+        *ngFor="let card of cards"
+        (click)="verifyAnswer(card)"
+      >
+        {{card.firstName}} {{ card.lastName}}
+      </button>
+    </mat-card>
+  </article>
+</ng-template>
