@@ -1,15 +1,17 @@
-<mat-card class="content-center">
-  <img class="frind-photo" src="" alt="friend photo">
-  <br>
-  <h3>Job Position</h3>
-  <br>
-  <button
-    class="btn-selection"
-    type="button"
-    mat-stroked-button color="primary">
-<!--    *ngFor="let friend of friends"-->
-<!--    (click)="verifyAnswer(friend)"-->
-<!--  >-->
-<!--    {{ friend.first }} {{ friend.last}}-->
-  </button>
-</mat-card>
+<article class="play-wrapper">
+  <mat-card class="card">
+    <figure class="avatar-wrapper">
+      <img class="avatar" src="{{card.photo}}" alt="Friend's photo">
+    </figure>
+    <h3>Job Position</h3>
+    <button
+      class="card-btn"
+      type="button"
+      mat-stroked-button color="primary"
+      *ngFor="let card of cards"
+      (click)="verifyAnswer(card)"
+    >
+      {{ card.firstName }} {{ card.lastName}}
+    </button>
+  </mat-card>
+</article>

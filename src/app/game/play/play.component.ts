@@ -1,24 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 
-import { StorageService } from '../../services/storage/storage.service';
 import { Card } from '../../models/card';
+import { CardService } from '../../services/card/cards.service';
 
 @Component({
   selector: 'app-play',
   templateUrl: './play.component.html',
-  styleUrls: ['./play.component.scss']
+  styleUrls: ['./play.component.scss'],
 })
 export class PlayComponent implements OnInit {
-  friends: Card[];
+  cards: Card[];
+  card: Card;
 
-  constructor(private storage: StorageService) { }
-
-  ngOnInit(): void {
-    // this.friends = this.storage.getAll();
+  constructor(private cardService: CardService) {
   }
 
-  verifyAnswer(): boolean {
-    // TODO:
-    return false;
+  ngOnInit(): void {
+    this.cards = this.cardService.getAll().slice(0, 4);
+    this.card = this.getRandomItemFromArray(this.cards);
+  }
+
+  getRandomItemFromArray(array): any {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
+  verifyAnswer(card: Card): boolean {
+    return this.card.id === card.id;
   }
 }

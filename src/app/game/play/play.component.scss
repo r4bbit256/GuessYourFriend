@@ -1,0 +1,31 @@
+.play-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  display: inherit;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+}
+
+.avatar-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar {
+  flex: 1;
+  height: auto;
+  width: 270px;
+  border-radius: 50%;
+}
+
+.card-btn {
+  width: 300px;
+  margin: 5px 0;
+}
