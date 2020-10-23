@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { CardService } from '../services/card/cards.service';
+import { CardService } from '../../services/card/cards.service';
 
 @Component({
   selector: 'app-add-card',
@@ -18,12 +18,14 @@ export class AddComponent {
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     gender: [this.defaultGender, Validators.required],
+    photo: ['']
   });
 
   constructor(private cardService: CardService,
               private formBuilder: FormBuilder) { }
 
   addCard(): void {
+    this.newCard.get('photo').setValue(this.avatars[this.newCard.get('gender').value]);
     this.cardService.addCard(this.newCard.value);
     this.clear();
   }

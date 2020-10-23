@@ -3,4 +3,5 @@ export class Card {
   firstName: string;
   lastName: string;
   gender: string;
+  photo: string;
 }
