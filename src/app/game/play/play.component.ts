@@ -11,9 +11,11 @@ import { CardService } from '../../services/card/cards.service';
 export class PlayComponent implements OnInit {
   cards: Card[];
   card: Card;
+  correctAnswers = 0;
+  incorrectAnswers = 0;
+  totalAnswers = 0;
 
-  constructor(private cardService: CardService) {
-  }
+  constructor(private cardService: CardService) {}
 
   ngOnInit(): void {
     this.cards = this.cardService.getAll().slice(0, 4);
@@ -25,6 +27,15 @@ export class PlayComponent implements OnInit {
   }
 
   verifyAnswer(card: Card): boolean {
-    return this.card.id === card.id;
+    if (this.card.id === card.id) {
+      this.cards = this.cardService.getAll().slice(0, 4);
+      this.card = this.getRandomItemFromArray(this.cards);
+      this.correctAnswers++;
+      this.totalAnswers++;
+      return true;
+    }
+    this.incorrectAnswers++;
+    this.totalAnswers++;
+    return false;
   }
 }
