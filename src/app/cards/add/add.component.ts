@@ -17,6 +17,7 @@ export class AddComponent {
   newCard = this.formBuilder.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
+    job: ['', Validators.required],
     gender: [this.defaultGender, Validators.required],
     photo: ['']
   });

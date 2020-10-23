@@ -6,9 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./results.component.scss']
 })
 export class ResultsComponent implements OnInit {
-  @Input() totalAnswers: number;
-  @Input() correctAnswers: number;
-  @Input() incorrectAnswers: number;
+  @Input() correctAnswers = 0;
+  @Input() incorrectAnswers = 0;
 
   constructor() { }
 

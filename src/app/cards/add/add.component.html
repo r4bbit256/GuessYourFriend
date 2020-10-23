@@ -12,12 +12,14 @@
           <mat-label>First Name</mat-label>
           <input matInput type="text" required placeholder="John" formControlName="firstName">
         </mat-form-field>
-
         <mat-form-field>
           <mat-label>Last Name</mat-label>
           <input matInput type="text" required placeholder="Dow" formControlName="lastName">
         </mat-form-field>
-
+        <mat-form-field>
+          <mat-label>Job Position</mat-label>
+          <input matInput type="text" required placeholder="Ex. Software Engineer" formControlName="job">
+        </mat-form-field>
         <mat-radio-group required aria-label="Select gender" formControlName="gender">
           <mat-label>Gender:</mat-label>
           <mat-radio-button class="radio" value="male">Male</mat-radio-button>

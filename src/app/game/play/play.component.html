@@ -1,12 +1,11 @@
-<app-results [totalAnswers]="totalAnswers"
-             [correctAnswers]="correctAnswers"
+<app-results [correctAnswers]="correctAnswers"
              [incorrectAnswers]="incorrectAnswers"></app-results>
 <article class="play-wrapper">
   <mat-card class="card">
     <figure class="avatar-wrapper">
       <img class="avatar" src="{{card.photo}}" alt="Friend's photo">
     </figure>
-    <h3>Job Position</h3>
+    <h3>{{card.job}}</h3>
     <button
       class="card-btn"
       type="button"
@@ -14,7 +13,7 @@
       *ngFor="let card of cards"
       (click)="verifyAnswer(card)"
     >
-      {{ card.firstName }} {{ card.lastName}}
+      {{card.firstName}} {{ card.lastName}}
     </button>
   </mat-card>
 </article>

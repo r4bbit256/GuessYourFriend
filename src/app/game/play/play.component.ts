@@ -13,7 +13,6 @@ export class PlayComponent implements OnInit {
   card: Card;
   correctAnswers = 0;
   incorrectAnswers = 0;
-  totalAnswers = 0;
 
   constructor(private cardService: CardService) {}
 
@@ -31,11 +30,9 @@ export class PlayComponent implements OnInit {
       this.cards = this.cardService.getAll().slice(0, 4);
       this.card = this.getRandomItemFromArray(this.cards);
       this.correctAnswers++;
-      this.totalAnswers++;
       return true;
     }
     this.incorrectAnswers++;
-    this.totalAnswers++;
     return false;
   }
 }
