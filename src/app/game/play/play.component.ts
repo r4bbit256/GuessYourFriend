@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Card } from '../../models/card';
 import { CardService } from '../../services/card/cards.service';
+import { RandomDataGeneratorService } from './../../services/random-data-generator/random-data-generator.service';
 
 @Component({
   selector: 'app-play',
@@ -14,21 +15,18 @@ export class PlayComponent implements OnInit {
   correctAnswers = 0;
   incorrectAnswers = 0;
 
-  constructor(private cardService: CardService) {}
+  constructor(private cardService: CardService,
+              private randomDataService: RandomDataGeneratorService) {}
 
   ngOnInit(): void {
     this.cards = this.cardService.getAll().slice(0, 4);
-    this.card = this.getRandomItemFromArray(this.cards);
-  }
-
-  getRandomItemFromArray(array): any {
-    return array[Math.floor(Math.random() * array.length)];
+    this.card = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
   }
 
   verifyAnswer(card: Card): boolean {
     if (this.card.id === card.id) {
       this.cards = this.cardService.getAll().slice(0, 4);
-      this.card = this.getRandomItemFromArray(this.cards);
+      this.card = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
       this.correctAnswers++;
       return true;
     }
