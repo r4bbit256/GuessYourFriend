@@ -28,8 +28,9 @@ export class CardService {
   }
 
   addCard(card: Card): void {
-    card.id = uuidv4();
-    this.storageService.save(card.id, card);
+    card.id.length === 0
+      ? card.id = uuidv4()
+      : this.storageService.save(card.id, card);
   }
 
   deleteCard(key: string): void {
