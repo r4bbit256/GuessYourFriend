@@ -20,10 +20,10 @@
           <mat-list-item class="card-item" *ngFor="let card of filteredCards">
               <a routerLink="/cards/details/{{card.id}}" [class]="'card card-' + card.id" [title]="card.firstName + ' ' + card.lastName">
                   {{card.firstName}}
-                  {{card.lastName}}
-                  {{card.gender}}
+                  {{card.lastName}} :
+                  {{card.job}}
               </a>
-              <button class="mat-form-button" mat-flat-button (click)="deleteCard(card.id)">
+              <button class="mat-form-button" mat-stroked-button (click)="deleteCard(card.id)">
                   <mat-icon>close</mat-icon>
               </button>
           </mat-list-item>
