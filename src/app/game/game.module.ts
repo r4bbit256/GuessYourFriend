@@ -9,9 +9,10 @@ import { MatListModule } from '@angular/material/list';
 
 import { GameRoutingModule } from './game-routing.module';
 import { GameComponent } from './game.component';
-import { ResultsComponent } from './results/results.component';
+import { ResultsComponent } from './play/results/results.component';
 import { ScoreComponent } from './score/score.component';
 import { PlayComponent } from './play/play.component';
+import { StatisticsComponent } from './play/statistics/statistics.component';
 
 const AngularMaterialModule = [
   MatButtonModule,
@@ -27,7 +28,8 @@ const AngularMaterialModule = [
     GameComponent,
     ResultsComponent,
     ScoreComponent,
-    PlayComponent
+    PlayComponent,
+    StatisticsComponent
   ],
   imports: [
     CommonModule,

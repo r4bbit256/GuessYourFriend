@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { GameComponent } from './game.component';
-import { ResultsComponent } from './results/results.component';
+import { ResultsComponent } from './play/results/results.component';
 import { ScoreComponent } from './score/score.component';
 import { PlayComponent } from './play/play.component';
 
