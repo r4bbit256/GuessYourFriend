@@ -2,7 +2,7 @@
   <section *ngIf="allCards.length === 0; else cardsPresented">
     <mat-form-field>
       <mat-label>Number of users to generate</mat-label>
-      <input matInput placeholder="Enter number of cards" #action>
+      <input matInput type="number" placeholder="Enter number of cards" #action>
     </mat-form-field>
 
     <button class="mat-form-button" mat-stroked-button (click)="generateCards(action.value)">Generate</button>
