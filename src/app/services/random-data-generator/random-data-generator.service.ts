@@ -22,8 +22,9 @@ export class RandomDataGeneratorService {
               private logger: LoggerService,
               private configService: ConfigService) {}
 
-  getRandomUserList(numberOfUsers: number): Observable<RandomUserDataGenerator> {
+  getRandomUserList(numberOfUsers: string): Observable<RandomUserDataGenerator> {
     // TODO: replace url with ${this.randomUserApiUrl}
+    numberOfUsers === '' ? numberOfUsers = '8' : numberOfUsers = numberOfUsers;
     return this.http.get<RandomUserDataGenerator>(`https://randomuser.me/api?inc=name,gender,login,email,picture&results=${numberOfUsers}`);
   }
 

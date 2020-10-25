@@ -46,7 +46,7 @@ export class ListComponent implements OnInit {
     this.search();
   }
 
-  generateCards(numberToGenerate: number): void {
+  generateCards(numberToGenerate: string): void {
     const jobs = [];
 
     this.randomDataService.getRandomJobList().subscribe(jobList => {
