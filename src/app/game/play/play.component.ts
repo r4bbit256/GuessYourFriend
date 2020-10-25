@@ -11,26 +11,35 @@ import { RandomDataGeneratorService } from './../../services/random-data-generat
 })
 export class PlayComponent implements OnInit {
   cards: Card[];
-  card: Card;
+  randomCard: Card;
   correctAnswers = 0;
   incorrectAnswers = 0;
+  isGamePlayVisible = false;
+
+  private numberOfGames: number;
 
   constructor(private cardService: CardService,
               private randomDataService: RandomDataGeneratorService) {}
 
   ngOnInit(): void {
     this.cards = this.cardService.getAll().slice(0, 4);
-    this.card = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
+    this.randomCard = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
   }
 
-  verifyAnswer(card: Card): boolean {
-    if (this.card.id === card.id) {
-      this.cards = this.cardService.getAll().slice(0, 4);
-      this.card = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
-      this.correctAnswers++;
-      return true;
+  startGame(numberOfGames: number): void {
+    this.isGamePlayVisible = true;
+    this.numberOfGames = numberOfGames;
+  }
+
+  verifyAnswer(card: Card): void {
+    for (let i = 1; i <= this.numberOfGames; i++) {
+      if (this.randomCard.id !== card.id) {
+        this.incorrectAnswers++;
+      } else {
+        this.cards = this.cardService.getAll().slice(0, 4);
+        this.randomCard = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
+        this.correctAnswers++;
+      }
     }
-    this.incorrectAnswers++;
-    return false;
   }
 }

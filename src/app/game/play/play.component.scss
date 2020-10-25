@@ -1,9 +1,10 @@
-.play-wrapper {
+.gameplay {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
+}
+
+.gameplay-hide {
+  display: none;
 }
 
 .warning-msg {

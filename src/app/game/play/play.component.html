@@ -1,15 +1,18 @@
-<article *ngIf="cards.length === 0; else gameInterface">
+<section *ngIf="cards.length === 0; else gameInterface">
   <h1 class="warning-msg">Can't start game. There is not enogh cards.</h1>
-</article>
+</section>
+
 <ng-template #gameInterface>
-  <article class="play-wrapper">
+  <app-number-of-games (startGame)="startGame($event)" *ngIf="!isGamePlayVisible"></app-number-of-games>
+
+  <section *ngIf="isGamePlayVisible">
     <app-statistics [correctAnswers]="correctAnswers"
-             [incorrectAnswers]="incorrectAnswers"></app-statistics>
+                    [incorrectAnswers]="incorrectAnswers"></app-statistics>
     <mat-card class="card">
       <figure class="avatar-wrapper">
-        <img class="avatar" src="{{card.photo}}" alt="Friend's photo">
+        <img class="avatar" src="{{randomCard.photo}}" alt="Friend's photo">
       </figure>
-      <h3>{{card.job}}</h3>
+      <h3>{{randomCard.job}}</h3>
       <button
         class="card-btn"
         type="button"
@@ -20,5 +23,5 @@
         {{card.firstName}} {{ card.lastName}}
       </button>
     </mat-card>
-  </article>
+  </section>
 </ng-template>
