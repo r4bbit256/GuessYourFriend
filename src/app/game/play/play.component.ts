@@ -40,6 +40,7 @@ export class PlayComponent implements OnInit {
         this.randomCard = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
         this.correctAnswers++;
       }
+      break;
     }
   }
 }
