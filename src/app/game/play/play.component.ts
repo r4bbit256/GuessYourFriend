@@ -16,31 +16,49 @@ export class PlayComponent implements OnInit {
   incorrectAnswers = 0;
   isGamePlayVisible = false;
 
-  private numberOfGames: number;
+  private submittedGamesNumber = 0;
 
   constructor(private cardService: CardService,
               private randomDataService: RandomDataGeneratorService) {}
 
   ngOnInit(): void {
-    this.cards = this.cardService.getAll().slice(0, 4);
-    this.randomCard = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
+    this.setCards();
   }
 
   startGame(numberOfGames: number): void {
     this.isGamePlayVisible = true;
-    this.numberOfGames = numberOfGames;
+    this.submittedGamesNumber = numberOfGames;
   }
 
   verifyAnswer(card: Card): void {
-    for (let i = 1; i <= this.numberOfGames; i++) {
-      if (this.randomCard.id !== card.id) {
-        this.incorrectAnswers++;
-      } else {
-        this.cards = this.cardService.getAll().slice(0, 4);
-        this.randomCard = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
+    if (this.correctAnswers < this.submittedGamesNumber) {
+      if (this.randomCard.id === card.id) {
         this.correctAnswers++;
+        this.setCards();
+      } else {
+        this.incorrectAnswers++;
       }
-      break;
+    } else {
+      this.resetGame();
     }
+  }
+
+  private setCards(): void {
+    const allCards = this.cardService.getAll();
+
+    let randomNumber: number;
+    do {
+      randomNumber = this.randomDataService.getRandomNumber(allCards.length);
+    }
+    while (randomNumber + 4 > allCards.length);
+
+    this.cards = allCards.slice(randomNumber, randomNumber + 4);
+    this.randomCard = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
+  }
+
+  private resetGame(): void {
+    this.correctAnswers = 0;
+    this.incorrectAnswers = 0;
+    this.isGamePlayVisible = false;
   }
 }

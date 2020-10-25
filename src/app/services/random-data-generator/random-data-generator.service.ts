@@ -37,6 +37,10 @@ export class RandomDataGeneratorService {
     return array[Math.floor(Math.random() * array.length)];
   }
 
+  getRandomNumber(top = 4, bottom = 0): number {
+    return Math.floor(Math.random() * top) + bottom;
+  }
+
   // TODO: planned to use in requests
   private setConfigData(): void {
     this.configService.getConfig()
