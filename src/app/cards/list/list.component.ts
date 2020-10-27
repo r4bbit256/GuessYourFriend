@@ -55,7 +55,7 @@ export class ListComponent implements OnInit {
       });
     });
 
-    this.randomDataService.getRandomUserList(numberToGenerate).subscribe(data => {
+    this.randomDataService.getRandomUsers(numberToGenerate).subscribe(data => {
       this.mapData(data, jobs);
     });
   }

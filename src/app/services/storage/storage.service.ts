@@ -11,8 +11,8 @@ export class StorageService {
     localStorage.setItem(key, JSON.stringify(value));
   }
 
-  get(id: string): string {
-    return localStorage.getItem(id);
+  get<T>(id: string): T {
+    return JSON.parse(localStorage.getItem(id)) as T;
   }
 
   getAll(): string[] {

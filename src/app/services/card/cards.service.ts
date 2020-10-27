@@ -1,39 +1,53 @@
 import { Injectable } from '@angular/core';
 
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuid } from 'uuid';
 
 import { StorageService } from '../storage/storage.service';
 import { Card } from '../../models/card';
+import { RandomDataGeneratorService } from '../random-data-generator/random-data-generator.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CardService {
+  private cardsStorageKey = 'cards';
+  private cards = this.storageService.get<Card[]>(this.cardsStorageKey) || [];
 
-  constructor(private storageService: StorageService) { }
+  constructor(private storageService: StorageService,
+              private randomDataService: RandomDataGeneratorService) { }
 
   getCard(key: string): string {
-    return this.storageService.get(key);
+    return this.cards[key];
   }
 
   getAll(): Card[] {
-    const cards: Card[] = [];
-    const response = this.storageService.getAll();
-
-    response.forEach(object => {
-      cards.push(JSON.parse(object) as Card);
-    });
-
-    return cards;
+    return this.cards;
   }
 
   addCard(card: Card): void {
-    card.id.length === 0
-      ? card.id = uuidv4()
-      : this.storageService.save(card.id, card);
+    this.cards.push({
+      id: uuid(),
+      ...card,
+    });
+    this.storageService.save(this.cardsStorageKey, this.cards);
   }
 
   deleteCard(key: string): void {
-    this.storageService.delete(key);
+    this.cards = this.cards.filter(s => s.id !== key);
+    this.storageService.save(this.cardsStorageKey, this.cards);
+  }
+
+  getSpecificNumberOfRandomCards(cards = this.getAll(), numberOfCards = 4): Card[] {
+    let randomNumber = this.randomDataService.getRandomNumber(cards.length);
+
+    while (randomNumber + numberOfCards > cards.length) {
+      randomNumber = this.randomDataService.getRandomNumber(cards.length);
+    }
+
+    return cards.slice(randomNumber, randomNumber + numberOfCards);
+  }
+
+  getRandomCard(cards = this.getAll()): Card {
+    return this.randomDataService.getRandomItemFromArray<Card>(cards);
   }
 }

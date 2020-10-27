@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Card } from '../../models/card';
 import { CardService } from '../../services/card/cards.service';
-import { RandomDataGeneratorService } from './../../services/random-data-generator/random-data-generator.service';
 
 @Component({
   selector: 'app-play',
@@ -18,11 +17,10 @@ export class PlayComponent implements OnInit {
 
   private submittedGamesNumber = 0;
 
-  constructor(private cardService: CardService,
-              private randomDataService: RandomDataGeneratorService) {}
+  constructor(private cardService: CardService) {}
 
   ngOnInit(): void {
-    this.setCards();
+    this.setCardsForGame();
   }
 
   startGame(numberOfGames: number): void {
@@ -30,11 +28,11 @@ export class PlayComponent implements OnInit {
     this.submittedGamesNumber = numberOfGames;
   }
 
-  verifyAnswer(card: Card): void {
-    if (this.correctAnswers < this.submittedGamesNumber) {
+  checkAnswer(card: Card): void {
+    if (this.isGameNotFinished()) {
       if (this.randomCard.id === card.id) {
         this.correctAnswers++;
-        this.setCards();
+        this.setCardsForGame();
       } else {
         this.incorrectAnswers++;
       }
@@ -43,25 +41,19 @@ export class PlayComponent implements OnInit {
     }
   }
 
-  private setCards(): void {
-    const allCards = this.cardService.getAll();
-    this.cards = allCards;
-    let randomNumber: number;
+  private setCardsForGame(): void {
+    this.cards = this.cardService.getSpecificNumberOfRandomCards();
+    this.randomCard = this.cardService.getRandomCard(this.cards);
+  }
 
-    if (allCards.length > 0) {
-      do {
-        randomNumber = this.randomDataService.getRandomNumber(allCards.length);
-      }
-      while (randomNumber + 4 > allCards.length);
-
-      this.cards = allCards.slice(randomNumber, randomNumber + 4);
-      this.randomCard = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
-    }
+  private isGameNotFinished(): boolean {
+    return (this.correctAnswers + 1) < this.submittedGamesNumber;
   }
 
   private resetGame(): void {
     this.correctAnswers = 0;
     this.incorrectAnswers = 0;
     this.isGamePlayVisible = false;
+    this.setCardsForGame();
   }
 }

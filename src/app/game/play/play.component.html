@@ -18,7 +18,7 @@
         type="button"
         mat-stroked-button color="primary"
         *ngFor="let card of cards"
-        (click)="verifyAnswer(card)"
+        (click)="checkAnswer(card)"
       >
         {{card.firstName}} {{ card.lastName}}
       </button>
