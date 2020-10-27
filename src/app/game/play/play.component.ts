@@ -45,15 +45,18 @@ export class PlayComponent implements OnInit {
 
   private setCards(): void {
     const allCards = this.cardService.getAll();
-
+    this.cards = allCards;
     let randomNumber: number;
-    do {
-      randomNumber = this.randomDataService.getRandomNumber(allCards.length);
-    }
-    while (randomNumber + 4 > allCards.length);
 
-    this.cards = allCards.slice(randomNumber, randomNumber + 4);
-    this.randomCard = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
+    if (allCards.length > 0) {
+      do {
+        randomNumber = this.randomDataService.getRandomNumber(allCards.length);
+      }
+      while (randomNumber + 4 > allCards.length);
+
+      this.cards = allCards.slice(randomNumber, randomNumber + 4);
+      this.randomCard = this.randomDataService.getRandomItemFromArray<Card>(this.cards);
+    }
   }
 
   private resetGame(): void {
