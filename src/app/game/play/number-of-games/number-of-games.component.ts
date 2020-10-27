@@ -8,14 +8,16 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class NumberOfGamesComponent implements OnInit {
   @Output() startGame = new EventEmitter<number>();
 
+  numberOfGames = 0;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  start(numberOfGames: number): void {
-    if (numberOfGames > 0 || numberOfGames <= 10) {
-      this.startGame.emit(numberOfGames);
+  start(): void {
+    if (this.numberOfGames > 0 || this.numberOfGames <= 10) {
+      this.startGame.emit(this.numberOfGames);
     }
   }
 }

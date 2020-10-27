@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -36,7 +37,8 @@ const AngularMaterialModule = [
   imports: [
     CommonModule,
     GameRoutingModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FormsModule,
   ],
   exports: []
 })
