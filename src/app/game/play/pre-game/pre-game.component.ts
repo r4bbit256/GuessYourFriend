@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-number-of-games',
-  templateUrl: './number-of-games.component.html',
-  styleUrls: ['./number-of-games.component.scss']
+  selector: 'app-pre-game',
+  templateUrl: './pre-game.component.html',
+  styleUrls: ['./pre-game.component.scss']
 })
-export class NumberOfGamesComponent implements OnInit {
+export class PreGameComponent implements OnInit {
   @Output() startGame = new EventEmitter<number>();
 
   numberOfGames = 0;

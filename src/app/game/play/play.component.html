@@ -3,7 +3,7 @@
 </section>
 
 <ng-template #gameInterface>
-  <app-number-of-games (startGame)="startGame($event)" *ngIf="!isGamePlayVisible"></app-number-of-games>
+  <app-pre-game (startGame)="startGame($event)" *ngIf="!isGamePlayVisible"></app-pre-game>
 
   <section *ngIf="isGamePlayVisible">
     <app-statistics [correctAnswers]="correctAnswers"
