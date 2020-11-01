@@ -19,7 +19,7 @@ export class RandomUserApiService {
               private configService: ConfigService) { }
 
   getRandomUsers(numberOfUsers: string): Observable<RandomUserDataGenerator> {
-    this.getDefaultUsersNumberForRequest(numberOfUsers);
+    numberOfUsers = this.getDefaultUsersNumberForRequest(numberOfUsers);
     // TODO: replace hardcoded parameter with one from config.json
     const baseRandomUserUrl = 'https://randomuser.me';
     this.randomUserApiUrl = `${baseRandomUserUrl}/api?inc=name,gender,login,email,picture&results`;
