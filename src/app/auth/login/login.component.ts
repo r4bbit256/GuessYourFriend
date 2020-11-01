@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AuthService } from '../services/auth.service';
 
@@ -16,14 +18,21 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private router: Router,
+    private snackBar: MatSnackBar) { }
 
   login(): void {
     const userData = this.authService.login(this.loginForm.value);
     if (userData) {
-      console.log(`User was successfully logon!`);
+      this.router.navigate(['/home']);
+      this.snackBar.open('You was successfully logon!', null, {
+        duration: 5000,
+      });
     } else {
-      console.log('User was not logon!');
+      this.snackBar.open('Can\'t find such user! Please verify your data and try again.', null, {
+        duration: 5000,
+      });
     }
   }
 }

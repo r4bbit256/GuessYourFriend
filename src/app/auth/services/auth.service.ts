@@ -24,6 +24,7 @@ export class AuthService {
   register(userData: User): void {
     this.users.push({
       id: uuid(),
+      username: userData.username.toLowerCase(),
       ...userData
     });
     this.storageService.save(this.authStorageKey, this.users);
@@ -33,18 +34,19 @@ export class AuthService {
     return this.users;
   }
 
-  login(key: string): User {
-    if (!key) {
-      this.logger.logError(`Key cannot be null or empty, key: ${key}`);
+  login(loginData: User): boolean {
+    if (!(loginData.password || loginData.username)) {
+      this.logger.logError(`User data cannot be null or empty!`);
     }
-    this.isLoggedIn = true;
-    const userData = this.users[key];
+    const userData = this.users.find(s =>
+      s.password === loginData.password
+      && s.username === loginData.username.toLowerCase());
 
     if (!userData) {
-      this.logger.logError(`User was not found by key: ${key}`);
+      this.logger.logError(`User was not found!`);
     }
-
-    return userData;
+    this.isLoggedIn = true;
+    return true;
   }
 
   logout(): void {

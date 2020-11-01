@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -21,19 +22,23 @@ export class RegisterComponent {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private router: Router) { }
 
 
   register(): void {
     if (this.registerForm.get('password').value !== this.registerForm.get('retype').value) {
       this.snackBar.open('Passwords do not match. Please try again.', null, {
-        duration: 2000,
+        duration: 5000,
       });
       this.registerForm.get('password').setValue('');
       this.registerForm.get('retype').setValue('');
     } else {
       this.authService.register(this.registerForm.value);
-      this.registerForm.reset();
+      this.snackBar.open('You successfully registered.', null, {
+        duration: 5000,
+      });
+      this.router.navigate(['/home']);
     }
   }
 }
