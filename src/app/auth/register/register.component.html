@@ -1,0 +1,38 @@
+<mat-card class="mat-card">
+  <h2>Register</h2>
+  <form class="auth-form" [formGroup]="registerForm" (ngSubmit)="register()">
+    <mat-form-field class="mat-form-field">
+      <mat-label>Username</mat-label>
+      <input matInput type="text" required placeholder="johndow" formControlName="username">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="mat-form-field">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" required placeholder="john_dow@mail.com" formControlName="email">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="mat-form-field">
+      <mat-label>Password</mat-label>
+      <input matInput minlength="8" type="password" required placeholder="Password" formControlName="password">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="mat-form-field">
+      <mat-label>Re-type password</mat-label>
+      <input matInput minlength="8" type="password" required placeholder="Re-type Password" formControlName="retype">
+    </mat-form-field>
+    <br>
+
+    <button class="btn-submit" type="submit" [disabled]="!registerForm.valid" mat-raised-button color="primary">Register</button>
+    <br>
+
+    <div class="mat-form-field">
+      <mat-label>Already have an account?
+        <a routerLink="/auth/login">Log in</a>
+      </mat-label>
+    </div>
+
+  </form>
+</mat-card>
