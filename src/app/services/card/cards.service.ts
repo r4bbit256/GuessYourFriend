@@ -37,14 +37,18 @@ export class CardService {
     this.storageService.save(this.cardsStorageKey, this.cards);
   }
 
-  getSpecificNumberOfRandomCards(cards = this.getAll(), numberOfCards = 4): Card[] {
-    let randomNumber = this.randomDataService.getRandomNumber(cards.length);
+  getSpecificNumberOfRandomCards(cards, numberOfCards = 4): Card[] {
+    if (cards.length) {
+      let randomNumber = this.randomDataService.getRandomNumber(cards.length);
 
-    while (randomNumber + numberOfCards > cards.length) {
-      randomNumber = this.randomDataService.getRandomNumber(cards.length);
+      while (randomNumber + numberOfCards > cards.length) {
+        randomNumber = this.randomDataService.getRandomNumber(cards.length);
+      }
+
+      return cards.slice(randomNumber, randomNumber + numberOfCards);
     }
 
-    return cards.slice(randomNumber, randomNumber + numberOfCards);
+    return [];
   }
 
   getRandomCard(cards = this.getAll()): Card {

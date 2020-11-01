@@ -42,8 +42,14 @@ export class PlayComponent implements OnInit {
   }
 
   private setCardsForGame(): void {
-    this.cards = this.cardService.getSpecificNumberOfRandomCards();
-    this.randomCard = this.cardService.getRandomCard(this.cards);
+    const allCards = this.cardService.getAll();
+
+    if (allCards.length) {
+      this.cards = this.cardService.getSpecificNumberOfRandomCards(allCards);
+      this.randomCard = this.cardService.getRandomCard(this.cards);
+    } else {
+      this.cards = [];
+    }
   }
 
   private isGameNotFinished(): boolean {
