@@ -19,7 +19,7 @@ export class LoginComponent {
     private authService: AuthService) { }
 
   login(): void {
-    const userData = this.authService.getUser(this.loginForm.value);
+    const userData = this.authService.login(this.loginForm.value);
     if (userData) {
       console.log(`User was successfully logon!`);
     } else {
