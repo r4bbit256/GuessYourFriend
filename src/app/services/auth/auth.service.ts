@@ -23,6 +23,7 @@ export class AuthService {
     return currentUser;
   }
 
+  // TODO: Need to implement correct flow
   // get token(): string {
   //   const token = JSON.parse(this.storageService.get('token'));
   //   return token;
@@ -34,8 +35,16 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
+    // TODO: Need to implement correct flow
     // return this.token && !this.jwtHelperService.isTokenExpired(this.token);
-    return this.userSessionExpirationTime && this.isSessionExpired(this.userSessionExpirationTime);
+
+    const isSessionExpired = this.isSessionExpired(this.userSessionExpirationTime);
+
+    if (isSessionExpired === null) {
+      return false;
+    }
+
+    return !isSessionExpired;
   }
 
   clearCredentials(): void {

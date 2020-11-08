@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   }
 
   checkLogin(url: string): true|UrlTree {
-    if (this.authService.isLoggedIn) { return true; }
+    if (this.authService.isLoggedIn()) { return true; }
 
     this.authService.redirectUrl = url;
     return this.router.parseUrl('/auth/login');

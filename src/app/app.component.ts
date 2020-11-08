@@ -22,11 +22,13 @@ export class AppComponent implements OnInit {
   }
 
   isUserAuthenticated(): boolean {
-     if (this.authService.isLoggedIn() === null) {
-       return false;
-     } else {
-      return true;
+    if (this.authService.isLoggedIn()) {
+      this.isAuthenticated = true;
+    } else {
+      this.isAuthenticated = false;
     }
+
+    return this.isAuthenticated;
   }
 
   logout(): void {
