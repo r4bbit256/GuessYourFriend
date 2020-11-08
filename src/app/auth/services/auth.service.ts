@@ -37,6 +37,7 @@ export class AuthService {
   login(loginData: User): boolean {
     if (!(loginData.password || loginData.username)) {
       this.logger.logError(`User data cannot be null or empty!`);
+      return false;
     }
     const userData = this.users.find(s =>
       s.password === loginData.password
@@ -44,6 +45,7 @@ export class AuthService {
 
     if (!userData) {
       this.logger.logError(`User was not found!`);
+      return false;
     }
     this.isLoggedIn = true;
     return true;
