@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
 
 import { v4 as uuid } from 'uuid';
-import { Observable, of } from 'rxjs';
-import { tap, delay } from 'rxjs/operators';
+import { LoggerService } from '../logger/logger.service';
+import { StorageService } from '../storage/storage.service';
+import { AuthService } from '../auth/auth.service';
+import { RandomDataGeneratorService } from '../random-data-generator/random-data-generator.service';
 
 import { User } from 'src/app/models/user';
-import { LoggerService } from './../../services/logger/logger.service';
-import { StorageService } from './../../services/storage/storage.service';
+import { AuthorizationToken } from 'src/app/models/authorization-token';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
-  isLoggedIn = false;
-  redirectUrl: string;
-
+export class AccountService {
   private authStorageKey = 'users';
   private users = this.storageService.get<User[]>(this.authStorageKey) || [];
 
   constructor(private storageService: StorageService,
-              private logger: LoggerService) { }
+              private logger: LoggerService,
+              private authService: AuthService,
+              private randomService: RandomDataGeneratorService) { }
 
   register(userData: User): void {
     this.users.push({
@@ -27,11 +27,10 @@ export class AuthService {
       username: userData.username.toLowerCase(),
       ...userData
     });
-    this.storageService.save(this.authStorageKey, this.users);
-  }
 
-  getAll(): User[] {
-    return this.users;
+    const jwt = this.randomService.getRandomJwt(userData);
+    this.authService.setCredentials(jwt);
+    this.storageService.save(this.authStorageKey, this.users);
   }
 
   login(loginData: User): boolean {
@@ -47,11 +46,13 @@ export class AuthService {
       this.logger.logError(`User was not found!`);
       return false;
     }
-    this.isLoggedIn = true;
+
+    const jwt = this.randomService.getRandomJwt(userData);
+    this.authService.setCredentials(jwt);
     return true;
   }
 
-  logout(): void {
-    this.isLoggedIn = false;
+  getAll(): User[] {
+    return this.users;
   }
 }

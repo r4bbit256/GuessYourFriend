@@ -20,7 +20,10 @@
         </mat-menu>
         <a class="nav-item" routerLink="/about">About Us</a>
       </div>
-      <div class="navbar-auth">
+      <div class="navbar-auth" *ngIf="isAuthenticated">
+        <a mat-flat-button color="primary" class="btn-auth" (click)="logout()">{{ 'Log Out' | uppercase }}</a>
+      </div>
+      <div class="navbar-auth" *ngIf="!isAuthenticated">
         <a mat-flat-button color="primary" class="btn-auth" routerLink="/auth/login">{{ 'Log In' | uppercase }}</a>
         <a mat-flat-button color="primary" class="btn-auth" routerLink="/auth/register">{{ 'Register' | uppercase }}</a>
       </div>

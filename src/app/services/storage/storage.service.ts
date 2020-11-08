@@ -7,7 +7,7 @@ export class StorageService {
 
   constructor() { }
 
-  save(key: string, value: object): void {
+  save(key: string, value: any): void {
     localStorage.setItem(key, JSON.stringify(value));
   }
 

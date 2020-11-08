@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { AuthService } from '../services/auth.service';
+import { AccountService } from 'src/app/services/account/account.service';
+import { ApiRoutes } from 'src/app/shared/utilities/api-routes';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +22,7 @@ export class RegisterComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private accountService: AccountService,
     private snackBar: MatSnackBar,
     private router: Router) { }
 
@@ -34,11 +35,11 @@ export class RegisterComponent {
       this.registerForm.get('password').setValue('');
       this.registerForm.get('retype').setValue('');
     } else {
-      this.authService.register(this.registerForm.value);
+      this.accountService.register(this.registerForm.value);
       this.snackBar.open('You successfully registered.', null, {
         duration: 5000,
       });
-      this.router.navigate(['/home']);
+      this.router.navigate([ApiRoutes.Default]);
     }
   }
 }

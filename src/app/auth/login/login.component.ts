@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { AuthService } from '../services/auth.service';
+import { ApiRoutes } from './../../shared/utilities/api-routes';
+import { AccountService } from 'src/app/services/account/account.service';
 
 @Component({
   selector: 'app-login',
@@ -18,14 +20,14 @@ export class LoginComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private accountService: AccountService,
     private router: Router,
     private snackBar: MatSnackBar) { }
 
   login(): void {
-    const userData = this.authService.login(this.loginForm.value);
+    const userData = this.accountService.login(this.loginForm.value);
     if (userData) {
-      this.router.navigate(['/home']);
+      this.router.navigate([ApiRoutes.Default]);
       this.snackBar.open('You was successfully logon!', null, {
         duration: 5000,
       });
