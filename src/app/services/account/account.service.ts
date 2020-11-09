@@ -7,7 +7,6 @@ import { AuthService } from '../auth/auth.service';
 import { RandomDataGeneratorService } from '../random-data-generator/random-data-generator.service';
 
 import { User } from 'src/app/models/user';
-import { AuthorizationToken } from 'src/app/models/authorization-token';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +39,7 @@ export class AccountService {
     }
     const userData = this.users.find(s =>
       s.password === loginData.password
-      && s.username === loginData.username.toLowerCase());
+      && s.username.toLowerCase() === loginData.username.toLowerCase());
 
     if (!userData) {
       this.logger.logError(`User was not found!`);
