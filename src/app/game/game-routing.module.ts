@@ -11,10 +11,10 @@ import { PlayComponent } from './play/play.component';
 const routes: Routes = [
   { path: 'game', component: GameComponent,
     canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
-        canActivateChild: [AuthGuard],
         children: [
           { path: 'play', component: PlayComponent },
           { path: 'results', component: ResultsComponent },

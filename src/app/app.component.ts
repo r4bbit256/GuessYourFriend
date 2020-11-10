@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 
 import { ApiRoutes } from './shared/utilities/api-routes';
 import { AuthService } from './services/auth/auth.service';
+import { AccountService } from './services/account/account.service';
 
 @Component({
   selector: 'app-root',
@@ -14,25 +15,18 @@ export class AppComponent implements OnInit {
   isAuthenticated = false;
 
   constructor(private authService: AuthService,
+              private accountService: AccountService,
               private router: Router) { }
 
 
   ngOnInit(): void {
-    this.isAuthenticated = this.isUserAuthenticated();
-  }
-
-  isUserAuthenticated(): boolean {
-    if (this.authService.isLoggedIn()) {
-      this.isAuthenticated = true;
-    } else {
-      this.isAuthenticated = false;
-    }
-
-    return this.isAuthenticated;
+    this.authService.isLoggedIn.subscribe(isLoggedIn => {
+      this.isAuthenticated = isLoggedIn;
+    });
   }
 
   logout(): void {
-    this.authService.clearCredentials();
+    this.accountService.logout();
     this.router.navigate([ApiRoutes.Default]);
   }
 }

@@ -11,10 +11,10 @@ import { CardsComponent } from './cards.component';
 const routes: Routes = [
   { path: 'cards', component: CardsComponent,
     canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
-        canActivateChild: [AuthGuard],
         children: [
           { path: 'add', component: AddComponent },
           { path: 'details/:id', component: DetailsComponent },

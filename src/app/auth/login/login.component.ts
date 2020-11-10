@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ApiRoutes } from './../../shared/utilities/api-routes';
 import { AccountService } from 'src/app/services/account/account.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -22,12 +23,19 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private accountService: AccountService,
     private router: Router,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private authService: AuthService) { }
 
   login(): void {
     const userData = this.accountService.login(this.loginForm.value);
     if (userData) {
-      this.router.navigate([ApiRoutes.Default]);
+
+      if (this.authService.redirectUrl) {
+        this.router.navigate([this.authService.redirectUrl]);
+      } else {
+        this.router.navigate([ApiRoutes.Default]);
+      }
+
       this.snackBar.open('You was successfully logon!', null, {
         duration: 5000,
       });

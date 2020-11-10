@@ -14,15 +14,20 @@ import { AuthService } from '../services/auth/auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate, CanActivateChild {
+  isLoggedIn = false;
 
   constructor(private authService: AuthService,
               private router: Router) {
+    this.authService.isLoggedIn.subscribe(isLoggedIn => {
+      this.isLoggedIn = isLoggedIn;
+    });
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): true|UrlTree {
     const url: string = state.url;
+
     return this.checkLogin(url);
   }
 
@@ -33,9 +38,10 @@ export class AuthGuard implements CanActivate, CanActivateChild {
   }
 
   checkLogin(url: string): true|UrlTree {
-    if (this.authService.isLoggedIn()) { return true; }
+    if (this.isLoggedIn) { return true; }
 
     this.authService.redirectUrl = url;
+
     return this.router.parseUrl('/auth/login');
   }
 }

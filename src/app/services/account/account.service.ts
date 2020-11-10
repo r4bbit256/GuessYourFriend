@@ -7,6 +7,7 @@ import { AuthService } from '../auth/auth.service';
 import { RandomDataGeneratorService } from '../random-data-generator/random-data-generator.service';
 
 import { User } from 'src/app/models/user';
+import { ApiRoutes } from '../../shared/utilities/api-routes';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,14 @@ export class AccountService {
 
     const jwt = this.randomService.getRandomJwt(userData);
     this.authService.setCredentials(jwt);
+    this.authService.isLoggedIn.next(true);
+
     return true;
+  }
+
+  logout(): void {
+    this.authService.clearCredentials();
+    this.authService.isLoggedIn.next(false);
   }
 
   getAll(): User[] {
