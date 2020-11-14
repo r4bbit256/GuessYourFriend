@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ApiRoutes } from './shared/utilities/api-routes';
@@ -10,7 +10,7 @@ import { AccountService } from './services/account/account.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   currentYear = new Date().getFullYear();
   isAuthenticated = false;
 
@@ -28,5 +28,9 @@ export class AppComponent implements OnInit {
   logout(): void {
     this.accountService.logout();
     this.router.navigate([ApiRoutes.Default]);
+  }
+
+  ngOnDestroy(): void {
+    this.authService.isLoggedIn.unsubscribe();
   }
 }
