@@ -8,12 +8,12 @@
       </div>
       <div class="navbar-collapse">
         <a class="nav-item" routerLink="/home">Home</a>
-        <button class="nav-item" mat-button [matMenuTriggerFor]="cardsMenu">Cards</button>
+        <button class="nav-item" mat-button [matMenuTriggerFor]="cardsMenu" *ngIf="isAuthenticated">Cards</button>
         <mat-menu #cardsMenu="matMenu">
           <button mat-menu-item routerLink="/cards/add">Add new</button>
           <button mat-menu-item routerLink="/cards/list">Show all</button>
         </mat-menu>
-        <button class="nav-item" mat-button [matMenuTriggerFor]="menu">Game</button>
+        <button class="nav-item" mat-button [matMenuTriggerFor]="menu" *ngIf="isAuthenticated">Game</button>
         <mat-menu #menu="matMenu">
           <button routerLink="/game/play" mat-menu-item>Play</button>
           <button routerLink="/game/score" mat-menu-item>Scores</button>
