@@ -1,61 +1,70 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { v4 as uuid } from 'uuid';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { BehaviorSubject, of, Subscription } from 'rxjs';
+import { delay } from 'rxjs/operators';
 
-import { User } from 'src/app/models/user';
 import { StorageService } from './../../services/storage/storage.service';
+import { LoggerService } from '../logger/logger.service';
+import { UtilityService } from '../utility/utility.service';
+import { ApiRoutes } from 'src/app/shared/utilities/api-routes';
 import { AuthorizationToken } from 'src/app/models/authorization-token';
-import { BehaviorSubject } from 'rxjs';
+import { User } from 'src/app/models/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   redirectUrl: string;
-  // TODO: Need to implement correct flow
-  // this.token && !this.jwtHelperService.isTokenExpired(this.token);
-
   isLoggedIn = new BehaviorSubject(false);
+  tokenSubscription = new Subscription();
 
-  // private jwtConfig = { tokenGetter: () => this.token ? this.token : null };
-  // private jwtHelperService: JwtHelperService = new JwtHelperService(this.jwtConfig);
-
-  constructor(private storageService: StorageService) { }
+  constructor(private storageService: StorageService,
+              private utility: UtilityService,
+              private router: Router,
+              private logger: LoggerService) { }
 
   get currentUser(): User {
     try {
-      const currentUser = JSON.parse(this.storageService.get('currentUser'));
-      return currentUser;
+      return JSON.parse(this.storageService.get('currentUser'));
     } catch (ex) {
-      // TODO:
+      this.logger.logError(ex);
+      return new User();
     }
   }
 
-  // TODO: Need to implement correct flow
-  // get token(): string {
-  //   const token = JSON.parse(this.storageService.get('token'));
-  //   return token;
-  // }
-
-  get userSessionExpirationTime(): Date {
-    const expirationDate = JSON.parse(this.storageService.get('expirationDate'));
-    return expirationDate;
-    // TODO: add try/catch
-  }
-
-  clearCredentials(): void {
-    this.storageService.delete('currentUser');
-    this.storageService.delete('expirationDate');
+  get userSessionExpirationTime(): number {
+    try {
+      return JSON.parse(this.storageService.get('expirationDate'));
+    } catch (ex) {
+      this.logger.logError(ex);
+      this.clearCredentials();
+    }
   }
 
   setCredentials(authToken: AuthorizationToken): void {
     this.storageService.save('currentUser', authToken.user);
     this.storageService.save('expirationDate', authToken.expirationDate);
+    this.isLoggedIn.next(true);
+    this.sessionExpirationCounter(this.userSessionExpirationTime);
   }
 
-  private isSessionExpired(): boolean {
-    // TODO: fix comparing
-    return new Date() > this.userSessionExpirationTime;
+  clearCredentials(): void {
+    this.storageService.delete('currentUser');
+    this.storageService.delete('expirationDate');
+    this.isLoggedIn.next(false);
+    this.isLoggedIn.unsubscribe();
   }
+
+  sessionExpirationCounter(timeout: number): void {
+    this.tokenSubscription.unsubscribe();
+    this.tokenSubscription = of(null).pipe(delay(timeout)).subscribe(() => {
+      this.clearCredentials();
+      this.router.navigate([ApiRoutes.Login]);
+    });
+  }
+
+  // isSessionValid(): boolean {
+  //   return this.utility.getUTCDateInMilisecods() < this.userSessionExpirationTime;
+  // }
 }

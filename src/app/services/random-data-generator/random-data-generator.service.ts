@@ -7,13 +7,14 @@ import { Job } from 'src/app/models/job';
 import { User } from 'src/app/models/user';
 import { RandomUserApiService } from '../api/random-user/random-user-api.service';
 import { AuthorizationToken } from 'src/app/models/authorization-token';
+import { UtilityService } from '../utility/utility.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RandomDataGeneratorService {
-  private privateKey = '152Ups241';
-  constructor(private randomUserApi: RandomUserApiService) {}
+  constructor(private randomUserApi: RandomUserApiService,
+              private utility: UtilityService) {}
 
   getRandomItemFromArray<T>(array: T[]): T {
     return array[Math.floor(Math.random() * array.length)];
@@ -32,20 +33,9 @@ export class RandomDataGeneratorService {
   }
 
   getRandomJwt(userData: User): AuthorizationToken {
-    const date = new Date();
-    const expDate = date.setMinutes(date.getMinutes() + 15);
-
-    const generatedToken = JSON.stringify({
-      issuer: 'GuesssYourFriendServer',
-      audience: 'AllAudience',
-      notBefore: date,
-      expires: date,
-      privateKey: this.privateKey,
-      algorithm: 'RS256' });
-
     const authJwt: AuthorizationToken = {
-      token: generatedToken,
-      expirationDate: expDate.toString(),
+      token: 'generatedToken',
+      expirationDate: this.utility.getMinutesInMilliseconds(15),
       user: userData
     };
     return authJwt;
