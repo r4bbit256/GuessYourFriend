@@ -27,8 +27,8 @@ export class LoginComponent {
     private authService: AuthService) { }
 
   login(): void {
-    const userData = this.accountService.login(this.loginForm.value);
-    if (userData) {
+    const isUserDataExist = this.accountService.login(this.loginForm.value);
+    if (isUserDataExist) {
 
       if (this.authService.redirectUrl) {
         this.router.navigate([this.authService.redirectUrl]);
