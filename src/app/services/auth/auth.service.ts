@@ -63,8 +63,4 @@ export class AuthService {
       this.router.navigate([ApiRoutes.Login]);
     });
   }
-
-  // isSessionValid(): boolean {
-  //   return this.utility.getUTCDateInMilisecods() < this.userSessionExpirationTime;
-  // }
 }
