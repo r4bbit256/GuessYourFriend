@@ -18,7 +18,7 @@
       </form>
       <mat-list role="list">
           <mat-list-item class="card-item" *ngFor="let card of filteredCards">
-              <a routerLink="/cards/details/{{card.id}}" [class]="'card card-' + card.id" [title]="card.firstName + ' ' + card.lastName">
+              <a appHighlight routerLink="/cards/details/{{card.id}}" [class]="'card card-' + card.id" [title]="card.firstName + ' ' + card.lastName">
                   {{card.firstName}}
                   {{card.lastName}} :
                   {{card.job}}

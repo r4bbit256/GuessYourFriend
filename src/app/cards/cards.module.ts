@@ -16,6 +16,8 @@ import { AddComponent } from './add/add.component';
 import { CardsComponent } from './cards.component';
 import { CardsRoutingModule } from './cards-routing.module';
 
+import { HighlightDirective } from '../shared/directives/highlight.directive';
+
 const AngularMaterialModule = [
   MatButtonModule,
   MatFormFieldModule,
@@ -24,7 +26,7 @@ const AngularMaterialModule = [
   MatButtonModule,
   MatRadioModule,
   MatIconModule,
-  MatListModule
+  MatListModule,
 ];
 
 @NgModule({
@@ -32,7 +34,8 @@ const AngularMaterialModule = [
     CardsComponent,
     DetailsComponent,
     ListComponent,
-    AddComponent
+    AddComponent,
+    HighlightDirective,
   ],
   imports: [
     CommonModule,
@@ -41,6 +44,6 @@ const AngularMaterialModule = [
     ReactiveFormsModule,
     FormsModule
   ],
-  exports: []
+  exports: [HighlightDirective],
 })
 export class CardsModule {}
