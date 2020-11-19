@@ -1,2 +1,34 @@
-<p>Card Details</p>
-  
+<article class="update-card-wrapper">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Update Card</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="card-form" [formGroup]="editCard">
+        <figure class="avatar-wrapper">
+          <img class="avatar" [src]="editCard.get('photo').value" alt="avatar">
+        </figure>
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput type="text" required [value]="editCard.get('firstName').value" placeholder="John" formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput type="text" required [value]="editCard.get('lastName').value" placeholder="Dow" formControlName="lastName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Job Position</mat-label>
+          <input matInput type="text" required [value]="editCard.get('job').value" placeholder="Ex. Software Engineer" formControlName="job">
+        </mat-form-field>
+        <mat-radio-group required aria-label="Select gender" formControlName="gender">
+          <mat-label>Gender:</mat-label>
+          <mat-radio-button class="radio" value="male">Male</mat-radio-button>
+          <mat-radio-button class="radio" value="female">Female</mat-radio-button>
+        </mat-radio-group>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" type="submit" (click)="updateCard()" [disabled]="!editCard.valid">Update</button>
+    </mat-card-actions>
+  </mat-card>
+</article>

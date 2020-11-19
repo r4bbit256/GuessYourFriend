@@ -1,0 +1,31 @@
+.update-card-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  width: 350px;
+}
+
+.card-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatar-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.avatar {
+  flex: 1;
+  height: auto;
+  width: 270px;
+}
+
+.radio {
+  margin-left: 16px;
+}

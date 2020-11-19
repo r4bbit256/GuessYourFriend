@@ -7,17 +7,19 @@ import { Card } from '../../models/card';
 import { RandomDataGeneratorService } from '../random-data-generator/random-data-generator.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CardService {
   private cardsStorageKey = 'cards';
   private cards = this.storageService.get<Card[]>(this.cardsStorageKey) || [];
 
-  constructor(private storageService: StorageService,
-              private randomDataService: RandomDataGeneratorService) { }
+  constructor(
+    private storageService: StorageService,
+    private randomDataService: RandomDataGeneratorService
+  ) {}
 
-  getCard(key: string): string {
-    return this.cards[key];
+  getCard(key: string): Card {
+    return this.cards.find(s => s.id === key);
   }
 
   getAll(): Card[] {
@@ -32,8 +34,14 @@ export class CardService {
     this.storageService.save(this.cardsStorageKey, this.cards);
   }
 
+  updateCard(card: Card): void {
+    const cardIndex = this.cards.findIndex(s => s.id === card.id);
+    this.cards[cardIndex] = card;
+    this.storageService.save(this.cardsStorageKey, this.cards);
+  }
+
   deleteCard(key: string): void {
-    this.cards = this.cards.filter(s => s.id !== key);
+    this.cards = this.cards.filter((s) => s.id !== key);
     this.storageService.save(this.cardsStorageKey, this.cards);
   }
 
