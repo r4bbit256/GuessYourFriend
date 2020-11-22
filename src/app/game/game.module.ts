@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { GameRoutingModule } from './game-routing.module';
 import { GameComponent } from './game.component';
@@ -22,7 +23,8 @@ const AngularMaterialModule = [
   MatInputModule,
   MatButtonModule,
   MatIconModule,
-  MatListModule
+  MatListModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
