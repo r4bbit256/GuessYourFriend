@@ -18,9 +18,9 @@
         type="button"
         mat-stroked-button color="primary"
         *ngFor="let card of cards"
-        (click)="checkAnswer(card)"
+        (click)="submitAnswer(card)"
       >
-        {{card.firstName}} {{ card.lastName}}
+        {{card.firstName}} {{card.lastName}}
       </button>
     </mat-card>
   </section>

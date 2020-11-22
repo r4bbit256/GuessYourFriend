@@ -26,18 +26,21 @@ export class PlayComponent implements OnInit {
   startGame(numberOfGames: number): void {
     this.isGamePlayVisible = true;
     this.submittedGamesNumber = numberOfGames;
+    this.setCardsForGame();
   }
 
-  checkAnswer(card: Card): void {
-    if (this.isGameNotFinished()) {
-      if (this.randomCard.id === card.id) {
-        this.correctAnswers++;
-        this.setCardsForGame();
-      } else {
-        this.incorrectAnswers++;
-      }
+  submitAnswer(card: Card): void {
+    if (this.randomCard.id === card.id) {
+      this.correctAnswers++;
+      setTimeout(() => {
+        if (this.isGameNotFinished()) {
+          this.setCardsForGame();
+        } else {
+          this.resetGame();
+        }
+      }, 3000);
     } else {
-      this.resetGame();
+      this.incorrectAnswers++;
     }
   }
 
@@ -53,13 +56,12 @@ export class PlayComponent implements OnInit {
   }
 
   private isGameNotFinished(): boolean {
-    return (this.correctAnswers + 1) < this.submittedGamesNumber;
+    return this.correctAnswers < this.submittedGamesNumber;
   }
 
   private resetGame(): void {
     this.correctAnswers = 0;
     this.incorrectAnswers = 0;
     this.isGamePlayVisible = false;
-    this.setCardsForGame();
   }
 }
