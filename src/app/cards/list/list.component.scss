@@ -6,6 +6,10 @@
   height: 100%;
 }
 
+.mat-form-label {
+  padding: 0 16px;
+}
+
 .mat-form-button {
   margin: 12px;;
 }
@@ -13,9 +17,21 @@
 .card {
   text-decoration: none;
   color: #3f51b5;
+  height: 36px;
+  margin-top: 13px;
   padding: 0 16px;
   min-height: 36px;
   font-size: 14px;
   line-height: 36px;
   font-weight: 500;
+}
+
+.filter-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-item {
+  display: flex;
+  justify-content: space-between;
 }
