@@ -53,7 +53,6 @@ export class AuthService {
     this.storageService.delete('currentUser');
     this.storageService.delete('expirationDate');
     this.isLoggedIn.next(false);
-    this.isLoggedIn.unsubscribe();
   }
 
   sessionExpirationCounter(timeout: number): void {
