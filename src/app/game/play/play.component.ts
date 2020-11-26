@@ -57,7 +57,7 @@ export class PlayComponent implements OnInit {
   }
 
   private isGameNotFinished(): boolean {
-    return this.correctAnswers < this.submittedGamesNumber;
+    return this.correctAnswers + this.incorrectAnswers < this.submittedGamesNumber;
   }
 
   private resetGame(): void {
