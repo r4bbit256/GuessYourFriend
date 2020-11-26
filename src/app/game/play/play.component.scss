@@ -10,35 +10,3 @@
 .warning-msg {
   text-align: center;
 }
-
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 350px;
-}
-
-.avatar-wrapper {
-  display: flex;
-  flex-direction: row;
-}
-
-.avatar {
-  flex: 1;
-  height: auto;
-  width: 270px;
-  border-radius: 50%;
-}
-
-.card-btn {
-  width: 300px;
-  margin: 5px 0;
-}
-
-.correct-answer {
-  background: #5dff8f;
-}
-
-.incorrect-answer {
-  background: #ffa3a3;
-}

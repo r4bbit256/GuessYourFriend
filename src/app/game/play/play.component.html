@@ -8,20 +8,6 @@
   <section *ngIf="isGamePlayVisible">
     <app-statistics [correctAnswers]="correctAnswers"
                     [incorrectAnswers]="incorrectAnswers"></app-statistics>
-    <mat-card class="card">
-      <figure class="avatar-wrapper">
-        <img class="avatar" src="{{randomCard.photo}}" alt="Friend's photo">
-      </figure>
-      <h3>{{randomCard.job}}</h3>
-      <button
-        class="card-btn"
-        type="button"
-        mat-stroked-button color="primary"
-        *ngFor="let card of cards"
-        (click)="submitAnswer(card)"
-      >
-        {{card.firstName}} {{card.lastName}}
-      </button>
-    </mat-card>
+    <app-card (answer)="submitAnswer($event)" [randomCard]="randomCard" [cards]="cards"></app-card>
   </section>
 </ng-template>

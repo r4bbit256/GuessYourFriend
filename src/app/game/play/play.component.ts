@@ -29,19 +29,20 @@ export class PlayComponent implements OnInit {
     this.setCardsForGame();
   }
 
-  submitAnswer(card: Card): void {
-    if (this.randomCard.id === card.id) {
+  submitAnswer(isCorrect: boolean): void {
+    if (isCorrect) {
       this.correctAnswers++;
-      setTimeout(() => {
-        if (this.isGameNotFinished()) {
-          this.setCardsForGame();
-        } else {
-          this.resetGame();
-        }
-      }, 3000);
     } else {
       this.incorrectAnswers++;
     }
+
+    setTimeout(() => {
+      if (this.isGameNotFinished()) {
+        this.setCardsForGame();
+      } else {
+        this.resetGame();
+      }
+    }, 3000);
   }
 
   private setCardsForGame(): void {

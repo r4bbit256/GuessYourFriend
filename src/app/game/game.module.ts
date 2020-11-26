@@ -16,6 +16,7 @@ import { ScoreComponent } from './score/score.component';
 import { PlayComponent } from './play/play.component';
 import { StatisticsComponent } from './play/statistics/statistics.component';
 import { PreGameComponent } from './play/pre-game/pre-game.component';
+import { CardComponent } from './play/card/card.component';
 
 const AngularMaterialModule = [
   MatButtonModule,
@@ -34,7 +35,8 @@ const AngularMaterialModule = [
     ScoreComponent,
     PlayComponent,
     StatisticsComponent,
-    PreGameComponent
+    PreGameComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
