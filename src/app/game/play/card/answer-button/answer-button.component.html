@@ -1,0 +1,10 @@
+<button
+  class="card-btn"
+  [ngClass]="{'correct-answer': isCorrectAnswer && isClickedButton,
+  'incorrect-answer': isCorrectAnswer === false && isClickedButton}"
+  [disabled]="isCorrectAnswer === true || isCorrectAnswer === false"
+  type="button"
+  mat-stroked-button color="primary"
+>
+  {{card.firstName}} {{card.lastName}}
+</button>

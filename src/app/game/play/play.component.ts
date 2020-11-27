@@ -29,7 +29,7 @@ export class PlayComponent implements OnInit {
     this.setCardsForGame();
   }
 
-  submitAnswer(isCorrect: boolean): void {
+  onAnswer(isCorrect: boolean): void {
     if (isCorrect) {
       this.correctAnswers++;
     } else {

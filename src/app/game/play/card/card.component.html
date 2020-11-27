@@ -3,16 +3,12 @@
     <img class="avatar" src="{{randomCard.photo}}" alt="Friend's photo">
   </figure>
   <h3>{{randomCard.job}}</h3>
-  <button
-    class="card-btn"
-    [ngClass]="{'correct-answer': isCorrectAnswer && buttonIndex === i,
-      'incorrect-answer': isCorrectAnswer === false && buttonIndex === i}"
-    [disabled]="isCorrectAnswer === true || isCorrectAnswer === false"
-    type="button"
-    mat-stroked-button color="primary"
+
+  <app-answer-button
     *ngFor="let card of cards; let i = index;"
     (click)="submitAnswer(i, card.id === randomCard.id)"
-  >
-    {{card.firstName}} {{card.lastName}}
-  </button>
+    [card]="card"
+    [isCorrectAnswer]="isCorrectAnswer"
+    [isClickedButton]="i === clickedButtonIndex">
+  </app-answer-button>
 </mat-card>

@@ -21,7 +21,7 @@ export class CardComponent implements OnInit, OnChanges {
   @Input() cards: Card[];
 
   isCorrectAnswer: boolean;
-  buttonIndex: number;
+  clickedButtonIndex: number;
 
   constructor() {}
 
@@ -30,12 +30,12 @@ export class CardComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.cards) {
       this.isCorrectAnswer = null;
-      this.buttonIndex = null;
+      this.clickedButtonIndex = null;
     }
   }
 
   submitAnswer(i: number, isCorrect: boolean): void {
-    this.buttonIndex = i;
+    this.clickedButtonIndex = i;
     this.isCorrectAnswer = isCorrect;
     this.answer.emit(isCorrect);
   }

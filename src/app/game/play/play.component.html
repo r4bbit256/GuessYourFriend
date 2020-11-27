@@ -8,6 +8,6 @@
   <section *ngIf="isGamePlayVisible">
     <app-statistics [correctAnswers]="correctAnswers"
                     [incorrectAnswers]="incorrectAnswers"></app-statistics>
-    <app-card (answer)="submitAnswer($event)" [randomCard]="randomCard" [cards]="cards"></app-card>
+    <app-card (answer)="onAnswer($event)" [randomCard]="randomCard" [cards]="cards"></app-card>
   </section>
 </ng-template>
