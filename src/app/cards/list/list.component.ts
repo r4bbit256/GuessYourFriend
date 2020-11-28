@@ -39,18 +39,18 @@ export class ListComponent implements OnInit {
     this.allCards = this.allCards.filter((card) => {
       return card.id !== key;
     });
-    this.search();
+    this.filteredCards = this.allCards;
     this.cardService.deleteCard(key);
   }
 
-  search(): void {
-    this.filteredCards = this.allCards.filter(card => card.firstName.includes(this.searchText)
-      || card.lastName.includes(this.searchText));
+  filterCards(): void {
+    this.filteredCards = this.allCards.filter(
+      card => card.firstName.includes(this.searchText) || card.lastName.includes(this.searchText));
   }
 
-  clearField(): void {
+  clearFilter(): void {
     this.searchText = '';
-    this.search();
+    this.filterCards();
   }
 
   generateCards(numberToGenerate: string): void {
@@ -68,9 +68,8 @@ export class ListComponent implements OnInit {
   }
 
   private mapData(randomUsers: RandomUserDataGenerator, jobs: Job[]): void {
-    const card = new Card();
-
     randomUsers.results.forEach(item => {
+      const card = new Card();
       card.id = item.login.uuid;
       card.firstName = item.name.first;
       card.lastName = item.name.last;
