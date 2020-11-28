@@ -1,10 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { RandomDataGeneratorService } from '../../services/random-data-generator/random-data-generator.service';
+import { CardService } from '../../services/card/cards.service';
 
 import { Card } from '../../models/card';
 import { RandomUserDataGenerator } from 'src/app/models/randomuser-data-generator';
 import { Job } from 'src/app/models/job';
-import { RandomDataGeneratorService } from './../../services/random-data-generator/random-data-generator.service';
-import { CardService } from '../../services/card/cards.service';
+
+import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
 
 @Component({
   selector: 'app-card-list',
@@ -15,6 +18,10 @@ export class ListComponent implements OnInit {
   filteredCards: Card[];
   allCards: Card[];
   searchText = '';
+  cardsToGenerateLabel = UserInterfaceResources.CardsToGenerateLabel;
+  generateLabel = UserInterfaceResources.GenerateLabel;
+  filterLabel = UserInterfaceResources.FilterLabel;
+  clearLabel = UserInterfaceResources.ClearLabel;
 
   constructor(private cardService: CardService,
               private randomDataService: RandomDataGeneratorService) { }

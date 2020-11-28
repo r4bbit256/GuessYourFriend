@@ -6,6 +6,7 @@ import { CardService } from '../../services/card/cards.service';
 
 import { Card } from '../../models/card';
 import { ApiRoutes } from '../../shared/utilities/api-routes';
+import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
 
 @Component({
   selector: 'app-details',
@@ -15,13 +16,20 @@ import { ApiRoutes } from '../../shared/utilities/api-routes';
 export class DetailsComponent implements OnInit {
   card: Card;
   editCard: FormGroup;
+  editCardLabel = UserInterfaceResources.EditCardLabel;
+  firstNameLabel = UserInterfaceResources.FirstNameLabel;
+  lastNameLabel = UserInterfaceResources.LastNameLabel;
+  jobPositionLabel = UserInterfaceResources.JobPositionLabel;
+  genderLabel = UserInterfaceResources.GenderLabel;
+  maleOptionLabel = UserInterfaceResources.MaleOptionLabel;
+  femaleOptionLabel = UserInterfaceResources.FemaleOptionLabel;
+  editLabel = UserInterfaceResources.EditLabel;
 
   constructor(
     private cardService: CardService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
-  ) {}
+    private router: Router) {}
 
   ngOnInit(): void {
     const cardId = this.route.snapshot.paramMap.get('id');

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { CardService } from '../../services/card/cards.service';
+import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
 
 @Component({
   selector: 'app-add-card',
@@ -21,6 +22,14 @@ export class AddComponent {
     gender: [this.defaultGender, Validators.required],
     photo: ['']
   });
+  addCardTitle = UserInterfaceResources.AddCardLabel;
+  firstNameLabel = UserInterfaceResources.FirstNameLabel;
+  lastNameLabel = UserInterfaceResources.LastNameLabel;
+  jobPositionLabel = UserInterfaceResources.JobPositionLabel;
+  genderLabel = UserInterfaceResources.GenderLabel;
+  maleOptionLabel = UserInterfaceResources.MaleOptionLabel;
+  femaleOptionLabel = UserInterfaceResources.FemaleOptionLabel;
+  addButtonLabel = UserInterfaceResources.AddLabel;
 
   constructor(private cardService: CardService,
               private formBuilder: FormBuilder) { }

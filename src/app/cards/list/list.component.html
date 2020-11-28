@@ -1,20 +1,20 @@
 <article class="card-list-wrapper">
   <section *ngIf="allCards.length === 0; else cardsPresented">
     <mat-form-field>
-      <mat-label>Number of cards to generate</mat-label>
+      <mat-label>{{cardsToGenerateLabel}}</mat-label>
       <input matInput type="number" placeholder="Default is 8" #action>
     </mat-form-field>
 
-    <button class="mat-form-button" mat-stroked-button (click)="generateCards(action.value)">Generate</button>
+    <button class="mat-form-button" mat-stroked-button (click)="generateCards(action.value)">{{generateLabel}}</button>
   </section>
   <ng-template #cardsPresented>
     <section>
       <form class="filter-form">
         <mat-form-field class="mat-form-label">
-          <mat-label>Filter</mat-label>
+          <mat-label>{{filterLabel}}</mat-label>
           <input matInput placeholder="Enter text to search" [(ngModel)]="searchText" (ngModelChange)="search()" name="cardFilter">
         </mat-form-field>
-        <button class="mat-form-button" mat-stroked-button (click)="clearField()">Clear</button>
+        <button class="mat-form-button" mat-stroked-button (click)="clearField()">{{clearLabel}}</button>
       </form>
       <div>
           <div class="card-item" *ngFor="let card of filteredCards">
