@@ -3,29 +3,29 @@
     <mat-toolbar class="navbar">
       <div class="navbar-header">
         <a class="logo header-logo" routerLink="/home">
-          <span>GuessYourFriend</span>
+          <span>{{appNameLabel}}</span>
         </a>
       </div>
       <div class="navbar-collapse">
-        <a class="nav-item" routerLink="/home">Home</a>
-        <button class="nav-item" mat-button [matMenuTriggerFor]="cardsMenu" *ngIf="isAuthenticated">Cards</button>
+        <a class="nav-item" routerLink="/home">{{homeMenuLabel}}</a>
+        <button class="nav-item" mat-button [matMenuTriggerFor]="cardsMenu" *ngIf="isAuthenticated">{{cardsMenuLabel}}</button>
         <mat-menu #cardsMenu="matMenu">
-          <button mat-menu-item routerLink="/cards/add">Add new</button>
-          <button mat-menu-item routerLink="/cards/list">Show all</button>
+          <button mat-menu-item routerLink="/cards/add">{{addNewCardMenuLabel}}</button>
+          <button mat-menu-item routerLink="/cards/list">{{showAllCardsMenuLabel}}</button>
         </mat-menu>
-        <button class="nav-item" mat-button [matMenuTriggerFor]="menu" *ngIf="isAuthenticated">Game</button>
+        <button class="nav-item" mat-button [matMenuTriggerFor]="menu" *ngIf="isAuthenticated">{{gameMenuLabel}}</button>
         <mat-menu #menu="matMenu">
-          <button routerLink="/game/play" mat-menu-item>Play</button>
-          <button routerLink="/game/score" mat-menu-item>Scores</button>
+          <button routerLink="/game/play" mat-menu-item>{{playMenuLabel}}</button>
+          <button routerLink="/game/score" mat-menu-item>{{scoresMenuLabel}}</button>
         </mat-menu>
-        <a class="nav-item" routerLink="/about">About Us</a>
+        <a class="nav-item" routerLink="/about">{{aboutMenuLabel}}</a>
       </div>
       <div class="navbar-auth" *ngIf="isAuthenticated">
-        <a mat-flat-button color="primary" class="btn-auth" (click)="logout()">{{ 'Log Out' | uppercase }}</a>
+        <a mat-flat-button color="primary" class="btn-auth" (click)="logout()">{{logoutLabel | uppercase}}</a>
       </div>
       <div class="navbar-auth" *ngIf="!isAuthenticated">
-        <a mat-flat-button color="primary" class="btn-auth" routerLink="/auth/login">{{ 'Log In' | uppercase }}</a>
-        <a mat-flat-button color="primary" class="btn-auth" routerLink="/auth/register">{{ 'Register' | uppercase }}</a>
+        <a mat-flat-button color="primary" class="btn-auth" routerLink="/auth/login">{{loginLabel | uppercase}}</a>
+        <a mat-flat-button color="primary" class="btn-auth" routerLink="/auth/register">{{registerLabel | uppercase}}</a>
       </div>
     </mat-toolbar>
   </nav>
@@ -37,10 +37,10 @@
   <footer id="footer">
     <mat-toolbar class="footer-container">
       <a class="logo footer-logo" routerLink="/home">
-        <span>GuessYourFriend</span>
+        <span>{{appNameLabel}}</span>
       </a>
       <div class="copyright">
-        © {{currentYear}} GuessYourFriend - All Rights Reserved
+        © {{currentYear}} {{appNameLabel}} - All Rights Reserved
       </div>
     </mat-toolbar>
   </footer>

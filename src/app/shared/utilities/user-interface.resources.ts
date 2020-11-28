@@ -1,5 +1,19 @@
 export class UserInterfaceResources {
-  /* Auth Module */
+  // App Module
+  public static AppNameLabel = 'GuessYourFriend';
+  public static LogoutLabel = 'Logout';
+  public static LoginLabel = 'Login';
+  public static RegisterLabel = 'Register';
+  public static HomeMenuLabel = 'Home';
+  public static AboutMenuLabel = 'About';
+  public static CardsMenuLabel = 'Cards';
+  public static AddNewCardMenuLabel = 'Add New';
+  public static ShowAllCardsMenuLabel = 'Show All';
+  public static GameMenuLabel = 'Game';
+  public static PlayMenuLabel = 'Play';
+  public static ScoresMenuLabel = 'Scores';
+
+  // Auth Module
   public static SuccessfulLogonMessage = 'You was successfully logon!';
   public static CannotFindSuchUserMessage = 'Can\'t find such user! Please verify your data and try again.';
   public static SuccessfullyRegistered = 'You successfully registered.';
@@ -9,12 +23,10 @@ export class UserInterfaceResources {
   public static DontHaveAccountLabel = 'Don\'t have an account?';
   public static HaveAccountLabel = 'Already have an account?';
   public static CreateAccountLabel = 'Create an account';
-  public static LoginLabel = 'Login';
   public static EmailLabel = 'Email';
   public static ConfirmLabel = 'Confirm';
-  public static RegisterLabel = 'Register';
 
-  /* Cards Module */
+  // Cards Module
   public static AddCardLabel = 'Add Card';
   public static EditCardLabel = 'Edit Card';
   public static FirstNameLabel = 'First Name';
@@ -29,4 +41,9 @@ export class UserInterfaceResources {
   public static FilterLabel = 'Filter';
   public static GenerateLabel = 'Generate';
   public static ClearLabel = 'Clear';
+
+  // Game Module
+  public static NumberOfGamesRuleMessage = 'Number of games should be greater than 0 but less than 11';
+  public static NumberOfGamesLabel = 'Number of games';
+  public static StartGameLabel = 'Go';
 }

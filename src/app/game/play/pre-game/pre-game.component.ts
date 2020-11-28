@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { UserInterfaceResources } from '../../../shared/utilities/user-interface.resources';
 
 @Component({
   selector: 'app-pre-game',
@@ -11,6 +12,8 @@ export class PreGameComponent implements OnInit {
   @Output() startGame = new EventEmitter<number>();
 
   numberOfGames = 1;
+  numberOfGamesLabel = UserInterfaceResources.NumberOfGamesLabel;
+  startGameLabel = UserInterfaceResources.StartGameLabel;
 
   constructor(private snackBar: MatSnackBar) { }
 
@@ -21,9 +24,13 @@ export class PreGameComponent implements OnInit {
     if (this.numberOfGames > 0 && this.numberOfGames <= 10) {
       this.startGame.emit(this.numberOfGames);
     } else {
-      this.snackBar.open('Number of games should be greater than 0 but less than 11', null, {
-        duration: 5000,
-      });
+      this.numberOfGamesMessage();
     }
+  }
+
+  private numberOfGamesMessage() {
+    this.snackBar.open(UserInterfaceResources.NumberOfGamesRuleMessage, null, {
+      duration: 5000,
+    });
   }
 }

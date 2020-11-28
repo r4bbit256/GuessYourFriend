@@ -1,8 +1,8 @@
 <section>
   <mat-form-field class="form-field">
-    <mat-label>Number of games</mat-label>
+    <mat-label>{{numberOfGamesLabel}}</mat-label>
     <input matInput type="number" min="1" max="10" [(ngModel)]="numberOfGames">
   </mat-form-field>
 
-  <button mat-flat-button class="go-btn" color="primary" (click)="start()">{{'Go' | uppercase}}</button>
+  <button mat-flat-button class="go-btn" color="primary" (click)="start()">{{startGameLabel | uppercase}}</button>
 </section>

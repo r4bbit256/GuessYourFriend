@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiRoutes } from './shared/utilities/api-routes';
 import { AuthService } from './services/auth/auth.service';
 import { AccountService } from './services/account/account.service';
+import { UserInterfaceResources } from './shared/utilities/user-interface.resources';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,18 @@ import { AccountService } from './services/account/account.service';
 export class AppComponent implements OnInit, OnDestroy {
   currentYear = new Date().getFullYear();
   isAuthenticated = false;
+  appNameLabel = UserInterfaceResources.AppNameLabel;
+  homeMenuLabel = UserInterfaceResources.HomeMenuLabel;
+  cardsMenuLabel = UserInterfaceResources.CardsMenuLabel;
+  addNewCardMenuLabel = UserInterfaceResources.AddNewCardMenuLabel;
+  showAllCardsMenuLabel = UserInterfaceResources.ShowAllCardsMenuLabel;
+  gameMenuLabel = UserInterfaceResources.GameMenuLabel;
+  playMenuLabel = UserInterfaceResources.PlayMenuLabel;
+  scoresMenuLabel = UserInterfaceResources.ScoresMenuLabel;
+  aboutMenuLabel = UserInterfaceResources.AboutMenuLabel;
+  loginLabel = UserInterfaceResources.LoginLabel;
+  registerLabel = UserInterfaceResources.RegisterLabel;
+  logoutLabel = UserInterfaceResources.LogoutLabel;
 
   constructor(private authService: AuthService,
               private accountService: AccountService,
