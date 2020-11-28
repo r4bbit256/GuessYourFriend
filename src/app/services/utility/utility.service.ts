@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,7 @@ export class UtilityService {
     const day = date.getUTCDay() + addDay;
     const hour = date.getUTCHours() + addHour;
     const minutes = date.getUTCMinutes() + addMin;
-    const utcDate = Date.UTC(year, month, day, hour, minutes);
-
-    return utcDate;
+    return Date.UTC(year, month, day, hour, minutes);
   }
 
   getMinutesInMilliseconds(minutes: number): number {
