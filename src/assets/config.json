@@ -1,4 +1,4 @@
 {
-  "randomeUserApiUrl": "https://randomuser.me/api",
+  "randomUserApiUrl": "https://randomuser.me/api",
   "randomJobPositions": "assets/data/randomJobPositions.json"
 }
