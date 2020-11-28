@@ -1,24 +1,25 @@
 <mat-card class="mat-card">
-  <h2>Log in</h2>
+  <h2>{{loginLabel}}</h2>
   <form class="auth-form" [formGroup]="loginForm" (ngSubmit)="login()">
     <mat-form-field class="mat-form-field">
-      <mat-label>Username</mat-label>
-      <input matInput type="text" required placeholder="johndow" formControlName="username">
+      <mat-label>{{usernameLabel}}</mat-label>
+      <input matInput type="text" required placeholder="john_dow" formControlName="username">
     </mat-form-field>
     <br>
 
     <mat-form-field class="mat-form-field">
-      <mat-label>Password</mat-label>
+      <mat-label>{{passwordLabel}}</mat-label>
       <input matInput minlength="8" type="password" required placeholder="Password" formControlName="password">
     </mat-form-field>
     <br>
 
-    <button class="btn-submit" type="submit" [disabled]="!loginForm.valid" mat-raised-button color="primary">Login</button>
+    <button class="btn-submit" type="submit" [disabled]="!loginForm.valid" mat-raised-button color="primary">{{loginLabel | uppercase}}</button>
     <br>
 
     <div class="mat-form-item">
-      <mat-label>Don't have an account?
-        <a routerLink="/auth/register" routerLinkActive="['active']">Create an account</a>
+      <mat-label>
+        {{dontHaveAccountLabel}}
+        <a routerLink="/auth/register" routerLinkActive="['active']">{{createAccountLabel}}</a>
       </mat-label>
     </div>
 
