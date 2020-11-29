@@ -28,9 +28,10 @@ export class AccountService {
       ...userData
     });
 
-    const jwt = this.randomService.getRandomJwt(userData);
-    this.storageService.save(this.authStorageKey, this.users);
-    this.authService.setCredentials(jwt);
+    this.randomService.getRandomJwt(userData).subscribe(jwt => {
+      this.storageService.save(this.authStorageKey, this.users);
+      this.authService.setCredentials(jwt);
+    });
   }
 
   login(loginData: User): boolean {
@@ -38,6 +39,7 @@ export class AccountService {
       this.logger.logError(`User data cannot be null or empty!`);
       return false;
     }
+
     const userData = this.users.find(s =>
       s.password === loginData.password
       && s.username.toLowerCase() === loginData.username.toLowerCase());
@@ -47,17 +49,14 @@ export class AccountService {
       return false;
     }
 
-    const jwt = this.randomService.getRandomJwt(userData);
-    this.authService.setCredentials(jwt);
+    this.randomService.getRandomJwt(userData).subscribe(jwt => {
+      this.authService.setCredentials(jwt);
+    });
 
     return true;
   }
 
   logout(): void {
     this.authService.clearCredentials();
-  }
-
-  getAll(): User[] {
-    return this.users;
   }
 }

@@ -45,9 +45,9 @@ export class LoginComponent {
       }
 
       this.successfulLogonMessage();
+    } else {
+      this.cannotFindSuchUserMessage();
     }
-
-    this.cannotFindSuchUserMessage();
   }
 
   private cannotFindSuchUserMessage() {

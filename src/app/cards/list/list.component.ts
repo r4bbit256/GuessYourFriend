@@ -8,6 +8,7 @@ import { RandomUserDataGenerator } from 'src/app/models/randomuser-data-generato
 import { Job } from 'src/app/models/job';
 
 import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
+import { concat, of } from 'rxjs';
 
 @Component({
   selector: 'app-card-list',
@@ -75,10 +76,14 @@ export class ListComponent implements OnInit {
       card.lastName = item.name.last;
       card.photo = item.picture.large;
       card.gender = item.gender;
-      card.job = this.randomDataService.getRandomItemFromArray<Job>(jobs).job;
 
-      this.cardService.addCard(card);
+      of(this.randomDataService.getRandomItemFromArray(jobs).subscribe(job => {
+        card.job = job.job;
+      })).subscribe( () => {
+        this.cardService.addCard(card);
+      });
     });
+
     this.allCards = this.cardService.getAll();
     this.filteredCards = this.allCards;
   }

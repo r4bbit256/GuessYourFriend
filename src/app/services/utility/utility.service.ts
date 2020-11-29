@@ -7,7 +7,7 @@ export class UtilityService {
 
   constructor() { }
 
-  getUTCDateInMilisecods(addYear = 0, addMonth = 0, addDay = 0, addHour = 0, addMin = 0): number {
+  getUTCDateInMilliseconds(addYear = 0, addMonth = 0, addDay = 0, addHour = 0, addMin = 0): number {
     const date = new Date();
     const year = date.getUTCFullYear() + addYear;
     const month = date.getUTCMonth() + addMonth;

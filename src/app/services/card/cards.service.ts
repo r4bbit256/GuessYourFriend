@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { v4 as uuid } from 'uuid';
+import { Observable } from 'rxjs';
 
 import { StorageService } from '../storage/storage.service';
 import { Card } from '../../models/card';
@@ -46,20 +47,22 @@ export class CardService {
   }
 
   getSpecificNumberOfRandomCards(cards, numberOfCards = 4): Card[] {
-    if (cards.length) {
-      let randomNumber = this.randomDataService.getRandomNumber(cards.length);
-
-      while (randomNumber + numberOfCards > cards.length) {
-        randomNumber = this.randomDataService.getRandomNumber(cards.length);
-      }
-
-      return cards.slice(randomNumber, randomNumber + numberOfCards);
+    if (!cards.length) {
+      return [];
     }
 
-    return [];
+    let randomNumber = 0;
+
+    do {
+      this.randomDataService.getRandomNumber(cards.length).subscribe(number => {
+        randomNumber = number;
+      });
+    } while (randomNumber + numberOfCards > cards.length)
+
+    return cards.slice(randomNumber, randomNumber + numberOfCards);
   }
 
-  getRandomCard(cards = this.getAll()): Card {
-    return this.randomDataService.getRandomItemFromArray<Card>(cards);
+  getRandomCard(cards = this.getAll()): Observable<Card> {
+    return this.randomDataService.getRandomItemFromArray(cards);
   }
 }

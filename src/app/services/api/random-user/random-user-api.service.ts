@@ -34,7 +34,7 @@ export class RandomUserApiService {
 
   private getDefaultUsersNumberForRequest(numberOfUsers: string): string {
     if (numberOfUsers === '') {
-        return numberOfUsers = '8';
+        return '8';
     } else {
       return numberOfUsers;
     }

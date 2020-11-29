@@ -50,7 +50,9 @@ export class PlayComponent implements OnInit {
 
     if (allCards.length) {
       this.cards = this.cardService.getSpecificNumberOfRandomCards(allCards);
-      this.randomCard = this.cardService.getRandomCard(this.cards);
+      this.cardService.getRandomCard(this.cards).subscribe(card => {
+        this.randomCard = card;
+      });
     } else {
       this.cards = [];
     }
