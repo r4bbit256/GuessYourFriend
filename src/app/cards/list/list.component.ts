@@ -8,7 +8,7 @@ import { RandomUserDataGenerator } from 'src/app/models/randomuser-data-generato
 import { Job } from 'src/app/models/job';
 
 import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
-import {concat, merge, of} from 'rxjs';
+import { concat } from 'rxjs';
 
 @Component({
   selector: 'app-card-list',
