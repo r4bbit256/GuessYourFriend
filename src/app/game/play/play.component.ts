@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Card } from '../../models/card';
 import { CardService } from '../../services/card/cards.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-play',
@@ -9,7 +10,8 @@ import { CardService } from '../../services/card/cards.service';
   styleUrls: ['./play.component.scss'],
 })
 export class PlayComponent implements OnInit {
-  cards: Card[];
+  level$ = new BehaviorSubject(this.cardService.getSpecificNumberOfRandomCards());
+  cards: Card [];
   randomCard: Card;
   correctAnswers = 0;
   incorrectAnswers = 0;
@@ -20,13 +22,15 @@ export class PlayComponent implements OnInit {
   constructor(private cardService: CardService) {}
 
   ngOnInit(): void {
-    this.setCardsForGame();
+    this.level$.subscribe(cards => {
+      this.cards = cards;
+      this.randomCard = this.cardService.getRandomCard(cards);
+    });
   }
 
   startGame(numberOfGames: number): void {
     this.isGamePlayVisible = true;
     this.submittedGamesNumber = numberOfGames;
-    this.setCardsForGame();
   }
 
   onAnswer(isCorrect: boolean): void {
@@ -38,24 +42,11 @@ export class PlayComponent implements OnInit {
 
     setTimeout(() => {
       if (this.isGameNotFinished()) {
-        this.setCardsForGame();
+        this.level$.next(this.cardService.getSpecificNumberOfRandomCards());
       } else {
         this.resetGame();
       }
     }, 3000);
-  }
-
-  private setCardsForGame(): void {
-    const allCards = this.cardService.getAll();
-
-    if (allCards.length) {
-      this.cards = this.cardService.getSpecificNumberOfRandomCards(allCards);
-      this.cardService.getRandomCard(this.cards).subscribe(card => {
-        this.randomCard = card;
-      });
-    } else {
-      this.cards = [];
-    }
   }
 
   private isGameNotFinished(): boolean {

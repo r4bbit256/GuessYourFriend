@@ -8,7 +8,7 @@ import { RandomUserDataGenerator } from 'src/app/models/randomuser-data-generato
 import { Job } from 'src/app/models/job';
 
 import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
-import { concat, of } from 'rxjs';
+import {concat, merge, of} from 'rxjs';
 
 @Component({
   selector: 'app-card-list',
@@ -55,36 +55,23 @@ export class ListComponent implements OnInit {
   }
 
   generateCards(numberToGenerate: string): void {
-    const jobs = [];
-
-    this.randomDataService.getRandomJobList().subscribe(jobList => {
-      jobList.forEach(job => {
-        jobs.push(job);
+    concat(this.randomDataService.getRandomJobList(), this.randomDataService.getRandomUsers(numberToGenerate))
+      .subscribe( value => {
+        const cards = this.mapData(value[1], value[0]);
+        this.cardService.addCard(cards);
+        this.allCards = this.cardService.getAll();
+        this.filteredCards = this.allCards;
       });
-    });
-
-    this.randomDataService.getRandomUsers(numberToGenerate).subscribe(data => {
-      this.mapData(data, jobs);
-    });
   }
 
-  private mapData(randomUsers: RandomUserDataGenerator, jobs: Job[]): void {
-    randomUsers.results.forEach(item => {
-      const card = new Card();
-      card.id = item.login.uuid;
-      card.firstName = item.name.first;
-      card.lastName = item.name.last;
-      card.photo = item.picture.large;
-      card.gender = item.gender;
-
-      of(this.randomDataService.getRandomItemFromArray(jobs).subscribe(job => {
-        card.job = job.job;
-      })).subscribe( () => {
-        this.cardService.addCard(card);
-      });
-    });
-
-    this.allCards = this.cardService.getAll();
-    this.filteredCards = this.allCards;
+  private mapData(randomUsers: RandomUserDataGenerator, jobs: Job[]): Card[] {
+    return randomUsers.results.map(item => ({
+      id: item.login.uuid,
+      firstName: item.name.first,
+      lastName: item.name.last,
+      gender: item.gender,
+      photo: item.picture.large,
+      job: this.randomDataService.getRandomItemFromArray(jobs).job
+    }));
   }
 }

@@ -13,15 +13,16 @@ import { UtilityService } from '../utility/utility.service';
   providedIn: 'root'
 })
 export class RandomDataGeneratorService {
+
   constructor(private randomUserApi: RandomUserApiService,
               private utility: UtilityService) {}
 
-  getRandomItemFromArray<T>(array: T[]): Observable<T> {
-    return of(array[Math.floor(Math.random() * array.length)]);
+  getRandomItemFromArray<T>(array: T[]): T {
+    return array[Math.floor(Math.random() * array.length)];
   }
 
-  getRandomNumber(top = 4, bottom = 0): Observable<number> {
-    return of(Math.floor(Math.random() * top) + bottom);
+  getRandomNumber(top = 4, bottom = 0): number {
+    return Math.floor(Math.random() * top) + bottom;
   }
 
   getRandomUsers(numberOfUsers: string): Observable<RandomUserDataGenerator> {

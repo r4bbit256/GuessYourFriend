@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import { v4 as uuid } from 'uuid';
-import { Observable } from 'rxjs';
-
 import { StorageService } from '../storage/storage.service';
 import { Card } from '../../models/card';
 import { RandomDataGeneratorService } from '../random-data-generator/random-data-generator.service';
@@ -27,11 +24,8 @@ export class CardService {
     return this.cards;
   }
 
-  addCard(card: Card): void {
-    this.cards.push({
-      id: uuid(),
-      ...card,
-    });
+  addCard(card: Card | Card[]): void {
+    this.cards.concat(card);
     this.storageService.save(this.cardsStorageKey, this.cards);
   }
 
@@ -46,7 +40,7 @@ export class CardService {
     this.storageService.save(this.cardsStorageKey, this.cards);
   }
 
-  getSpecificNumberOfRandomCards(cards, numberOfCards = 4): Card[] {
+  getSpecificNumberOfRandomCards(cards = this.getAll(), numberOfCards = 4): Card[] {
     if (!cards.length) {
       return [];
     }
@@ -54,15 +48,13 @@ export class CardService {
     let randomNumber = 0;
 
     do {
-      this.randomDataService.getRandomNumber(cards.length).subscribe(number => {
-        randomNumber = number;
-      });
-    } while (randomNumber + numberOfCards > cards.length)
+      randomNumber = this.randomDataService.getRandomNumber(cards.length);
+    } while (randomNumber + numberOfCards > cards.length);
 
     return cards.slice(randomNumber, randomNumber + numberOfCards);
   }
 
-  getRandomCard(cards = this.getAll()): Observable<Card> {
+  getRandomCard(cards = this.getAll()): Card {
     return this.randomDataService.getRandomItemFromArray(cards);
   }
 }

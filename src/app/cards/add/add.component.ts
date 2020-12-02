@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
+import { v4 as uuid } from 'uuid';
+
 import { CardService } from '../../services/card/cards.service';
 import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
 
@@ -36,7 +38,7 @@ export class AddComponent {
 
   addCard(): void {
     this.newCard.get('photo').setValue(this.avatars[this.newCard.get('gender').value]);
-    this.cardService.addCard(this.newCard.value);
+    this.cardService.addCard({id: uuid(), ...this.newCard.value});
     this.clear();
   }
 
