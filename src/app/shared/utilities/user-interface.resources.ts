@@ -41,6 +41,7 @@ export class UserInterfaceResources {
   public static FilterLabel = 'Filter';
   public static GenerateLabel = 'Generate';
   public static ClearLabel = 'Clear';
+  public static RemoveAllLabel = 'Remove All';
 
   // Game Module
   public static NumberOfGamesRuleMessage = 'Number of games should be greater than 0 but less than 11';

@@ -8,8 +8,8 @@ import { RandomDataGeneratorService } from '../random-data-generator/random-data
   providedIn: 'root',
 })
 export class CardService {
-  private cardsStorageKey = 'cards';
-  private cards = this.storageService.get<Card[]>(this.cardsStorageKey) || [];
+  cardsStorageKey = 'cards';
+  cards = this.storageService.get<Card[]>(this.cardsStorageKey) || Array<Card>();
 
   constructor(
     private storageService: StorageService,
@@ -24,8 +24,13 @@ export class CardService {
     return this.cards;
   }
 
-  addCard(card: Card | Card[]): void {
-    this.cards.concat(card);
+  addCard(card: Card): void {
+    this.cards.push(card);
+    this.storageService.save(this.cardsStorageKey, this.cards);
+  }
+
+  addCards(cards: Card[]): void {
+    this.cards = cards;
     this.storageService.save(this.cardsStorageKey, this.cards);
   }
 
@@ -38,6 +43,10 @@ export class CardService {
   deleteCard(key: string): void {
     this.cards = this.cards.filter((s) => s.id !== key);
     this.storageService.save(this.cardsStorageKey, this.cards);
+  }
+
+  removeAllCards(): void {
+    this.storageService.delete(this.cardsStorageKey);
   }
 
   getSpecificNumberOfRandomCards(cards = this.getAll(), numberOfCards = 4): Card[] {

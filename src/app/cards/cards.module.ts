@@ -17,6 +17,7 @@ import { CardsComponent } from './cards.component';
 import { CardsRoutingModule } from './cards-routing.module';
 
 import { HighlightDirective } from '../shared/directives/highlight.directive';
+import { FilteredComponent } from './list/filtered/filtered.component';
 
 const AngularMaterialModule = [
   MatButtonModule,
@@ -36,6 +37,7 @@ const AngularMaterialModule = [
     ListComponent,
     AddComponent,
     HighlightDirective,
+    FilteredComponent,
   ],
   imports: [
     CommonModule,
