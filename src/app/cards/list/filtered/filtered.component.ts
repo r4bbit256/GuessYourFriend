@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { CardService } from './../../../services/card/cards.service';
 
@@ -12,7 +12,7 @@ import { UserInterfaceResources } from 'src/app/shared/utilities/user-interface.
 })
 export class FilteredComponent implements OnInit {
   @Output() filteredCards: EventEmitter<Card[]> = new EventEmitter();
-
+  cards: Card[];
   searchText = '';
   filterLabel = UserInterfaceResources.FilterLabel;
   clearLabel = UserInterfaceResources.ClearLabel;
@@ -21,11 +21,11 @@ export class FilteredComponent implements OnInit {
   constructor(private cardService: CardService) { }
 
   ngOnInit(): void {
+    this.cards = this.cardService.getAll();
   }
 
   filterCards(): void {
-    const cards = this.cardService.getAll();
-    this.filteredCards.emit(cards.filter(
+    this.filteredCards.emit(this.cards.filter(
       card => card.firstName.includes(this.searchText) || card.lastName.includes(this.searchText)));
   }
 
