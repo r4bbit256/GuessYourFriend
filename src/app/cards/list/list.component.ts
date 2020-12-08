@@ -30,11 +30,6 @@ export class ListComponent implements OnInit {
     });
   }
 
-  deleteCard(key: string): void {
-    this.allCards = this.allCards.filter(card => card.id !== key);
-    this.cardService.deleteCard(key);
-  }
-
   generateCards(numberToGenerate: string): void {
     forkJoin({jobList: this.randomDataService.getRandomJobList(), users: this.randomDataService.getRandomUsers(numberToGenerate)})
       .subscribe(item => {
@@ -44,7 +39,7 @@ export class ListComponent implements OnInit {
       });
   }
 
-  filterCards(filteredCards: Card[]): void {
+  cardsUpdate(filteredCards: Card[]): void {
     this.cards$.next(filteredCards);
   }
 

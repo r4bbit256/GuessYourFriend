@@ -1,6 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-
-import { CardService } from './../../../services/card/cards.service';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges} from '@angular/core';
 
 import { Card } from 'src/app/models/card';
 import { UserInterfaceResources } from 'src/app/shared/utilities/user-interface.resources';
@@ -10,32 +8,38 @@ import { UserInterfaceResources } from 'src/app/shared/utilities/user-interface.
   templateUrl: './filtered.component.html',
   styleUrls: ['./filtered.component.scss']
 })
-export class FilteredComponent implements OnInit {
-  @Output() filteredCards: EventEmitter<Card[]> = new EventEmitter();
-  cards: Card[];
+export class FilteredComponent implements OnChanges {
+  @Output() cardsUpdate: EventEmitter<Card[]> = new EventEmitter();
+  @Input() cards: Card[];
+
+  filteredCards: Card[];
   searchText = '';
   filterLabel = UserInterfaceResources.FilterLabel;
   clearLabel = UserInterfaceResources.ClearLabel;
   removeAllLabel = UserInterfaceResources.RemoveAllLabel;
 
-  constructor(private cardService: CardService) { }
+  constructor() { }
 
-  ngOnInit(): void {
-    this.cards = this.cardService.getAll();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.cards) {
+      this.filteredCards = this.cards;
+    }
   }
 
-  filterCards(): void {
-    this.filteredCards.emit(this.cards.filter(
-      card => card.firstName.includes(this.searchText) || card.lastName.includes(this.searchText)));
+  searchTextUpdate(): void {
+    this.filteredCards = this.cards.filter(
+      card => card.firstName.includes(this.searchText) || card.lastName.includes(this.searchText));
   }
 
   clearFilter(): void {
     this.searchText = '';
-    this.filterCards();
   }
 
   removeAll(): void {
-    this.cardService.removeAllCards();
-    this.filteredCards.emit([]);
+    this.cardsUpdate.emit([]);
+  }
+
+  deleteCard(key: string): void {
+    this.cardsUpdate.emit(this.cards.filter(card => card.id !== key));
   }
 }
