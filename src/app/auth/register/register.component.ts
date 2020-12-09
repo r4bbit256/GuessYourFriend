@@ -43,6 +43,7 @@ export class RegisterComponent {
       this.registerForm.get('retype').setValue('');
     } else {
       this.accountService.register(this.registerForm.value);
+      this.accountService.userName.next(this.registerForm.get('username').value);
       this.successfullyRegistered();
       this.router.navigate([ApiRoutes.Default]);
     }

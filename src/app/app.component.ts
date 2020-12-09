@@ -14,6 +14,8 @@ import { UserInterfaceResources } from './shared/utilities/user-interface.resour
 export class AppComponent implements OnInit, OnDestroy {
   currentYear = new Date().getFullYear();
   isAuthenticated = false;
+  username = '';
+  welcomeMessage = UserInterfaceResources.WelcomeMessageLabel;
   appNameLabel = UserInterfaceResources.AppNameLabel;
   homeMenuLabel = UserInterfaceResources.HomeMenuLabel;
   cardsMenuLabel = UserInterfaceResources.CardsMenuLabel;
@@ -35,6 +37,10 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.authService.isLoggedIn.subscribe(isLoggedIn => {
       this.isAuthenticated = isLoggedIn;
+    });
+
+    this.accountService.userName.subscribe(user => {
+      this.username = user;
     });
   }
 

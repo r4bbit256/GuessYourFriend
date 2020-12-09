@@ -12,6 +12,7 @@ export class UserInterfaceResources {
   public static GameMenuLabel = 'Game';
   public static PlayMenuLabel = 'Play';
   public static ScoresMenuLabel = 'Scores';
+  public static WelcomeMessageLabel = 'Welcome, ';
 
   // Auth Module
   public static SuccessfulLogonMessage = 'You was successfully logon!';

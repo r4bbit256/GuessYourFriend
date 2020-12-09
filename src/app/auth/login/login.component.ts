@@ -44,6 +44,7 @@ export class LoginComponent {
         this.router.navigate([ApiRoutes.Default]);
       }
 
+      this.accountService.userName.next(this.loginForm.get('username').value);
       this.successfulLogonMessage();
     } else {
       this.cannotFindSuchUserMessage();

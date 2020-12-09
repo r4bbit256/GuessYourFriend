@@ -27,6 +27,10 @@
         <a mat-flat-button color="primary" class="btn-auth" routerLink="/auth/login">{{loginLabel | uppercase}}</a>
         <a mat-flat-button color="primary" class="btn-auth" routerLink="/auth/register">{{registerLabel | uppercase}}</a>
       </div>
+
+      <div class="username-wrapper">
+        <h1 class="username">{{welcomeMessage}} {{username}}</h1>
+      </div>
     </mat-toolbar>
   </nav>
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { v4 as uuid } from 'uuid';
+import { BehaviorSubject } from 'rxjs';
 
 import { LoggerService } from '../logger/logger.service';
 import { StorageService } from '../storage/storage.service';
@@ -13,6 +14,7 @@ import { User } from 'src/app/models/user';
   providedIn: 'root'
 })
 export class AccountService {
+  userName = new BehaviorSubject('Guest');
   private authStorageKey = 'users';
   private users = this.storageService.get<User[]>(this.authStorageKey) || [];
 
