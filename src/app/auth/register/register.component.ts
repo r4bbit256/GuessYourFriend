@@ -48,13 +48,13 @@ export class RegisterComponent {
     }
   }
 
-  private passwordsDoNotMatchMessage() {
+  private passwordsDoNotMatchMessage(): void {
     this.snackBar.open(UserInterfaceResources.PasswordDontMatch, null, {
       duration: 5000,
     });
   }
 
-  private successfullyRegistered() {
+  private successfullyRegistered(): void {
     this.snackBar.open(UserInterfaceResources.SuccessfullyRegistered, null, {
       duration: 5000,
     });

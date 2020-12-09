@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange, SimpleChanges} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 
 import { Card } from 'src/app/models/card';
 import { UserInterfaceResources } from 'src/app/shared/utilities/user-interface.resources';

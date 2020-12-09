@@ -50,13 +50,13 @@ export class LoginComponent {
     }
   }
 
-  private cannotFindSuchUserMessage() {
+  private cannotFindSuchUserMessage(): void {
     this.snackBar.open(UserInterfaceResources.CannotFindSuchUserMessage, null, {
       duration: 5000,
     });
   }
 
-  private successfulLogonMessage() {
+  private successfulLogonMessage(): void {
     this.snackBar.open(UserInterfaceResources.SuccessfulLogonMessage, null, {
       duration: 5000,
     });
