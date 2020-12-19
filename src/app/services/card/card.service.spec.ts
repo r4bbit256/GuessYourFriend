@@ -36,7 +36,7 @@ describe('CardsService', () => {
     expect(storageService.save).toHaveBeenCalledWith('cards', card);
   });
 
-  xit('getCard method return value by key', () => {
+  it('getCard method return value by key', () => {
     // arrange
     spyOn(storageService, 'get').and.returnValue(JSON.stringify(card));
 
@@ -45,7 +45,7 @@ describe('CardsService', () => {
 
     // assert
     expect(storageService.get).toHaveBeenCalledWith(card.id);
-    expect(result).toEqual(JSON.stringify(card));
+    expect(result).toEqual(card);
   });
 
   it('delete method saves value', () => {
