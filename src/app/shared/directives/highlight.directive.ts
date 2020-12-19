@@ -9,12 +9,12 @@ export class HighlightDirective {
 
   constructor(private el: ElementRef) {}
 
-  @HostListener('mouseenter') onMouseEnter() {
+  @HostListener('mouseenter') onMouseEnter(): void {
     this.setBackgroundColor(this.backgroundColor || '#3f51b5');
     this.setItemColor(this.itemColor || 'white');
   }
 
-  @HostListener('mouseleave') onMouseLeave() {
+  @HostListener('mouseleave') onMouseLeave(): void {
     this.setBackgroundColor(null);
     this.setItemColor(null);
   }

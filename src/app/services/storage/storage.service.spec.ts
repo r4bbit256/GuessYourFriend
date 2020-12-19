@@ -9,7 +9,9 @@ describe('StorageService', () => {
     id: '1',
     firstName: 'Alex',
     lastName: 'Lee',
-    gender: 'male'
+    gender: 'male',
+    photo: 'photo/path',
+    job: 'dev'
   };
 
   beforeEach(() => {

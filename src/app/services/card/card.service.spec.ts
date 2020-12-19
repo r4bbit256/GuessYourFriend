@@ -5,22 +5,35 @@ import { StorageService } from '../storage/storage.service';
 import { Card } from '../../models/card';
 
 describe('CardsService', () => {
-  let service: CardService;
+  let cardService: CardService;
   const storageService = new StorageService();
   const card: Card = {
     id: '1',
     firstName: 'John',
     lastName: 'Dow',
-    gender: 'male'
+    gender: 'male',
+    photo: '',
+    job: 'dev'
   };
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(CardService);
+    cardService = TestBed.inject(CardService);
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(cardService).toBeTruthy();
+  });
+
+  it('addCard method saves value', () => {
+    // arrange
+    spyOn(storageService, 'save');
+
+    // act
+    cardService.addCard(card);
+
+    // assert
+    expect(storageService.save).toHaveBeenCalledWith('cards', card);
   });
 
   xit('getCard method return value by key', () => {
@@ -28,30 +41,19 @@ describe('CardsService', () => {
     spyOn(storageService, 'get').and.returnValue(JSON.stringify(card));
 
     // act
-    const result = service.getCard(card.id);
+    const result = cardService.getCard(card.id);
 
     // assert
     expect(storageService.get).toHaveBeenCalledWith(card.id);
     expect(result).toEqual(JSON.stringify(card));
   });
 
-  xit('addCard method saves value', () => {
-    // arrange
-    spyOn(storageService, 'save');
-
-    // act
-    service.addCard(card);
-
-    // assert
-    expect(storageService.save).toHaveBeenCalledWith(card);
-  });
-
-  xit('delete method saves value', () => {
+  it('delete method saves value', () => {
     // arrange
     spyOn(storageService, 'delete');
 
     // act
-    service.deleteCard(card.id);
+    cardService.deleteCard(card.id);
 
     // assert
     expect(storageService.delete).toHaveBeenCalledWith(card.id);
