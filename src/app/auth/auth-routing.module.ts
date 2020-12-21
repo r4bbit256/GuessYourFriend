@@ -6,7 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: 'auth', component: AuthComponent,
+  { path: '', component: AuthComponent,
     children: [
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent }

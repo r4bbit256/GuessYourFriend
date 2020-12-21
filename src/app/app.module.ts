@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CardsModule } from './cards/cards.module';
 import { GameModule } from './game/game.module';
-import { AuthModule } from './auth/auth.module';
 import { AboutComponent } from './about/about.component';
 
 const AngularMaterialModules = [
@@ -31,7 +30,6 @@ const AngularMaterialModules = [
     BrowserModule,
     CardsModule,
     GameModule,
-    AuthModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

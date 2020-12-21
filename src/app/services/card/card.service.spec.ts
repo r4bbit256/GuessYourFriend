@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { CardService } from './cards.service';
 import { StorageService } from '../storage/storage.service';
 import { Card } from '../../models/card';
+import { HttpClient } from '@angular/common/http';
 
 describe('CardsService', () => {
   let cardService: CardService;
@@ -16,8 +17,14 @@ describe('CardsService', () => {
     job: 'dev'
   };
 
+  storageService.save('cards', [card]);
+
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule(
+      {providers: [CardService,
+        {provide: HttpClient, useValue: jasmine.createSpyObj('HttpClient', ['get'])},
+        {provide: StorageService, useValue: storageService}]
+      });
     cardService = TestBed.inject(CardService);
   });
 
@@ -37,14 +44,10 @@ describe('CardsService', () => {
   });
 
   it('getCard method return value by key', () => {
-    // arrange
-    spyOn(storageService, 'get').and.returnValue(JSON.stringify(card));
-
     // act
     const result = cardService.getCard(card.id);
 
     // assert
-    expect(storageService.get).toHaveBeenCalledWith(card.id);
     expect(result).toEqual(card);
   });
 
