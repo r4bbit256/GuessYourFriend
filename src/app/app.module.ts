@@ -28,8 +28,6 @@ const AngularMaterialModules = [
   ],
   imports: [
     BrowserModule,
-    CardsModule,
-    GameModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

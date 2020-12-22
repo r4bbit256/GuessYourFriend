@@ -9,7 +9,7 @@ import { ScoreComponent } from './score/score.component';
 import { PlayComponent } from './play/play.component';
 
 const routes: Routes = [
-  { path: 'game', component: GameComponent,
+  { path: '', component: GameComponent,
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     children: [

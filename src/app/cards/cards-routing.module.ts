@@ -9,7 +9,7 @@ import { DetailsComponent } from './details/details.component';
 import { CardsComponent } from './cards.component';
 
 const routes: Routes = [
-  { path: 'cards', component: CardsComponent,
+  { path: '', component: CardsComponent,
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     children: [
