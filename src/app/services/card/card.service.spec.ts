@@ -1,23 +1,47 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClient } from '@angular/common/http';
 
 import { CardService } from './cards.service';
 import { StorageService } from '../storage/storage.service';
+
 import { Card } from '../../models/card';
-import { HttpClient } from '@angular/common/http';
 
 describe('CardsService', () => {
   let cardService: CardService;
+  const cardsStorageKey = 'cards';
   const storageService = new StorageService();
-  const card: Card = {
+  const card1: Card = {
     id: '1',
     firstName: 'John',
     lastName: 'Dow',
     gender: 'male',
     photo: '',
-    job: 'dev'
+    job: 'Dev'
   };
-
-  storageService.save('cards', [card]);
+  const card2: Card = {
+    id: '2',
+    firstName: 'Jack',
+    lastName: 'Black',
+    gender: 'male',
+    photo: '',
+    job: 'QA'
+  };
+  const card3: Card = {
+    id: '3',
+    firstName: 'Drake',
+    lastName: 'Brown',
+    gender: 'male',
+    photo: '',
+    job: 'Junior BA'
+  };
+  const updatedCard: Card = {
+    id: '1',
+    firstName: 'John',
+    lastName: 'Doll',
+    gender: 'male',
+    photo: '',
+    job: 'ATQC'
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule(
@@ -26,39 +50,90 @@ describe('CardsService', () => {
         {provide: StorageService, useValue: storageService}]
       });
     cardService = TestBed.inject(CardService);
+    storageService.clear();
   });
+
+  afterEach(() => {
+    storageService.clear();
+  });
+
+  // describe('', () => {
+  //   beforeAll(() => {
+  //     storageService.save(cardsStorageKey, [card1, card2, card3]);
+  //   });
+  // });
 
   it('should be created', () => {
     expect(cardService).toBeTruthy();
   });
 
-  it('addCard method saves value', () => {
+  it('addCard method saves card', () => {
     // arrange
     spyOn(storageService, 'save');
 
     // act
-    cardService.addCard(card);
+    cardService.addCard(card2);
 
     // assert
-    expect(storageService.save).toHaveBeenCalledWith('cards', card);
+    expect(storageService.save).toHaveBeenCalledWith(cardsStorageKey, [card2]);
   });
 
-  it('getCard method return value by key', () => {
+  it('addCards method saves array of cards', () => {
+    // arrange
+    spyOn(storageService, 'save');
+
     // act
-    const result = cardService.getCard(card.id);
+    cardService.addCards([card1, card2]);
 
     // assert
-    expect(result).toEqual(card);
+    expect(storageService.save).toHaveBeenCalledWith(cardsStorageKey, [card1, card2]);
   });
 
-  it('delete method saves value', () => {
+  xit('getCard method return value by key', () => {
+    // arrange
+    spyOn(storageService, 'get').and.returnValue([card3]);
+
+    // act
+    const result = cardService.getCard(card3.id);
+
+    // assert
+    expect(result).toEqual(card3);
+    expect(storageService.get).toHaveBeenCalledWith(cardsStorageKey);
+  });
+
+  xit('updateCard method updates card', () => {
+    // arrange
+    storageService.save(cardsStorageKey, [card1]);
+    card1.lastName = 'Doll';
+    card1.job = 'ATQC';
+
+    // act
+    cardService.updateCard(card1);
+    const result = cardService.getCard(card1.id);
+
+    // assert
+    expect(result).toEqual(updatedCard);
+  });
+
+  it('delete method change cards by eliminating specific card', () => {
+    // arrange
+    spyOn(storageService, 'save');
+
+    // act
+    cardService.deleteCard(card1.id);
+
+    // assert
+    expect(storageService.save).toHaveBeenCalledWith(cardsStorageKey, []);
+  });
+
+  it('removeAll method removes all cards', () => {
     // arrange
     spyOn(storageService, 'delete');
 
     // act
-    cardService.deleteCard(card.id);
+    cardService.removeAllCards();
 
     // assert
-    expect(storageService.delete).toHaveBeenCalledWith(card.id);
+    expect(storageService.delete).toHaveBeenCalledWith(cardsStorageKey);
   });
 });
