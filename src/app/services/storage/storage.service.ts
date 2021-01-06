@@ -15,18 +15,6 @@ export class StorageService {
     return JSON.parse(localStorage.getItem(id)) as T;
   }
 
-  getAll(): string[] {
-    const values = [];
-    const keys = Object.keys(localStorage);
-    let i = keys.length;
-
-    while (i--) {
-      values.push( localStorage.getItem(keys[i]) );
-    }
-
-    return values;
-  }
-
   delete(id: string): void {
     localStorage.removeItem(id);
   }

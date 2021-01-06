@@ -3,13 +3,19 @@ import { HttpClient } from '@angular/common/http';
 
 import { CardService } from './cards.service';
 import { StorageService } from '../storage/storage.service';
+import { RandomDataGeneratorService } from '../random-data-generator/random-data-generator.service';
 
 import { Card } from '../../models/card';
+import { RandomUserApiService } from '../api/random-user/random-user-api.service';
+import { UtilityService } from '../utility/utility.service';
+import { BaseApiRequestsService } from '../api/base-api-requests.service';
+import { ConfigService } from 'src/app/config/config.service';
 
 describe('CardsService', () => {
   let cardService: CardService;
   const cardsStorageKey = 'cards';
   const storageService = new StorageService();
+  let randomDataService: RandomDataGeneratorService;
   const card1: Card = {
     id: '1',
     firstName: 'John',
@@ -47,7 +53,8 @@ describe('CardsService', () => {
     TestBed.configureTestingModule(
       {providers: [CardService,
         {provide: HttpClient, useValue: jasmine.createSpyObj('HttpClient', ['get'])},
-        {provide: StorageService, useValue: storageService}]
+        {provide: StorageService, useValue: storageService},
+        {provide: RandomDataGeneratorService, useValue: randomDataService}]
       });
     cardService = TestBed.inject(CardService);
     storageService.clear();
@@ -56,12 +63,6 @@ describe('CardsService', () => {
   afterEach(() => {
     storageService.clear();
   });
-
-  // describe('', () => {
-  //   beforeAll(() => {
-  //     storageService.save(cardsStorageKey, [card1, card2, card3]);
-  //   });
-  // });
 
   it('should be created', () => {
     expect(cardService).toBeTruthy();
@@ -135,5 +136,16 @@ describe('CardsService', () => {
 
     // assert
     expect(storageService.delete).toHaveBeenCalledWith(cardsStorageKey);
+  });
+
+  xit('getSpecificNumberOfRandomCards method return several numbers of cards', () => {
+    // arrange
+    spyOn(randomDataService, 'getRandomNumber').and.returnValue(3);
+
+    // act
+    const cards = cardService.getSpecificNumberOfRandomCards([card1, card2, card3], 1);
+
+    // assert
+    expect(cards).toEqual([card1]);
   });
 });

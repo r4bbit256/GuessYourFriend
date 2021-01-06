@@ -13,6 +13,7 @@ describe('StorageService', () => {
     photo: 'photo/path',
     job: 'dev'
   };
+  const storageKey = 'cards';
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -24,21 +25,21 @@ describe('StorageService', () => {
     spyOn(localStorage, 'setItem');
 
     // act
-    service.save(card.id, card);
+    service.save(storageKey, card);
 
     // assert
-    expect(localStorage.setItem).toHaveBeenCalledWith('1', '{"id":"1","firstName":"Alex","lastName":"Lee","gender":"male"}');
+    expect(localStorage.setItem).toHaveBeenCalledWith(storageKey, JSON.stringify(card));
   });
 
-  it('get method get data by id', () => {
+  it('get method gets data by id', () => {
     // arrange
-    spyOn(localStorage, 'getItem');
+    localStorage.setItem(storageKey, JSON.stringify(card));
 
     // act
-    service.get(card.id);
+    const result = service.get(storageKey);
 
     // assert
-    expect(localStorage.getItem).toHaveBeenCalledWith(card.id);
+    expect(result).toEqual(card);
   });
 
   it('delete method delete data by id', () => {
@@ -46,10 +47,10 @@ describe('StorageService', () => {
     spyOn(localStorage, 'removeItem');
 
     // act
-    service.delete(card.id);
+    service.delete(storageKey);
 
     // assert
-    expect(localStorage.removeItem).toHaveBeenCalledWith(card.id);
+    expect(localStorage.removeItem).toHaveBeenCalledWith(storageKey);
   });
 
   it('clear method removes all data', () => {
