@@ -14,7 +14,7 @@ describe('UtilityService', () => {
     expect(utilityService).toBeTruthy();
   });
 
-  fit('#getUTCDateInMilliseconds return UTC Date in Miliseconds', () => {
+  it('#getUTCDateInMilliseconds return UTC Date in Miliseconds', () => {
     // arrange
     const date = new Date();
     const year = date.getUTCFullYear();
