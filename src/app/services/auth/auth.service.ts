@@ -6,10 +6,8 @@ import { delay } from 'rxjs/operators';
 
 import { StorageService } from './../../services/storage/storage.service';
 import { LoggerService } from '../logger/logger.service';
-import { UtilityService } from '../utility/utility.service';
 import { ApiRoutes } from 'src/app/shared/utilities/api-routes';
 import { AuthorizationToken } from 'src/app/models/authorization-token';
-import { User } from 'src/app/models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -20,18 +18,8 @@ export class AuthService {
   tokenSubscription = new Subscription();
 
   constructor(private storageService: StorageService,
-              private utility: UtilityService,
               private router: Router,
               private logger: LoggerService) { }
-
-  get currentUser(): User {
-    try {
-      return JSON.parse(this.storageService.get('currentUser'));
-    } catch (ex) {
-      this.logger.logError(ex);
-      return new User();
-    }
-  }
 
   get userSessionExpirationTime(): number {
     try {

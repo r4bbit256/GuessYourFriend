@@ -61,6 +61,6 @@ describe('StorageService', () => {
     service.clear();
 
     // assert
-    expect(localStorage.clear).toHaveBeenCalled();
+    expect(localStorage.clear).toHaveBeenCalledTimes(1);
   });
 });
