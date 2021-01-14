@@ -11,7 +11,7 @@ import { TestRandomDataGeneratorModule } from '../random-data-generator/test-ran
 import { User } from 'src/app/models/user';
 import { MockAuthService } from '../auth/mock.auth.service';
 
-fdescribe('AccountService', () => {
+describe('AccountService', () => {
   let accountService: AccountService;
   const storageService = new StorageService();
   const loggerService = new LoggerService();
@@ -24,7 +24,7 @@ fdescribe('AccountService', () => {
 
   beforeEach(() => {
     spyOn(loggerService, 'logError');
-    spyOn(storageService, 'get').and.returnValue(userData);
+    spyOn(storageService, 'get').and.returnValue([userData]);
     spyOn(storageService, 'save');
 
     TestBed.configureTestingModule({
@@ -52,7 +52,13 @@ fdescribe('AccountService', () => {
   });
 
   it('#login user didn\'t found, login failed, logs error and returns false', () => {
-    const isUserLogin = accountService.login(userData);
+    const notExistUser: User = {
+      id: '2',
+      username: 'Mike',
+      password: 'qwerty123',
+      email: 'test@mail.com'
+    };
+    const isUserLogin = accountService.login(notExistUser);
     expect(isUserLogin).toBeFalse();
     expect(loggerService.logError).toHaveBeenCalledWith(`User was not found!`);
   });
@@ -60,5 +66,16 @@ fdescribe('AccountService', () => {
   it('#login valid creds, user found, login success, returns true', () => {
     const isUserLogin = accountService.login(userData);
     expect(isUserLogin).toBeTrue();
+  });
+
+  it('#register add new user to collection', () => {
+    const newUser: User = {
+      id: '2',
+      username: 'Mike',
+      password: 'qwerty123',
+      email: 'test@mail.com'
+    };
+    accountService.register(newUser);
+    expect(storageService.save).toHaveBeenCalledWith('users', [userData, newUser]);
   });
 });
