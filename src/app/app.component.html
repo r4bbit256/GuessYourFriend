@@ -7,25 +7,25 @@
         </a>
       </div>
       <div class="navbar-collapse">
-        <a class="nav-item" routerLink="/home">{{homeMenuLabel}}</a>
-        <button class="nav-item" mat-button [matMenuTriggerFor]="cardsMenu" *ngIf="isAuthenticated">{{cardsMenuLabel}}</button>
+        <a class="nav-item home" routerLink="/home">{{homeMenuLabel}}</a>
+        <button class="nav-item cards-btn" mat-button [matMenuTriggerFor]="cardsMenu" *ngIf="isAuthenticated">{{cardsMenuLabel}}</button>
         <mat-menu #cardsMenu="matMenu">
           <button mat-menu-item routerLink="/cards/add">{{addNewCardMenuLabel}}</button>
           <button mat-menu-item routerLink="/cards/list">{{showAllCardsMenuLabel}}</button>
         </mat-menu>
-        <button class="nav-item" mat-button [matMenuTriggerFor]="menu" *ngIf="isAuthenticated">{{gameMenuLabel}}</button>
+        <button class="nav-item game-btn" mat-button [matMenuTriggerFor]="menu" *ngIf="isAuthenticated">{{gameMenuLabel}}</button>
         <mat-menu #menu="matMenu">
           <button routerLink="/game/play" mat-menu-item>{{playMenuLabel}}</button>
           <button routerLink="/game/score" mat-menu-item>{{scoresMenuLabel}}</button>
         </mat-menu>
-        <a class="nav-item" routerLink="/about">{{aboutMenuLabel}}</a>
+        <a class="nav-item about" routerLink="/about">{{aboutMenuLabel}}</a>
       </div>
       <div class="navbar-auth" *ngIf="isAuthenticated">
         <a mat-flat-button color="primary" class="btn-auth" (click)="logout()">{{logoutLabel | uppercase}}</a>
       </div>
       <div class="navbar-auth" *ngIf="!isAuthenticated">
-        <a mat-flat-button color="primary" class="btn-auth" routerLink="/auth/login">{{loginLabel | uppercase}}</a>
-        <a mat-flat-button color="primary" class="btn-auth" routerLink="/auth/register">{{registerLabel | uppercase}}</a>
+        <a mat-flat-button color="primary" class="btn-auth login" routerLink="/auth/login">{{loginLabel | uppercase}}</a>
+        <a mat-flat-button color="primary" class="btn-auth register" routerLink="/auth/register">{{registerLabel | uppercase}}</a>
       </div>
 
       <div class="username-wrapper">
