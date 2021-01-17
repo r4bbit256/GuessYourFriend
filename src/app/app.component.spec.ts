@@ -3,18 +3,17 @@ import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { BehaviorSubject } from 'rxjs';
-
 import { MockAuthService } from './services/auth/mock.auth.service';
 import { AccountService } from './services/account/account.service';
 import { AuthService } from './services/auth/auth.service';
+import { MockAccountService } from './services/account/mock.account.service';
 import { TestRandomDataGeneratorModule } from './services/random-data-generator/test-random-data-generator.module';
 
 import { ApiRoutes } from './shared/utilities/api-routes';
 import { UserInterfaceResources } from './shared/utilities/user-interface.resources';
 import { AppComponent } from './app.component';
 
-fdescribe('AppComponent', () => {
+describe('AppComponent', () => {
   let appComponent: AppComponent;
   let authService: AuthService;
   let accountService: AccountService;
@@ -82,16 +81,3 @@ fdescribe('AppComponent', () => {
     expect(authService.isLoggedIn.unsubscribe).toHaveBeenCalled();
   });
 });
-
-class MockAccountService {
-  userName = new BehaviorSubject('Guest');
-
-  logout(): void {
-    this.clearCredentials();
-  }
-
-  private clearCredentials() {
-    localStorage.removeItem('currentUser');
-    localStorage.removeItem('expirationDate');
-  }
-}
