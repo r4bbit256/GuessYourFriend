@@ -17,8 +17,6 @@ const AngularMaterialModule = [
   MatButtonModule,
   MatCardModule,
   MatInputModule,
-  MatButtonModule,
-  MatInputModule,
   MatSnackBarModule
 ];
 

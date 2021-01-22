@@ -1,10 +1,20 @@
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject } from 'rxjs';
+
+import { User } from 'src/app/models/user';
 
 export class MockAccountService {
   userName = new BehaviorSubject('Guest');
 
   logout(): void {
     this.clearCredentials();
+  }
+
+  login(loginData: User): boolean {
+    if (!(loginData.password || loginData.username)) {
+      return false;
+    }
+
+    return true;
   }
 
   private clearCredentials(): void {

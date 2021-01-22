@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,12 +15,8 @@ import { UserInterfaceResources } from '../../shared/utilities/user-interface.re
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
-  loginForm = this.formBuilder.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required]
-  });
-
+export class LoginComponent implements OnInit {
+  loginForm: FormGroup;
   usernameLabel = UserInterfaceResources.UsernameLabel;
   passwordLabel = UserInterfaceResources.PasswordLabel;
   dontHaveAccountLabel = UserInterfaceResources.DontHaveAccountLabel;
@@ -33,6 +29,13 @@ export class LoginComponent {
     private router: Router,
     private snackBar: MatSnackBar,
     private authService: AuthService) { }
+
+    ngOnInit(): void {
+      this.loginForm = this.formBuilder.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required]
+      });
+    }
 
   login(): void {
     const isUserDataExist = this.accountService.login(this.loginForm.value);
