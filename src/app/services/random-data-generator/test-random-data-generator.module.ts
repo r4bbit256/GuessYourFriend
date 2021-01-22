@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MockRandomDataGeneratorService } from './mock-random-data-generator.service';
+import { TestRandomDataGeneratorService } from './test-random-data-generator.service';
 import { RandomDataGeneratorService } from './random-data-generator.service';
 
 @NgModule({
@@ -9,6 +9,6 @@ import { RandomDataGeneratorService } from './random-data-generator.service';
   imports: [
     CommonModule
   ],
-  providers: [RandomDataGeneratorService, {provide: RandomDataGeneratorService, useClass: MockRandomDataGeneratorService}]
+  providers: [RandomDataGeneratorService, {provide: RandomDataGeneratorService, useExisting: TestRandomDataGeneratorService}]
 })
 export class TestRandomDataGeneratorModule { }

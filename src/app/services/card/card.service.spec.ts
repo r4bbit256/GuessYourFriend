@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
-import { CardService } from './cards.service';
+import { CardService } from './card.service';
 import { StorageService } from '../storage/storage.service';
 import { RandomDataGeneratorService } from '../random-data-generator/random-data-generator.service';
 

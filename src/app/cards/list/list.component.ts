@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, forkJoin } from 'rxjs';
 
 import { RandomDataGeneratorService } from '../../services/random-data-generator/random-data-generator.service';
-import { CardService } from '../../services/card/cards.service';
+import { CardService } from '../../services/card/card.service';
 
 import { Card } from '../../models/card';
 import { RandomUserDataGenerator } from 'src/app/models/randomuser-data-generator';

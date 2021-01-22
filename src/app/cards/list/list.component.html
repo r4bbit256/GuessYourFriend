@@ -2,7 +2,7 @@
 
   <section *ngIf="allCards.length === 0; else cardsPresented">
     <mat-form-field>
-      <mat-label>{{cardsToGenerateLabel}}</mat-label>
+      <mat-label class="cards-to-generate-label">{{cardsToGenerateLabel}}</mat-label>
       <input matInput type="number" placeholder="Default - 8" #action>
     </mat-form-field>
 

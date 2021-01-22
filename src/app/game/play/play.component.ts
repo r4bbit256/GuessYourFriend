@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Card } from '../../models/card';
-import { CardService } from '../../services/card/cards.service';
+import { CardService } from '../../services/card/card.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({

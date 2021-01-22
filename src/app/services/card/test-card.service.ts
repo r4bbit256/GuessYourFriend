@@ -1,6 +1,6 @@
 import { Card } from 'src/app/models/card';
 
-export class MockCardsService {
+export class TestCardService {
   cards: Array<Card> = [
     { id: '1', firstName: 'Test', lastName: 'User', gender: 'male', job: 'QA', photo: 'photo.jpg'}
   ];

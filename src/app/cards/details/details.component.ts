@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { CardService } from '../../services/card/cards.service';
+import { CardService } from '../../services/card/card.service';
 
 import { Card } from '../../models/card';
 import { ApiRoutes } from '../../shared/utilities/api-routes';

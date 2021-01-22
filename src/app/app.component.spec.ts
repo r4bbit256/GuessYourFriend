@@ -1,13 +1,13 @@
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router } from '@angular/router';
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatMenuModule } from '@angular/material/menu';
 
-import { MockAuthService } from './services/auth/mock.auth.service';
+import { TestAuthService } from './services/auth/test-auth.service';
 import { AccountService } from './services/account/account.service';
 import { AuthService } from './services/auth/auth.service';
 import { MockAccountService } from './services/account/mock.account.service';
-import { TestRandomDataGeneratorModule } from './services/random-data-generator/test-random-data-generator.module';
 
 import { ApiRoutes } from './shared/utilities/api-routes';
 import { UserInterfaceResources } from './shared/utilities/user-interface.resources';
@@ -23,12 +23,12 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        TestRandomDataGeneratorModule,
-        MatMenuModule
+        MatMenuModule,
+        MatToolbarModule
       ],
       providers: [
         AppComponent,
-        { provide: AuthService, useClass: MockAuthService },
+        { provide: AuthService, useClass: TestAuthService },
         { provide: AccountService, useClass: MockAccountService}
       ],
       declarations: [

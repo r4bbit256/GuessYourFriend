@@ -1,7 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
 import { AuthorizationToken } from 'src/app/models/authorization-token';
 
-export class MockAuthService {
+export class TestAuthService {
   isLoggedIn = new BehaviorSubject(false);
   redirectUrl: string;
 

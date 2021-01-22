@@ -21,46 +21,26 @@ describe('StorageService', () => {
   });
 
   it('save method saves data as key/value', () => {
-    // arrange
     spyOn(localStorage, 'setItem');
-
-    // act
     service.save(storageKey, card);
-
-    // assert
     expect(localStorage.setItem).toHaveBeenCalledWith(storageKey, JSON.stringify(card));
   });
 
   it('get method gets data by id', () => {
-    // arrange
     localStorage.setItem(storageKey, JSON.stringify(card));
-
-    // act
     const result = service.get(storageKey);
-
-    // assert
     expect(result).toEqual(card);
   });
 
   it('delete method delete data by id', () => {
-    // arrange
     spyOn(localStorage, 'removeItem');
-
-    // act
     service.delete(storageKey);
-
-    // assert
     expect(localStorage.removeItem).toHaveBeenCalledWith(storageKey);
   });
 
   it('clear method removes all data', () => {
-    // arrange
     spyOn(localStorage, 'clear');
-
-    // act
     service.clear();
-
-    // assert
     expect(localStorage.clear).toHaveBeenCalledTimes(1);
   });
 });

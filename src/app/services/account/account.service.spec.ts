@@ -5,11 +5,10 @@ import { AuthService } from '../auth/auth.service';
 import { LoggerService } from '../logger/logger.service';
 import { StorageService } from '../storage/storage.service';
 import { AccountService } from './account.service';
-
+import { TestAuthService } from '../auth/test-auth.service';
 import { TestRandomDataGeneratorModule } from '../random-data-generator/test-random-data-generator.module';
 
 import { User } from 'src/app/models/user';
-import { MockAuthService } from '../auth/mock.auth.service';
 
 describe('AccountService', () => {
   let accountService: AccountService;
@@ -35,7 +34,7 @@ describe('AccountService', () => {
       providers: [AccountService,
         {provide: StorageService, useValue: storageService},
         {provide: LoggerService, useValue: loggerService},
-        {provde: AuthService, useClass: MockAuthService}
+        {provde: AuthService, useClass: TestAuthService}
       ]
     });
     accountService = TestBed.inject(AccountService);

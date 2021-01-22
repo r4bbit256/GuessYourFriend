@@ -11,7 +11,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { MockAuthService } from './../../services/auth/mock.auth.service';
+import { TestAuthService } from '../../services/auth/test-auth.service';
 import { AccountService } from 'src/app/services/account/account.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { MockAccountService } from 'src/app/services/account/mock.account.service';
@@ -45,7 +45,7 @@ describe('LoginComponent', () => {
         declarations: [LoginComponent],
         providers: [LoginComponent,
           { provide: AccountService, useClass: MockAccountService},
-          { provide: AuthService, useClass: MockAuthService }
+          { provide: AuthService, useClass: TestAuthService }
         ]
       }).compileComponents();
 
