@@ -1,5 +1,5 @@
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MockAccountService } from 'src/app/services/account/mock.account.service';
+import { TestingAccountService } from 'src/app/services/account/test-account.service';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -40,8 +40,8 @@ describe('RegisterComponent', () => {
       ],
       providers: [
         RegisterComponent,
-        { provide: AccountService, useClass: MockAccountService },
-        { provide: AccountService, useClass: MockAccountService },
+        { provide: AccountService, useClass: TestingAccountService },
+        { provide: AccountService, useClass: TestingAccountService },
       ],
       declarations: [ RegisterComponent ]
     })

@@ -1,6 +1,10 @@
+import { CardService } from './card.service';
 import { Card } from 'src/app/models/card';
 
 export class TestCardService {
+
+  // constructor(private cardsService: CardService) { }
+
   cards: Array<Card> = [
     { id: '1', firstName: 'Test', lastName: 'User', gender: 'male', job: 'QA', photo: 'photo.jpg'}
   ];

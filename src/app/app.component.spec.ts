@@ -7,7 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { TestAuthService } from './services/auth/test-auth.service';
 import { AccountService } from './services/account/account.service';
 import { AuthService } from './services/auth/auth.service';
-import { MockAccountService } from './services/account/mock.account.service';
+import { TestingAccountService } from './services/account/test-account.service';
 
 import { ApiRoutes } from './shared/utilities/api-routes';
 import { UserInterfaceResources } from './shared/utilities/user-interface.resources';
@@ -29,7 +29,7 @@ describe('AppComponent', () => {
       providers: [
         AppComponent,
         { provide: AuthService, useClass: TestAuthService },
-        { provide: AccountService, useClass: MockAccountService}
+        { provide: AccountService, useClass: TestingAccountService}
       ],
       declarations: [
         AppComponent

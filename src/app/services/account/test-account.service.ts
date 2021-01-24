@@ -2,7 +2,7 @@ import { BehaviorSubject } from 'rxjs';
 
 import { User } from 'src/app/models/user';
 
-export class MockAccountService {
+export class TestingAccountService {
   userName = new BehaviorSubject('Guest');
 
   logout(): void {

@@ -14,7 +14,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { TestAuthService } from '../../services/auth/test-auth.service';
 import { AccountService } from 'src/app/services/account/account.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { MockAccountService } from 'src/app/services/account/mock.account.service';
+import { TestingAccountService } from 'src/app/services/account/test-account.service';
 
 import { LoginComponent } from './login.component';
 import { ApiRoutes } from 'src/app/shared/utilities/api-routes';
@@ -44,7 +44,7 @@ describe('LoginComponent', () => {
         ],
         declarations: [LoginComponent],
         providers: [LoginComponent,
-          { provide: AccountService, useClass: MockAccountService},
+          { provide: AccountService, useClass: TestingAccountService},
           { provide: AuthService, useClass: TestAuthService }
         ]
       }).compileComponents();
