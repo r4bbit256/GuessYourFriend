@@ -1,3 +1,4 @@
+import { HomeModule } from './home/home.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,10 +10,10 @@ import { MatMenuModule } from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { CardsModule } from './cards/cards.module';
-import { GameModule } from './game/game.module';
 import { AboutComponent } from './about/about.component';
+import { AdDirective } from './shared/directives/ad.directive';
+import { AdBannerComponent } from './ad-banner/ad-banner.component';
+import { NewAdsComponent } from './new-ads/new-ads.component';
 
 const AngularMaterialModules = [
   MatToolbarModule,
@@ -23,15 +24,18 @@ const AngularMaterialModules = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    AboutComponent
+    AboutComponent,
+    AdDirective,
+    AdBannerComponent,
+    NewAdsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    AngularMaterialModules
+    AngularMaterialModules,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,11 +3,9 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { CardService } from './card.service';
 import { StorageService } from '../storage/storage.service';
-import { RandomDataGeneratorService } from '../random-data-generator/random-data-generator.service';
+import { TestRandomDataGeneratorModule } from '../random-data-generator/test-random-data-generator.module';
 
 import { Card } from '../../models/card';
-
-import { TestRandomDataGeneratorModule } from '../random-data-generator/test-random-data-generator.module';
 
 describe('CardsService', () => {
   let cardService: CardService;

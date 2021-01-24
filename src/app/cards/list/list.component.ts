@@ -9,6 +9,8 @@ import { Card } from '../../models/card';
 import { RandomUserDataGenerator } from 'src/app/models/randomuser-data-generator';
 import { Job } from 'src/app/models/job';
 import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
+import { AdItem } from 'src/app/ad-banner/ad-item';
+import { AdService } from 'src/app/ad-banner/ad.service';
 
 @Component({
   selector: 'app-card-list',
@@ -20,14 +22,18 @@ export class ListComponent implements OnInit {
   allCards: Card[];
   cardsToGenerateLabel = UserInterfaceResources.CardsToGenerateLabel;
   generateLabel = UserInterfaceResources.GenerateLabel;
+  ads: AdItem[];
 
   constructor(private cardService: CardService,
-              private randomDataService: RandomDataGeneratorService) { }
+              private randomDataService: RandomDataGeneratorService,
+              private adService: AdService) { }
 
   ngOnInit(): void {
     this.cards$.subscribe(cards => {
       this.allCards = cards;
     });
+
+    this.ads = this.adService.getAds();
   }
 
   generateCards(numberToGenerate: string): void {

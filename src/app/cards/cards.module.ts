@@ -15,7 +15,6 @@ import { ListComponent } from './list/list.component';
 import { AddComponent } from './add/add.component';
 import { CardsComponent } from './cards.component';
 import { CardsRoutingModule } from './cards-routing.module';
-
 import { HighlightDirective } from '../shared/directives/highlight.directive';
 import { FilteredComponent } from './list/filtered/filtered.component';
 
@@ -37,7 +36,7 @@ const AngularMaterialModule = [
     ListComponent,
     AddComponent,
     HighlightDirective,
-    FilteredComponent,
+    FilteredComponent
   ],
   imports: [
     CommonModule,
