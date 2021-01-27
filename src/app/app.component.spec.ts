@@ -9,8 +9,8 @@ import { AccountService } from './services/account/account.service';
 import { AuthService } from './services/auth/auth.service';
 import { TestingAccountService } from './services/account/test-account.service';
 
-import { ApiRoutes } from './shared/utilities/api-routes';
-import { UserInterfaceResources } from './shared/utilities/user-interface.resources';
+import { ApiRoutes } from './utilities/api-routes';
+import { UserInterfaceResources } from './utilities/user-interface.resources';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {

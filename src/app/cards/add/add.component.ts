@@ -4,7 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { v4 as uuid } from 'uuid';
 
 import { CardService } from '../../services/card/card.service';
-import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
+import { UserInterfaceResources } from '../../utilities/user-interface.resources';
 
 @Component({
   selector: 'app-add-card',

@@ -10,8 +10,8 @@
   </section>
 
   <ng-template #cardsPresented>
-    <app-ad-banner [ads]="ads"></app-ad-banner>
     <section>
+      <app-ad-banner [ads]="ads"></app-ad-banner>
       <app-filtered [cards]="allCards" (cardsUpdate)="cardsUpdate($event)"></app-filtered>
     </section>
   </ng-template>

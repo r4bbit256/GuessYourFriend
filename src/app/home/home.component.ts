@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AdItem } from './../ad-banner/ad-item';
-import { AdService } from './../ad-banner/ad.service';
+import { AdItem } from '../shared/components/ad-banner/ad-item';
+import { AdService } from '../shared/services/ad.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',

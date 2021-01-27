@@ -7,7 +7,7 @@ import {
   ComponentFactoryResolver
 } from '@angular/core';
 
-import { AdDirective } from '../shared/directives/ad.directive';
+import { AdDirective } from '../../directives/ad.directive';
 import { AdItem } from './ad-item';
 import { AdComponent } from './ad.banner';
 
@@ -19,7 +19,7 @@ import { AdComponent } from './ad.banner';
 export class AdBannerComponent implements OnInit, OnDestroy {
   @Input() ads: AdItem[];
   currentAdIndex = -1;
-  @ViewChild(AdDirective, {static: true}) adHost: AdDirective;
+  @ViewChild(AdDirective, {static: true}) appAd: AdDirective;
   interval: any;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
@@ -39,7 +39,7 @@ export class AdBannerComponent implements OnInit, OnDestroy {
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(adItem.component);
 
-    const viewContainerRef = this.adHost.viewContainerRef;
+    const viewContainerRef = this.appAd.viewContainerRef;
     viewContainerRef.clear();
 
     const componentRef = viewContainerRef.createComponent<AdComponent>(componentFactory);

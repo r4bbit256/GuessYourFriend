@@ -6,8 +6,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AccountService } from 'src/app/services/account/account.service';
 
-import { ApiRoutes } from 'src/app/shared/utilities/api-routes';
-import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
+import { ApiRoutes } from 'src/app/utilities/api-routes';
+import { UserInterfaceResources } from '../../utilities/user-interface.resources';
 
 @Component({
   selector: 'app-register',

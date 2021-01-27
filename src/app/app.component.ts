@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ApiRoutes } from './shared/utilities/api-routes';
+import { ApiRoutes } from './utilities/api-routes';
 import { AuthService } from './services/auth/auth.service';
 import { AccountService } from './services/account/account.service';
-import { UserInterfaceResources } from './shared/utilities/user-interface.resources';
+import { UserInterfaceResources } from './utilities/user-interface.resources';
 
 @Component({
   selector: 'app-root',

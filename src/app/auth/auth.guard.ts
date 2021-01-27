@@ -9,7 +9,7 @@ import {
 } from '@angular/router';
 
 import { AuthService } from '../services/auth/auth.service';
-import { ApiRoutes } from '../shared/utilities/api-routes';
+import { ApiRoutes } from '../utilities/api-routes';
 
 @Injectable({
   providedIn: 'root'

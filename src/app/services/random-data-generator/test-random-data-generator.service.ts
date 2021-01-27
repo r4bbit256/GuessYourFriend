@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 
 import { RandomDataGeneratorService } from './random-data-generator.service';
 
-@Injectable({providedIn: 'root'})
+@Injectable()
 export class TestRandomDataGeneratorService {
 
-  constructor(private randomDataGeneratorService: RandomDataGeneratorService ) {}
+  constructor(private randomDataGeneratorService: RandomDataGeneratorService) {}
 
   getRandomNumber(): jasmine.Spy {
     return spyOn(this.randomDataGeneratorService, 'getRandomNumber').and.callThrough();

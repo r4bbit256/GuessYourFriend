@@ -7,8 +7,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AccountService } from 'src/app/services/account/account.service';
 import { AuthService } from '../../services/auth/auth.service';
 
-import { ApiRoutes } from '../../shared/utilities/api-routes';
-import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
+import { ApiRoutes } from '../../utilities/api-routes';
+import { UserInterfaceResources } from '../../utilities/user-interface.resources';
 
 @Component({
   selector: 'app-login',

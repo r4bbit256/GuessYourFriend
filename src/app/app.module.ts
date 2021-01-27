@@ -11,9 +11,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
-import { AdDirective } from './shared/directives/ad.directive';
-import { AdBannerComponent } from './ad-banner/ad-banner.component';
-import { NewAdsComponent } from './new-ads/new-ads.component';
 
 const AngularMaterialModules = [
   MatToolbarModule,
@@ -24,10 +21,7 @@ const AngularMaterialModules = [
 @NgModule({
   declarations: [
     AppComponent,
-    AboutComponent,
-    AdDirective,
-    AdBannerComponent,
-    NewAdsComponent
+    AboutComponent
   ],
   imports: [
     BrowserModule,

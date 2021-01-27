@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
 
 import { Card } from 'src/app/models/card';
-import { UserInterfaceResources } from 'src/app/shared/utilities/user-interface.resources';
+import { UserInterfaceResources } from 'src/app/utilities/user-interface.resources';
 
 @Component({
   selector: 'app-filtered',

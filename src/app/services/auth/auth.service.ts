@@ -6,7 +6,7 @@ import { delay } from 'rxjs/operators';
 
 import { StorageService } from './../../services/storage/storage.service';
 import { LoggerService } from '../logger/logger.service';
-import { ApiRoutes } from 'src/app/shared/utilities/api-routes';
+import { ApiRoutes } from 'src/app/utilities/api-routes';
 import { AuthorizationToken } from 'src/app/models/authorization-token';
 
 @Injectable({

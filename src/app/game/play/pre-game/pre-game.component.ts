@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { UserInterfaceResources } from '../../../shared/utilities/user-interface.resources';
+import { UserInterfaceResources } from '../../../utilities/user-interface.resources';
 
 @Component({
   selector: 'app-pre-game',

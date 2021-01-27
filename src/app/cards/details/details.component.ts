@@ -5,8 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CardService } from '../../services/card/card.service';
 
 import { Card } from '../../models/card';
-import { ApiRoutes } from '../../shared/utilities/api-routes';
-import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
+import { ApiRoutes } from '../../utilities/api-routes';
+import { UserInterfaceResources } from '../../utilities/user-interface.resources';
 
 @Component({
   selector: 'app-details',

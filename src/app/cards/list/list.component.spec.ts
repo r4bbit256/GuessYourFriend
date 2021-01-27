@@ -16,7 +16,7 @@ import { TestRandomDataGeneratorModule } from 'src/app/services/random-data-gene
 
 import { ListComponent } from './list.component';
 import { Card } from 'src/app/models/card';
-import { UserInterfaceResources } from 'src/app/shared/utilities/user-interface.resources';
+import { UserInterfaceResources } from 'src/app/utilities/user-interface.resources';
 import { FilteredComponent } from './filtered/filtered.component';
 
 describe('CardListComponent', () => {

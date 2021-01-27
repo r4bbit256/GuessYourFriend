@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 
-import { NewAdsComponent } from './../new-ads/new-ads.component';
-import { AdItem } from './ad-item';
+import { NewAdsComponent } from '../components/new-ads/new-ads.component';
+import { AdItem } from '../components/ad-banner/ad-item';
 
-@Injectable({providedIn: 'root'})
+@Injectable({
+  providedIn: 'root',
+})
 export class AdService {
   getAds(): AdItem[] {
     return [

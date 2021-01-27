@@ -17,7 +17,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { TestingAccountService } from 'src/app/services/account/test-account.service';
 
 import { LoginComponent } from './login.component';
-import { ApiRoutes } from 'src/app/shared/utilities/api-routes';
+import { ApiRoutes } from 'src/app/utilities/api-routes';
 
 describe('LoginComponent', () => {
   let loginComponent: LoginComponent;

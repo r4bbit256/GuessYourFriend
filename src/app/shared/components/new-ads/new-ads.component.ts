@@ -1,4 +1,4 @@
-import { AdComponent } from './../ad-banner/ad.banner';
+import { AdComponent } from '../ad-banner/ad.banner';
 import { Component, Input } from '@angular/core';
 
 @Component({

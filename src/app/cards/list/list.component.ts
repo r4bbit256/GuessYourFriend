@@ -8,9 +8,9 @@ import { CardService } from '../../services/card/card.service';
 import { Card } from '../../models/card';
 import { RandomUserDataGenerator } from 'src/app/models/randomuser-data-generator';
 import { Job } from 'src/app/models/job';
-import { UserInterfaceResources } from '../../shared/utilities/user-interface.resources';
-import { AdItem } from 'src/app/ad-banner/ad-item';
-import { AdService } from 'src/app/ad-banner/ad.service';
+import { UserInterfaceResources } from '../../utilities/user-interface.resources';
+import { AdItem } from 'src/app/shared/components/ad-banner/ad-item';
+import { AdService } from 'src/app/shared/services/ad.service';
 
 @Component({
   selector: 'app-card-list',

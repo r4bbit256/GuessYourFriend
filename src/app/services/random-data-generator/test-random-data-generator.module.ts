@@ -9,6 +9,6 @@ import { RandomDataGeneratorService } from './random-data-generator.service';
   imports: [
     CommonModule
   ],
-  providers: [RandomDataGeneratorService, {provide: RandomDataGeneratorService, useExisting: TestRandomDataGeneratorService}]
+  providers: [TestRandomDataGeneratorService, {provide: RandomDataGeneratorService, useExisting: TestRandomDataGeneratorService}]
 })
 export class TestRandomDataGeneratorModule { }
