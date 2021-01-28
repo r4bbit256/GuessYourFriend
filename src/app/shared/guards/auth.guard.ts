@@ -8,8 +8,8 @@ import {
   Router
 } from '@angular/router';
 
-import { AuthService } from '../services/auth/auth.service';
-import { ApiRoutes } from '../utilities/api-routes';
+import { AuthService } from '../../services/auth/auth.service';
+import { ApiRoutes } from '../../utilities/api-routes';
 
 @Injectable({
   providedIn: 'root'

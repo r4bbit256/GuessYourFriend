@@ -4,8 +4,6 @@ import { Observable } from 'rxjs';
 
 import { RandomUserDataGenerator } from '../../../models/randomuser-data-generator';
 import { Job } from '../../../models/job';
-import { Config } from '../../../models/config';
-import { ConfigService } from '../../../config/config.service';
 import { BaseApiRequestsService } from '../base-api-requests.service';
 
 @Injectable({
@@ -15,8 +13,7 @@ export class RandomUserApiService {
   randomUserApiUrl: string;
   randomJobPositionsUrl: string;
 
-  constructor(private baseApiRequests: BaseApiRequestsService,
-              private configService: ConfigService) { }
+  constructor(private baseApiRequests: BaseApiRequestsService) { }
 
   getRandomUsers(numberOfUsers: string): Observable<RandomUserDataGenerator> {
     numberOfUsers = this.getDefaultUsersNumberForRequest(numberOfUsers);
@@ -38,14 +35,5 @@ export class RandomUserApiService {
     } else {
       return numberOfUsers;
     }
-  }
-
-  // TODO: read config.json parameters and assign values
-  private setConfigData(): void {
-    this.configService.getConfig()
-      .subscribe((data: Config) => {
-        this.randomJobPositionsUrl = data.randomJobPositions;
-        this.randomUserApiUrl = data.randomUserApiUrl;
-      });
   }
 }

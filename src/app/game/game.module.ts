@@ -1,14 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { SharedModule } from './../shared/shared.module';
 import { GameRoutingModule } from './game-routing.module';
 import { GameComponent } from './game.component';
 import { ResultsComponent } from './play/results/results.component';
@@ -18,16 +11,6 @@ import { StatisticsComponent } from './play/statistics/statistics.component';
 import { PreGameComponent } from './play/pre-game/pre-game.component';
 import { CardComponent } from './play/card/card.component';
 import { AnswerButtonComponent } from './play/card/answer-button/answer-button.component';
-
-const AngularMaterialModule = [
-  MatButtonModule,
-  MatCardModule,
-  MatInputModule,
-  MatButtonModule,
-  MatIconModule,
-  MatListModule,
-  MatSnackBarModule
-];
 
 @NgModule({
   declarations: [
@@ -41,11 +24,9 @@ const AngularMaterialModule = [
     AnswerButtonComponent
   ],
   imports: [
-    CommonModule,
     GameRoutingModule,
-    AngularMaterialModule,
     FormsModule,
-  ],
-  exports: []
+    SharedModule
+  ]
 })
 export class GameModule { }
