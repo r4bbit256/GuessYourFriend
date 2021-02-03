@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 
 import { AdDirective } from '../../directives/ad.directive';
-import { AdItem } from './ad-item';
-import { AdComponent } from './ad.banner';
+import { BannerItem } from '../../../models/banner-item';
+import { Banner } from '../../../models/banner';
 
 @Component({
   selector: 'app-ad-banner',
@@ -17,7 +17,7 @@ import { AdComponent } from './ad.banner';
   styleUrls: ['./ad-banner.component.scss']
 })
 export class AdBannerComponent implements OnInit, OnDestroy {
-  @Input() ads: AdItem[];
+  @Input() ads: BannerItem[];
   currentAdIndex = -1;
   @ViewChild(AdDirective, {static: true}) appAd: AdDirective;
   interval: any;
@@ -42,7 +42,7 @@ export class AdBannerComponent implements OnInit, OnDestroy {
     const viewContainerRef = this.appAd.viewContainerRef;
     viewContainerRef.clear();
 
-    const componentRef = viewContainerRef.createComponent<AdComponent>(componentFactory);
+    const componentRef = viewContainerRef.createComponent<Banner>(componentFactory);
     componentRef.instance.data = adItem.data;
   }
 

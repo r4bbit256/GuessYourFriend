@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 
 import { NewAdsComponent } from '../components/new-ads/new-ads.component';
-import { AdItem } from '../components/ad-banner/ad-item';
+import { BannerItem } from '../../models/banner-item';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdService {
-  getAds(): AdItem[] {
+  getAds(): BannerItem[] {
     return [
-      new AdItem(NewAdsComponent, {title: 'Title1', message: 'lorem ipsum'}),
+      new BannerItem(NewAdsComponent, {title: 'Title1', message: 'lorem ipsum'}),
 
-      new AdItem(NewAdsComponent, {title: 'Title2', message: 'lotrem ipsum'})
+      new BannerItem(NewAdsComponent, {title: 'Title2', message: 'lotrem ipsum'})
     ];
   }
 }
