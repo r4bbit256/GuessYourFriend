@@ -12,29 +12,30 @@ import { UserInterfaceResources } from '../../utilities/user-interface.resources
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
   registerForm = this.formBuilder.group({
     username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
-    retype: ['', Validators.required]
+    retype: ['', Validators.required],
   });
 
-  usernameLabel = UserInterfaceResources.UsernameLabel;
-  emailLabel = UserInterfaceResources.EmailLabel;
-  passwordLabel = UserInterfaceResources.PasswordLabel;
-  confirmLabel = UserInterfaceResources.ConfirmLabel;
-  registerLabel = UserInterfaceResources.RegisterLabel;
-  haveAccountLabel = UserInterfaceResources.HaveAccountLabel;
-  loginLabel = UserInterfaceResources.LoginLabel;
+  usernameLabel = UserInterfaceResources.usernameLabel;
+  emailLabel = UserInterfaceResources.emailLabel;
+  passwordLabel = UserInterfaceResources.passwordLabel;
+  confirmLabel = UserInterfaceResources.confirmLabel;
+  registerLabel = UserInterfaceResources.registerLabel;
+  haveAccountLabel = UserInterfaceResources.haveAccountLabel;
+  loginLabel = UserInterfaceResources.loginLabel;
 
   constructor(
     private formBuilder: FormBuilder,
     private accountService: AccountService,
     private snackBar: MatSnackBar,
-    private router: Router) { }
+    private router: Router
+  ) {}
 
   register(): void {
     if (this.registerForm.get('password').value !== this.registerForm.get('retype').value) {
@@ -50,13 +51,13 @@ export class RegisterComponent {
   }
 
   private passwordsDoNotMatchMessage(): void {
-    this.snackBar.open(UserInterfaceResources.PasswordDontMatch, null, {
+    this.snackBar.open(UserInterfaceResources.passwordDontMatch, null, {
       duration: 5000,
     });
   }
 
   private successfullyRegistered(): void {
-    this.snackBar.open(UserInterfaceResources.SuccessfullyRegistered, null, {
+    this.snackBar.open(UserInterfaceResources.successfullyRegistered, null, {
       duration: 5000,
     });
   }

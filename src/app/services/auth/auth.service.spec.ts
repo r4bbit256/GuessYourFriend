@@ -15,10 +15,7 @@ describe('AuthService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      providers: [AuthService,
-        {provide: StorageService, useValue: storageService},
-        {provide: LoggerService, useValue: loggerService}
-      ]
+      providers: [AuthService, { provide: StorageService, useValue: storageService }, { provide: LoggerService, useValue: loggerService }],
     });
     authService = TestBed.inject(AuthService);
   });
@@ -29,8 +26,10 @@ describe('AuthService', () => {
 
   it('#setCredentials sets creds', () => {
     // arrange
-    const authToken: AuthorizationToken =
-      { token: 'generatedToken', expirationDate: 15, user: { id: '1', email: 'test@mail.com', password: '123#123', username: 'user', }
+    const authToken: AuthorizationToken = {
+      token: 'generatedToken',
+      expirationDate: 15,
+      user: { id: '1', email: 'test@mail.com', password: '123#123', username: 'user' },
     };
     spyOn(storageService, 'save');
     spyOn(storageService, 'get');

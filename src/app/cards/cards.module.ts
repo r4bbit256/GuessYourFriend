@@ -10,19 +10,8 @@ import { SharedModule } from './../shared/shared.module';
 import { FilteredComponent } from './list/filtered/filtered.component';
 
 @NgModule({
-  declarations: [
-    CardsComponent,
-    DetailsComponent,
-    ListComponent,
-    AddComponent,
-    FilteredComponent
-  ],
-  imports: [
-    CardsRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule
-  ],
-  exports: []
+  declarations: [CardsComponent, DetailsComponent, ListComponent, AddComponent, FilteredComponent],
+  imports: [CardsRoutingModule, ReactiveFormsModule, FormsModule, SharedModule],
+  exports: [],
 })
 export class CardsModule {}

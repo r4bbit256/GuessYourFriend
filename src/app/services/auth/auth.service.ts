@@ -10,16 +10,14 @@ import { ApiRoutes } from 'src/app/utilities/api-routes';
 import { AuthorizationToken } from 'src/app/models/authorization-token';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   redirectUrl: string;
   isLoggedIn = new BehaviorSubject(false);
   tokenSubscription = new Subscription();
 
-  constructor(private storageService: StorageService,
-              private router: Router,
-              private logger: LoggerService) { }
+  constructor(private storageService: StorageService, private router: Router, private logger: LoggerService) {}
 
   get userSessionExpirationTime(): number {
     try {
@@ -45,9 +43,11 @@ export class AuthService {
 
   sessionExpirationCounter(timeout: number): void {
     this.tokenSubscription.unsubscribe();
-    this.tokenSubscription = of(null).pipe(delay(timeout)).subscribe(() => {
-      this.clearCredentials();
-      this.router.navigate([ApiRoutes.Login]);
-    });
+    this.tokenSubscription = of(null)
+      .pipe(delay(timeout))
+      .subscribe(() => {
+        this.clearCredentials();
+        this.router.navigate([ApiRoutes.Login]);
+      });
   }
 }

@@ -13,29 +13,30 @@ import { UserInterfaceResources } from '../../utilities/user-interface.resources
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  usernameLabel = UserInterfaceResources.UsernameLabel;
-  passwordLabel = UserInterfaceResources.PasswordLabel;
-  dontHaveAccountLabel = UserInterfaceResources.DontHaveAccountLabel;
-  createAccountLabel = UserInterfaceResources.CreateAccountLabel;
-  loginLabel = UserInterfaceResources.LoginLabel;
+  usernameLabel = UserInterfaceResources.usernameLabel;
+  passwordLabel = UserInterfaceResources.passwordLabel;
+  dontHaveAccountLabel = UserInterfaceResources.dontHaveAccountLabel;
+  createAccountLabel = UserInterfaceResources.createAccountLabel;
+  loginLabel = UserInterfaceResources.loginLabel;
 
   constructor(
     private formBuilder: FormBuilder,
     private accountService: AccountService,
     private router: Router,
     private snackBar: MatSnackBar,
-    private authService: AuthService) { }
+    private authService: AuthService
+  ) {}
 
-    ngOnInit(): void {
-      this.loginForm = this.formBuilder.group({
-        username: ['', Validators.required],
-        password: ['', Validators.required]
-      });
-    }
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
 
   login(): void {
     const isUserDataExist = this.accountService.login(this.loginForm.value);
@@ -55,13 +56,13 @@ export class LoginComponent implements OnInit {
   }
 
   private cannotFindSuchUserMessage(): void {
-    this.snackBar.open(UserInterfaceResources.CannotFindSuchUserMessage, null, {
+    this.snackBar.open(UserInterfaceResources.cannotFindSuchUserMessage, null, {
       duration: 5000,
     });
   }
 
   private successfulLogonMessage(): void {
-    this.snackBar.open(UserInterfaceResources.SuccessfulLogonMessage, null, {
+    this.snackBar.open(UserInterfaceResources.successfulLogonMessage, null, {
       duration: 5000,
     });
   }

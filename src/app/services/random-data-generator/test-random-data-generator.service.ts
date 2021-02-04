@@ -4,7 +4,6 @@ import { RandomDataGeneratorService } from './random-data-generator.service';
 
 @Injectable()
 export class TestRandomDataGeneratorService {
-
   constructor(private randomDataGeneratorService: RandomDataGeneratorService) {}
 
   getRandomNumber(): jasmine.Spy {

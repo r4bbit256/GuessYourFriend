@@ -10,12 +10,10 @@ import { AuthorizationToken } from 'src/app/models/authorization-token';
 import { UtilityService } from '../utility/utility.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RandomDataGeneratorService {
-
-  constructor(private randomUserApi: RandomUserApiService,
-              private utility: UtilityService) {}
+  constructor(private randomUserApi: RandomUserApiService, private utility: UtilityService) {}
 
   getRandomItemFromArray<T>(array: T[]): T {
     return array[Math.floor(Math.random() * array.length)];
@@ -37,7 +35,7 @@ export class RandomDataGeneratorService {
     return of({
       token: 'generatedToken',
       expirationDate: this.utility.getMinutesInMilliseconds(15),
-      user: userData
+      user: userData,
     });
   }
 }

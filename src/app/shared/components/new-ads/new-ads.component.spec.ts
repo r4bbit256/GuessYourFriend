@@ -8,9 +8,8 @@ describe('NewAdsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewAdsComponent ]
-    })
-    .compileComponents();
+      declarations: [NewAdsComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

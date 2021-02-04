@@ -1,11 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  ViewChild,
-  OnDestroy,
-  ComponentFactoryResolver
-} from '@angular/core';
+import { Component, Input, OnInit, ViewChild, OnDestroy, ComponentFactoryResolver } from '@angular/core';
 
 import { AdDirective } from '../../directives/ad.directive';
 import { BannerItem } from '../../../models/banner-item';
@@ -14,15 +7,15 @@ import { Banner } from '../../../models/banner';
 @Component({
   selector: 'app-ad-banner',
   templateUrl: './ad-banner.component.html',
-  styleUrls: ['./ad-banner.component.scss']
+  styleUrls: ['./ad-banner.component.scss'],
 })
 export class AdBannerComponent implements OnInit, OnDestroy {
   @Input() ads: BannerItem[];
   currentAdIndex = -1;
-  @ViewChild(AdDirective, {static: true}) appAd: AdDirective;
+  @ViewChild(AdDirective, { static: true }) appAd: AdDirective;
   interval: any;
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit(): void {
     this.loadComponent();

@@ -14,10 +14,13 @@ describe('RandomDataGeneratorService', () => {
   const utilityService = new UtilityService();
 
   beforeEach(() => {
-    TestBed.configureTestingModule({providers: [
-      RandomDataGeneratorService,
-      { provide: HttpClient, useValue: jasmine.createSpyObj('HttpClient', ['get'])},
-      { provide: UtilityService, useValue: utilityService}]});
+    TestBed.configureTestingModule({
+      providers: [
+        RandomDataGeneratorService,
+        { provide: HttpClient, useValue: jasmine.createSpyObj('HttpClient', ['get']) },
+        { provide: UtilityService, useValue: utilityService },
+      ],
+    });
     randomDataService = TestBed.inject(RandomDataGeneratorService);
   });
 
@@ -33,23 +36,26 @@ describe('RandomDataGeneratorService', () => {
     const result = randomDataService.getRandomItemFromArray(array);
 
     // assert
-    expect(result).toEqual(array.find(item => item === result));
+    expect(result).toEqual(array.find((item) => item === result));
   });
 
   it('#getRandomJwt returns jwt', () => {
     // arrange
-    const userData = {id: '1', email: 'test@mail.com', username: 'user', password: 'test@123'} as User;
+    const userData = { id: '1', email: 'test@mail.com', username: 'user', password: 'test@123' } as User;
     const token: AuthorizationToken = {
-        token: 'generatedToken',
-        expirationDate: 90000,
-        user: userData
+      token: 'generatedToken',
+      expirationDate: 90000,
+      user: userData,
     };
     spyOn(utilityService, 'getMinutesInMilliseconds').and.returnValue(90000);
 
     // act
-    randomDataService.getRandomJwt(userData).toPromise().then(result => {
-      // assert
-      expect(result).toEqual(token);
-    });
+    randomDataService
+      .getRandomJwt(userData)
+      .toPromise()
+      .then((result) => {
+        // assert
+        expect(result).toEqual(token);
+      });
   });
 });

@@ -1,51 +1,51 @@
 export class UserInterfaceResources {
-  // App Module
-  public static AppNameLabel = 'GuessYourFriend';
-  public static LogoutLabel = 'Logout';
-  public static LoginLabel = 'Login';
-  public static RegisterLabel = 'Register';
-  public static HomeMenuLabel = 'Home';
-  public static AboutMenuLabel = 'About';
-  public static CardsMenuLabel = 'Cards';
-  public static AddNewCardMenuLabel = 'Add New';
-  public static ShowAllCardsMenuLabel = 'Show All';
-  public static GameMenuLabel = 'Game';
-  public static PlayMenuLabel = 'Play';
-  public static ScoresMenuLabel = 'Scores';
-  public static WelcomeMessageLabel = 'Welcome, ';
+  // app module
+  public static appNameLabel = 'GuessYourFriend';
+  public static logoutLabel = 'Logout';
+  public static loginLabel = 'Login';
+  public static registerLabel = 'Register';
+  public static homeMenuLabel = 'Home';
+  public static aboutMenuLabel = 'About';
+  public static cardsMenuLabel = 'Cards';
+  public static addNewCardMenuLabel = 'Add New';
+  public static showAllCardsMenuLabel = 'Show All';
+  public static gameMenuLabel = 'Game';
+  public static playMenuLabel = 'Play';
+  public static scoresMenuLabel = 'Scores';
+  public static welcomeMessageLabel = 'Welcome, ';
 
-  // Auth Module
-  public static SuccessfulLogonMessage = 'You was successfully logon!';
-  public static CannotFindSuchUserMessage = 'Can\'t find such user! Please verify your data and try again.';
-  public static SuccessfullyRegistered = 'You successfully registered.';
-  public static PasswordDontMatch = 'Passwords do not match. Please try again.';
-  public static UsernameLabel = 'Username';
-  public static PasswordLabel = 'Password';
-  public static DontHaveAccountLabel = 'Don\'t have an account?';
-  public static HaveAccountLabel = 'Already have an account?';
-  public static CreateAccountLabel = 'Create an account';
-  public static EmailLabel = 'Email';
-  public static ConfirmLabel = 'Confirm';
+  // auth module
+  public static successfulLogonMessage = 'You was successfully logon!';
+  public static cannotFindSuchUserMessage = 'Cannot find such user! Please verify your data and try again.';
+  public static successfullyRegistered = 'You successfully registered.';
+  public static passwordDontMatch = 'Passwords do not match. Please try again.';
+  public static usernameLabel = 'Username';
+  public static passwordLabel = 'Password';
+  public static dontHaveAccountLabel = 'Do not have an account?';
+  public static haveAccountLabel = 'Already have an account?';
+  public static createAccountLabel = 'Create an account';
+  public static emailLabel = 'Email';
+  public static confirmLabel = 'Confirm';
 
-  // Cards Module
-  public static AddCardLabel = 'Add Card';
-  public static EditCardLabel = 'Edit Card';
-  public static FirstNameLabel = 'First Name';
-  public static LastNameLabel = 'Last Name';
-  public static JobPositionLabel = 'Job Position';
-  public static GenderLabel = 'Gender:';
-  public static MaleOptionLabel = 'Male';
-  public static FemaleOptionLabel = 'Female';
-  public static AddLabel = 'Add';
-  public static EditLabel = 'Edit';
-  public static CardsToGenerateLabel = 'Number of cards to generate';
-  public static FilterLabel = 'Filter';
-  public static GenerateLabel = 'Generate';
-  public static ClearLabel = 'Clear';
-  public static RemoveAllLabel = 'Remove All';
+  // cards module
+  public static addCardLabel = 'Add Card';
+  public static editCardLabel = 'Edit Card';
+  public static firstNameLabel = 'First Name';
+  public static lastNameLabel = 'Last Name';
+  public static jobPositionLabel = 'Job Position';
+  public static genderLabel = 'Gender:';
+  public static maleOptionLabel = 'Male';
+  public static femaleOptionLabel = 'Female';
+  public static addLabel = 'Add';
+  public static editLabel = 'Edit';
+  public static cardsToGenerateLabel = 'Number of cards to generate';
+  public static filterLabel = 'Filter';
+  public static generateLabel = 'Generate';
+  public static clearLabel = 'Clear';
+  public static removeAllLabel = 'Remove All';
 
-  // Game Module
-  public static NumberOfGamesRuleMessage = 'Number of games should be greater than 0 but less than 11';
-  public static NumberOfGamesLabel = 'Number of games';
-  public static StartGameLabel = 'Go';
+  // game module
+  public static numberOfGamesRuleMessage = 'Number of games should be greater than 0 but less than 11';
+  public static numberOfGamesLabel = 'Number of games';
+  public static startGameLabel = 'Go';
 }

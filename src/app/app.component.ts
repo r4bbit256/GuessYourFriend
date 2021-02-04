@@ -9,37 +9,34 @@ import { UserInterfaceResources } from './utilities/user-interface.resources';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
   currentYear = new Date().getFullYear();
   isAuthenticated = false;
   username = '';
-  welcomeMessage = UserInterfaceResources.WelcomeMessageLabel;
-  appNameLabel = UserInterfaceResources.AppNameLabel;
-  homeMenuLabel = UserInterfaceResources.HomeMenuLabel;
-  cardsMenuLabel = UserInterfaceResources.CardsMenuLabel;
-  addNewCardMenuLabel = UserInterfaceResources.AddNewCardMenuLabel;
-  showAllCardsMenuLabel = UserInterfaceResources.ShowAllCardsMenuLabel;
-  gameMenuLabel = UserInterfaceResources.GameMenuLabel;
-  playMenuLabel = UserInterfaceResources.PlayMenuLabel;
-  scoresMenuLabel = UserInterfaceResources.ScoresMenuLabel;
-  aboutMenuLabel = UserInterfaceResources.AboutMenuLabel;
-  loginLabel = UserInterfaceResources.LoginLabel;
-  registerLabel = UserInterfaceResources.RegisterLabel;
-  logoutLabel = UserInterfaceResources.LogoutLabel;
+  welcomeMessage = UserInterfaceResources.welcomeMessageLabel;
+  appNameLabel = UserInterfaceResources.appNameLabel;
+  homeMenuLabel = UserInterfaceResources.homeMenuLabel;
+  cardsMenuLabel = UserInterfaceResources.cardsMenuLabel;
+  addNewCardMenuLabel = UserInterfaceResources.addNewCardMenuLabel;
+  showAllCardsMenuLabel = UserInterfaceResources.showAllCardsMenuLabel;
+  gameMenuLabel = UserInterfaceResources.gameMenuLabel;
+  playMenuLabel = UserInterfaceResources.playMenuLabel;
+  scoresMenuLabel = UserInterfaceResources.scoresMenuLabel;
+  aboutMenuLabel = UserInterfaceResources.aboutMenuLabel;
+  loginLabel = UserInterfaceResources.loginLabel;
+  registerLabel = UserInterfaceResources.registerLabel;
+  logoutLabel = UserInterfaceResources.logoutLabel;
 
-  constructor(private authService: AuthService,
-              private accountService: AccountService,
-              private router: Router) { }
-
+  constructor(private authService: AuthService, private accountService: AccountService, private router: Router) {}
 
   ngOnInit(): void {
-    this.authService.isLoggedIn.subscribe(isLoggedIn => {
+    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
       this.isAuthenticated = isLoggedIn;
     });
 
-    this.accountService.userName.subscribe(user => {
+    this.accountService.userName.subscribe((user) => {
       this.username = user;
     });
   }

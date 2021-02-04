@@ -6,9 +6,7 @@ import { RandomDataGeneratorService } from './random-data-generator.service';
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ],
-  providers: [TestRandomDataGeneratorService, {provide: RandomDataGeneratorService, useExisting: TestRandomDataGeneratorService}]
+  imports: [CommonModule],
+  providers: [TestRandomDataGeneratorService, { provide: RandomDataGeneratorService, useExisting: TestRandomDataGeneratorService }],
 })
-export class TestRandomDataGeneratorModule { }
+export class TestRandomDataGeneratorModule {}

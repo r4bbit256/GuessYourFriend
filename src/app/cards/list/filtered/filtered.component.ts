@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 
 import { Card } from 'src/app/models/card';
 import { UserInterfaceResources } from 'src/app/utilities/user-interface.resources';
@@ -6,7 +6,7 @@ import { UserInterfaceResources } from 'src/app/utilities/user-interface.resourc
 @Component({
   selector: 'app-filtered',
   templateUrl: './filtered.component.html',
-  styleUrls: ['./filtered.component.scss']
+  styleUrls: ['./filtered.component.scss'],
 })
 export class FilteredComponent implements OnChanges {
   @Output() cardsUpdate: EventEmitter<Card[]> = new EventEmitter();
@@ -14,11 +14,11 @@ export class FilteredComponent implements OnChanges {
 
   filteredCards: Card[];
   searchText = '';
-  filterLabel = UserInterfaceResources.FilterLabel;
-  clearLabel = UserInterfaceResources.ClearLabel;
-  removeAllLabel = UserInterfaceResources.RemoveAllLabel;
+  filterLabel = UserInterfaceResources.filterLabel;
+  clearLabel = UserInterfaceResources.clearLabel;
+  removeAllLabel = UserInterfaceResources.removeAllLabel;
 
-  constructor() { }
+  constructor() {}
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.cards) {
@@ -27,8 +27,7 @@ export class FilteredComponent implements OnChanges {
   }
 
   searchTextUpdate(): void {
-    this.filteredCards = this.cards.filter(
-      card => card.firstName.includes(this.searchText) || card.lastName.includes(this.searchText));
+    this.filteredCards = this.cards.filter((card) => card.firstName.includes(this.searchText) || card.lastName.includes(this.searchText));
   }
 
   clearFilter(): void {
@@ -40,6 +39,6 @@ export class FilteredComponent implements OnChanges {
   }
 
   deleteCard(key: string): void {
-    this.cardsUpdate.emit(this.cards.filter(card => card.id !== key));
+    this.cardsUpdate.emit(this.cards.filter((card) => card.id !== key));
   }
 }

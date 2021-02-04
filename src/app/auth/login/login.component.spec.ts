@@ -30,24 +30,25 @@ describe('LoginComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-        imports: [
-          ReactiveFormsModule,
-          FormsModule,
-          HttpClientTestingModule,
-          MatFormFieldModule,
-          MatButtonModule,
-          MatCardModule,
-          MatInputModule,
-          MatSnackBarModule,
-          RouterTestingModule,
-          NoopAnimationsModule
-        ],
-        declarations: [LoginComponent],
-        providers: [LoginComponent,
-          { provide: AccountService, useClass: TestingAccountService},
-          { provide: AuthService, useClass: TestAuthService }
-        ]
-      }).compileComponents();
+      imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        HttpClientTestingModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatCardModule,
+        MatInputModule,
+        MatSnackBarModule,
+        RouterTestingModule,
+        NoopAnimationsModule,
+      ],
+      declarations: [LoginComponent],
+      providers: [
+        LoginComponent,
+        { provide: AccountService, useClass: TestingAccountService },
+        { provide: AuthService, useClass: TestAuthService },
+      ],
+    }).compileComponents();
 
     loginComponent = TestBed.inject(LoginComponent);
     accountService = TestBed.inject(AccountService);
@@ -56,7 +57,7 @@ describe('LoginComponent', () => {
 
     loginComponent.loginForm = formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   });
 

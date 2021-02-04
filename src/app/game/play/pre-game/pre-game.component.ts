@@ -6,19 +6,18 @@ import { UserInterfaceResources } from '../../../utilities/user-interface.resour
 @Component({
   selector: 'app-pre-game',
   templateUrl: './pre-game.component.html',
-  styleUrls: ['./pre-game.component.scss']
+  styleUrls: ['./pre-game.component.scss'],
 })
 export class PreGameComponent implements OnInit {
   @Output() startGame = new EventEmitter<number>();
 
   numberOfGames = 1;
-  numberOfGamesLabel = UserInterfaceResources.NumberOfGamesLabel;
-  startGameLabel = UserInterfaceResources.StartGameLabel;
+  numberOfGamesLabel = UserInterfaceResources.numberOfGamesLabel;
+  startGameLabel = UserInterfaceResources.startGameLabel;
 
-  constructor(private snackBar: MatSnackBar) { }
+  constructor(private snackBar: MatSnackBar) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   start(): void {
     if (this.numberOfGames > 0 && this.numberOfGames <= 10) {
@@ -29,7 +28,7 @@ export class PreGameComponent implements OnInit {
   }
 
   private numberOfGamesMessage() {
-    this.snackBar.open(UserInterfaceResources.NumberOfGamesRuleMessage, null, {
+    this.snackBar.open(UserInterfaceResources.numberOfGamesRuleMessage, null, {
       duration: 5000,
     });
   }

@@ -9,7 +9,9 @@ import { DetailsComponent } from './details/details.component';
 import { CardsComponent } from './cards.component';
 
 const routes: Routes = [
-  { path: '', component: CardsComponent,
+  {
+    path: '',
+    component: CardsComponent,
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     children: [
@@ -18,15 +20,15 @@ const routes: Routes = [
         children: [
           { path: 'add', component: AddComponent },
           { path: 'details/:id', component: DetailsComponent },
-          { path: 'list', component: ListComponent }
-        ]
-      }
-    ]
-  }
+          { path: 'list', component: ListComponent },
+        ],
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class CardsRoutingModule { }
+export class CardsRoutingModule {}

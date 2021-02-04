@@ -11,26 +11,28 @@ import { RandomDataGeneratorService } from '../random-data-generator/random-data
 import { User } from 'src/app/models/user';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AccountService {
   userName = new BehaviorSubject('Guest');
   private authStorageKey = 'users';
   private users = this.storageService.get<User[]>(this.authStorageKey) || [];
 
-  constructor(private storageService: StorageService,
-              private logger: LoggerService,
-              private authService: AuthService,
-              private randomService: RandomDataGeneratorService) { }
+  constructor(
+    private storageService: StorageService,
+    private logger: LoggerService,
+    private authService: AuthService,
+    private randomService: RandomDataGeneratorService
+  ) {}
 
   register(userData: User): void {
     this.users.push({
       id: uuid(),
       username: userData.username.toLowerCase(),
-      ...userData
+      ...userData,
     });
 
-    this.randomService.getRandomJwt(userData).subscribe(jwt => {
+    this.randomService.getRandomJwt(userData).subscribe((jwt) => {
       this.storageService.save(this.authStorageKey, this.users);
       this.authService.setCredentials(jwt);
     });
@@ -42,16 +44,16 @@ export class AccountService {
       return false;
     }
 
-    const userData = this.users.find(s =>
-      s.password === loginData.password
-      && s.username.toLowerCase() === loginData.username.toLowerCase());
+    const userData = this.users.find(
+      (s) => s.password === loginData.password && s.username.toLowerCase() === loginData.username.toLowerCase()
+    );
 
     if (!userData) {
       this.logger.logError(`User was not found!`);
       return false;
     }
 
-    this.randomService.getRandomJwt(userData).subscribe(jwt => {
+    this.randomService.getRandomJwt(userData).subscribe((jwt) => {
       this.authService.setCredentials(jwt);
     });
 

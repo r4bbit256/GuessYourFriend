@@ -36,16 +36,15 @@ describe('RegisterComponent', () => {
         MatListModule,
         MatSnackBarModule,
         NoopAnimationsModule,
-        TestRandomDataGeneratorModule
+        TestRandomDataGeneratorModule,
       ],
       providers: [
         RegisterComponent,
         { provide: AccountService, useClass: TestingAccountService },
         { provide: AccountService, useClass: TestingAccountService },
       ],
-      declarations: [ RegisterComponent ]
-    })
-    .compileComponents();
+      declarations: [RegisterComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

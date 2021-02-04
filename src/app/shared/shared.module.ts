@@ -27,22 +27,8 @@ const AngularMaterialModule = [
 ];
 
 @NgModule({
-  declarations: [
-    NewAdsComponent,
-    AdBannerComponent,
-    AdDirective,
-    HighlightDirective
-  ],
-  imports: [
-    CommonModule,
-    AngularMaterialModule
-  ],
-  exports: [
-    AdBannerComponent,
-    NewAdsComponent,
-    HighlightDirective,
-    AngularMaterialModule,
-    CommonModule
-  ]
+  declarations: [NewAdsComponent, AdBannerComponent, AdDirective, HighlightDirective],
+  imports: [CommonModule, AngularMaterialModule],
+  exports: [AdBannerComponent, NewAdsComponent, HighlightDirective, AngularMaterialModule, CommonModule],
 })
-export class SharedModule { }
+export class SharedModule {}

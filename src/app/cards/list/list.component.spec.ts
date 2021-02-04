@@ -23,14 +23,16 @@ describe('CardListComponent', () => {
   let listComponent: ListComponent;
   let cardService: TestCardService;
   let fixture: ComponentFixture<ListComponent>;
-  const cards: Card[] = [{
-    id: 'bbf2dcb6-f513-4440-a0e8-b59518b29165',
-    firstName: 'Melvin',
-    lastName: 'Perry',
-    gender: 'male',
-    photo: '35.jpg',
-    job: 'QA'
-  }];
+  const cards: Card[] = [
+    {
+      id: 'bbf2dcb6-f513-4440-a0e8-b59518b29165',
+      firstName: 'Melvin',
+      lastName: 'Perry',
+      gender: 'male',
+      photo: '35.jpg',
+      job: 'QA',
+    },
+  ];
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -47,12 +49,10 @@ describe('CardListComponent', () => {
         MatIconModule,
         MatListModule,
         NoopAnimationsModule,
-        TestRandomDataGeneratorModule
+        TestRandomDataGeneratorModule,
       ],
-      providers: [ListComponent,
-        { provide: CardService, useClass: TestCardService }
-      ],
-      declarations: [ ListComponent, FilteredComponent ]
+      providers: [ListComponent, { provide: CardService, useClass: TestCardService }],
+      declarations: [ListComponent, FilteredComponent],
     }).compileComponents();
 
     cardService = TestBed.inject(CardService);
@@ -68,7 +68,7 @@ describe('CardListComponent', () => {
 
   it('#ngOnInit subscribes for cards', () => {
     listComponent.ngOnInit();
-    listComponent.cards$.subscribe(c => {
+    listComponent.cards$.subscribe((c) => {
       expect(listComponent.allCards).toEqual(c);
     });
   });
@@ -94,7 +94,7 @@ describe('CardListComponent', () => {
     // listComponent.cards$.next([]);
     // listComponent.ngOnInit();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.mat-form-button').textContent).toEqual(UserInterfaceResources.ClearLabel);
-    expect(compiled.querySelector('.cards-to-generate-label').textContent).toEqual(UserInterfaceResources.CardsToGenerateLabel);
+    expect(compiled.querySelector('.mat-form-button').textContent).toEqual(UserInterfaceResources.clearLabel);
+    expect(compiled.querySelector('.cards-to-generate-label').textContent).toEqual(UserInterfaceResources.cardsToGenerateLabel);
   });
 });

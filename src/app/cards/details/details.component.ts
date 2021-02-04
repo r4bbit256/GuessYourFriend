@@ -16,20 +16,16 @@ import { UserInterfaceResources } from '../../utilities/user-interface.resources
 export class DetailsComponent implements OnInit {
   card: Card;
   editCard: FormGroup;
-  editCardLabel = UserInterfaceResources.EditCardLabel;
-  firstNameLabel = UserInterfaceResources.FirstNameLabel;
-  lastNameLabel = UserInterfaceResources.LastNameLabel;
-  jobPositionLabel = UserInterfaceResources.JobPositionLabel;
-  genderLabel = UserInterfaceResources.GenderLabel;
-  maleOptionLabel = UserInterfaceResources.MaleOptionLabel;
-  femaleOptionLabel = UserInterfaceResources.FemaleOptionLabel;
-  editLabel = UserInterfaceResources.EditLabel;
+  editCardLabel = UserInterfaceResources.editCardLabel;
+  firstNameLabel = UserInterfaceResources.firstNameLabel;
+  lastNameLabel = UserInterfaceResources.lastNameLabel;
+  jobPositionLabel = UserInterfaceResources.jobPositionLabel;
+  genderLabel = UserInterfaceResources.genderLabel;
+  maleOptionLabel = UserInterfaceResources.maleOptionLabel;
+  femaleOptionLabel = UserInterfaceResources.femaleOptionLabel;
+  editLabel = UserInterfaceResources.editLabel;
 
-  constructor(
-    private cardService: CardService,
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router) {}
+  constructor(private cardService: CardService, private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     const cardId = this.route.snapshot.paramMap.get('id');

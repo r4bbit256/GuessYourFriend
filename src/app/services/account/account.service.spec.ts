@@ -18,7 +18,7 @@ describe('AccountService', () => {
     id: '1',
     username: 'Test',
     password: 'qwerty123',
-    email: 'test@mail.com'
+    email: 'test@mail.com',
   };
 
   beforeEach(() => {
@@ -27,15 +27,13 @@ describe('AccountService', () => {
     spyOn(storageService, 'save');
 
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule,
-        TestRandomDataGeneratorModule
+      imports: [RouterTestingModule, TestRandomDataGeneratorModule],
+      providers: [
+        AccountService,
+        { provide: StorageService, useValue: storageService },
+        { provide: LoggerService, useValue: loggerService },
+        { provde: AuthService, useClass: TestAuthService },
       ],
-      providers: [AccountService,
-        {provide: StorageService, useValue: storageService},
-        {provide: LoggerService, useValue: loggerService},
-        {provde: AuthService, useClass: TestAuthService}
-      ]
     });
     accountService = TestBed.inject(AccountService);
   });
@@ -50,12 +48,12 @@ describe('AccountService', () => {
     expect(loggerService.logError).toHaveBeenCalledWith(`User data cannot be null or empty!`);
   });
 
-  it('#login user didn\'t found, login failed, logs error and returns false', () => {
+  it("#login user didn't found, login failed, logs error and returns false", () => {
     const notExistUser: User = {
       id: '2',
       username: 'Mike',
       password: 'qwerty123',
-      email: 'test@mail.com'
+      email: 'test@mail.com',
     };
     const isUserLogin = accountService.login(notExistUser);
     expect(isUserLogin).toBeFalse();
@@ -72,7 +70,7 @@ describe('AccountService', () => {
       id: '2',
       username: 'Mike',
       password: 'qwerty123',
-      email: 'test@mail.com'
+      email: 'test@mail.com',
     };
     accountService.register(newUser);
     expect(storageService.save).toHaveBeenCalledWith('users', [userData, newUser]);

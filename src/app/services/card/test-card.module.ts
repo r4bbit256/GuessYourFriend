@@ -7,20 +7,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 
-const AngularMaterialModules = [
-  MatToolbarModule,
-  MatButtonModule,
-  MatMenuModule
-];
+const AngularMaterialModules = [MatToolbarModule, MatButtonModule, MatMenuModule];
 
 @NgModule({
   declarations: [],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    AngularMaterialModules
-  ],
-  providers: []
+  imports: [BrowserModule, BrowserAnimationsModule, HttpClientModule, AngularMaterialModules],
+  providers: [],
 })
-export class TestCardModule { }
+export class TestCardModule {}

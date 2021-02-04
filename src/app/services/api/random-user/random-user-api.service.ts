@@ -7,13 +7,13 @@ import { Job } from '../../../models/job';
 import { BaseApiRequestsService } from '../base-api-requests.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RandomUserApiService {
   randomUserApiUrl: string;
   randomJobPositionsUrl: string;
 
-  constructor(private baseApiRequests: BaseApiRequestsService) { }
+  constructor(private baseApiRequests: BaseApiRequestsService) {}
 
   getRandomUsers(numberOfUsers: string): Observable<RandomUserDataGenerator> {
     numberOfUsers = this.getDefaultUsersNumberForRequest(numberOfUsers);
@@ -31,7 +31,7 @@ export class RandomUserApiService {
 
   private getDefaultUsersNumberForRequest(numberOfUsers: string): string {
     if (numberOfUsers === '') {
-        return '8';
+      return '8';
     } else {
       return numberOfUsers;
     }

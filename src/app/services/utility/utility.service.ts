@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UtilityService {
-
-  constructor() { }
+  constructor() {}
 
   getUTCDateInMilliseconds(addYear = 0, addMonth = 0, addDay = 0, addHour = 0, addMin = 0): number {
     const date = new Date();

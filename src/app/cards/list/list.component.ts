@@ -15,21 +15,19 @@ import { AdService } from 'src/app/shared/services/ad.service';
 @Component({
   selector: 'app-card-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
   cards$ = new BehaviorSubject(this.cardService.getAll());
   allCards: Card[];
-  cardsToGenerateLabel = UserInterfaceResources.CardsToGenerateLabel;
-  generateLabel = UserInterfaceResources.GenerateLabel;
+  cardsToGenerateLabel = UserInterfaceResources.cardsToGenerateLabel;
+  generateLabel = UserInterfaceResources.generateLabel;
   ads: BannerItem[];
 
-  constructor(private cardService: CardService,
-              private randomDataService: RandomDataGeneratorService,
-              private adService: AdService) { }
+  constructor(private cardService: CardService, private randomDataService: RandomDataGeneratorService, private adService: AdService) {}
 
   ngOnInit(): void {
-    this.cards$.subscribe(cards => {
+    this.cards$.subscribe((cards) => {
       this.allCards = cards;
     });
 
@@ -37,12 +35,14 @@ export class ListComponent implements OnInit {
   }
 
   generateCards(numberToGenerate: string): void {
-    forkJoin({jobList: this.randomDataService.getRandomJobList(), users: this.randomDataService.getRandomUsers(numberToGenerate)})
-      .subscribe(item => {
-        const cards = this.mapData(item.users, item.jobList);
-        this.cardService.addCards(cards);
-        this.cards$.next(this.cardService.getAll());
-      });
+    forkJoin({
+      jobList: this.randomDataService.getRandomJobList(),
+      users: this.randomDataService.getRandomUsers(numberToGenerate),
+    }).subscribe((item) => {
+      const cards = this.mapData(item.users, item.jobList);
+      this.cardService.addCards(cards);
+      this.cards$.next(this.cardService.getAll());
+    });
   }
 
   cardsUpdate(filteredCards: Card[]): void {
@@ -50,13 +50,13 @@ export class ListComponent implements OnInit {
   }
 
   private mapData(randomUsers: RandomUserDataGenerator, jobs: Job[]): Card[] {
-    return randomUsers.results.map(item => ({
+    return randomUsers.results.map((item) => ({
       id: item.login.uuid,
       firstName: item.name.first,
       lastName: item.name.last,
       gender: item.gender,
       photo: item.picture.large,
-      job: this.randomDataService.getRandomItemFromArray(jobs).job
+      job: this.randomDataService.getRandomItemFromArray(jobs).job,
     }));
   }
 }

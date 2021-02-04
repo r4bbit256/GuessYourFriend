@@ -21,12 +21,8 @@ import { AnswerButtonComponent } from './play/card/answer-button/answer-button.c
     StatisticsComponent,
     PreGameComponent,
     CardComponent,
-    AnswerButtonComponent
+    AnswerButtonComponent,
   ],
-  imports: [
-    GameRoutingModule,
-    FormsModule,
-    SharedModule
-  ]
+  imports: [GameRoutingModule, FormsModule, SharedModule],
 })
-export class GameModule { }
+export class GameModule {}

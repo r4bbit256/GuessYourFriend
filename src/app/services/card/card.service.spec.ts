@@ -17,7 +17,7 @@ fdescribe('CardsService', () => {
     lastName: 'Dow',
     gender: 'male',
     photo: '',
-    job: 'Dev'
+    job: 'Dev',
   };
   const card2: Card = {
     id: '2',
@@ -25,7 +25,7 @@ fdescribe('CardsService', () => {
     lastName: 'Black',
     gender: 'male',
     photo: '',
-    job: 'QA'
+    job: 'QA',
   };
   const updatedCard: Card = {
     id: '1',
@@ -33,7 +33,7 @@ fdescribe('CardsService', () => {
     lastName: 'Doll',
     gender: 'male',
     photo: '',
-    job: 'ATQC'
+    job: 'ATQC',
   };
 
   beforeEach(() => {
@@ -42,13 +42,8 @@ fdescribe('CardsService', () => {
     spyOn(storageService, 'delete');
 
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientTestingModule,
-        TestRandomDataGeneratorModule
-      ],
-      providers: [CardService,
-        {provide: StorageService, useValue: storageService}
-      ]
+      imports: [HttpClientTestingModule, TestRandomDataGeneratorModule],
+      providers: [CardService, { provide: StorageService, useValue: storageService }],
     });
     cardService = TestBed.inject(CardService);
     storageService.clear();

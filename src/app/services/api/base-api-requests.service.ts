@@ -8,38 +8,26 @@ import { LoggerService } from '../logger/logger.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type':  'application/json'
-  })
+    'Content-Type': 'application/json',
+  }),
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BaseApiRequestsService {
-
-  constructor(private http: HttpClient,
-              private logger: LoggerService) { }
+  constructor(private http: HttpClient, private logger: LoggerService) {}
 
   get<T>(url: string): Observable<T> {
-    return this.http.get<T>(url)
-      .pipe(
-        retry(3),
-        catchError(this.handleError)
-      );
+    return this.http.get<T>(url).pipe(retry(3), catchError(this.handleError));
   }
 
   post<T>(url: string, data: any): Observable<T> {
-    return this.http.post<T>(url, data, httpOptions)
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.http.post<T>(url, data, httpOptions).pipe(catchError(this.handleError));
   }
 
   delete(url: string, id: number): Observable<{}> {
-    return this.http.delete(`${url}/${id}`, httpOptions)
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.http.delete(`${url}/${id}`, httpOptions).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse): Observable<any> {

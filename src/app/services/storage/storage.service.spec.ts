@@ -11,7 +11,7 @@ describe('StorageService', () => {
     lastName: 'Lee',
     gender: 'male',
     photo: 'photo/path',
-    job: 'dev'
+    job: 'dev',
   };
   const storageKey = 'cards';
 

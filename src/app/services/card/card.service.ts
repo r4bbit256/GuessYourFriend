@@ -11,13 +11,10 @@ export class CardService {
   cardsStorageKey = 'cards';
   cards = this.storageService.get<Card[]>(this.cardsStorageKey) || Array<Card>();
 
-  constructor(
-    private storageService: StorageService,
-    private randomDataService: RandomDataGeneratorService
-  ) {}
+  constructor(private storageService: StorageService, private randomDataService: RandomDataGeneratorService) {}
 
   getCard(key: string): Card {
-    return this.cards.find(s => s.id === key);
+    return this.cards.find((s) => s.id === key);
   }
 
   getAll(): Card[] {
@@ -35,7 +32,7 @@ export class CardService {
   }
 
   updateCard(card: Card): void {
-    const cardIndex = this.cards.findIndex(s => s.id === card.id);
+    const cardIndex = this.cards.findIndex((s) => s.id === card.id);
     this.cards[cardIndex] = card;
     this.storageService.save(this.cardsStorageKey, this.cards);
   }
