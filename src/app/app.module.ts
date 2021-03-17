@@ -12,11 +12,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 
-const AngularMaterialModules = [MatToolbarModule, MatButtonModule, MatMenuModule];
+const angularMaterialModules = [MatToolbarModule, MatButtonModule, MatMenuModule];
 
 @NgModule({
   declarations: [AppComponent, AboutComponent],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, AngularMaterialModules, HomeModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, angularMaterialModules, HomeModule],
   providers: [],
   bootstrap: [AppComponent],
 })
