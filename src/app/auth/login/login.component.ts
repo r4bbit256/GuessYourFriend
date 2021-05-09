@@ -9,11 +9,12 @@ import { AuthService } from '../../services/auth/auth.service';
 
 import { ApiRoutes } from '../../utilities/api-routes';
 import { UserInterfaceResources } from '../../utilities/user-interface.resources';
+import { TestAuthService } from 'src/app/services/auth/test-auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
