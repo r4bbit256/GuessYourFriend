@@ -1,19 +1,19 @@
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { Router } from "@angular/router";
-import { TestBed } from "@angular/core/testing";
-import { RouterTestingModule } from "@angular/router/testing";
-import { MatMenuModule } from "@angular/material/menu";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { Router } from '@angular/router';
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatMenuModule } from '@angular/material/menu';
 
-import { TestAuthService } from "./services/auth/test-auth.service";
-import { AccountService } from "./services/account/account.service";
-import { AuthService } from "./services/auth/auth.service";
-import { TestingAccountService } from "./services/account/test-account.service";
+import { TestAuthService } from './services/auth/test-auth.service';
+import { AccountService } from './services/account/account.service';
+import { AuthService } from './services/auth/auth.service';
+import { TestingAccountService } from './services/account/test-account.service';
 
-import { ApiRoutes } from "./utilities/api-routes";
-import { UserInterfaceResources } from "./utilities/user-interface.resources";
-import { AppComponent } from "./app.component";
+import { ApiRoutes } from './utilities/api-routes';
+import { UserInterfaceResources } from './utilities/user-interface.resources';
+import { AppComponent } from './app.component';
 
-describe("AppComponent", () => {
+describe('AppComponent', () => {
   let appComponent: AppComponent;
   let authService: AuthService;
   let accountService: AccountService;
@@ -40,41 +40,41 @@ describe("AppComponent", () => {
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    e"should create the app";
+    expect(app).toBeTruthy();
   });
 
   it('should render specific labels for non authorized guests', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
-    c"should render specific labels for non authorized guests"
+    const compiled = fixture.nativeElement;
     expect(compiled.querySelector('.logo span').textContent).toEqual(UserInterfaceResources.appNameLabel);
     expect(compiled.querySelector('.username').textContent).toEqual(`${UserInterfaceResources.welcomeMessageLabel} Guest`);
     expect(compiled.querySelector('a.home').textContent).toEqual(UserInterfaceResources.homeMenuLabel);
-    expect(compiled.querySelector(".logo span"extContent).toEqual(UserInterfaceResources.aboutMenuLabel);
-    expect(compiled.querySelector(".username"').textContent).toEqual(
-      ` © ${new Date().getFullYear"a.home"erInterfaceResources.AppNameLabel} - All Rights Reserved `
-    );"a.about"
-    expect(compiled.querySelector(".copyright"xtContent).toEqual(UserInterfaceResources.LoginLabel.toUpperCase());
-    expect(compiled.querySelector('.register').textContent).toEqual(UserInterfaceResources.RegisterLabel.toUpperCase());
-  });
-".login"
-  it('#ngOnInit sets initial user ".register", () => {
-    appComponent.ngOnInit();
-    expect(appComponent.isAuthenticated).toBeFalsy();
-    e"#ngOnInit sets initial user parameters"est');
+    expect(compiled.querySelector('a.about').textContent).toEqual(UserInterfaceResources.aboutMenuLabel);
+    expect(compiled.querySelector('.copyright').textContent).toEqual(
+      ` © ${new Date().getFullYear()} ${UserInterfaceResources.appNameLabel} - All Rights Reserved `
+    );
+    expect(compiled.querySelector('.login').textContent).toEqual(UserInterfaceResources.loginLabel.toUpperCase());
+    expect(compiled.querySelector('.register').textContent).toEqual(UserInterfaceResources.registerLabel.toUpperCase());
   });
 
-  it('#logout logs out user and redirect t"Guest"lt route', () => {
+  it('#ngOnInit sets initial user parameters', () => {
+    appComponent.ngOnInit();
+    expect(appComponent.isAuthenticated).toBeFalsy();
+    expect(appComponent.username).toEqual('Guest');
+  });
+
+  it('#logout logs out user and redirect to Guest route', () => {
     spyOn(accountService, 'logout');
     spyOn(router, 'navigate');
-    a"#logout logs out user and redirect to default route"
-    expect(accountService."logout"toHaveBeenCalledTimes(1);
-    expect(router."navigate"toHaveBeenCalledWith([ApiRoutes.Default]);
+    appComponent.logout();
+    expect(accountService.logout).toHaveBeenCalledTimes(1);
+    expect(router.navigate).toHaveBeenCalledWith([ApiRoutes.Default]);
   });
 
   it('#ngOnDestroy unsubscribes from parameter of AuthService', () => {
     spyOn(authService.isLoggedIn, 'unsubscribe');
     appComponent.ngOnDestroy();
-    e"#ngOnDestroy unsubscribes from parameter of AuthService"d();
-  });"unsubscribe"
+    expect(authService.isLoggedIn.unsubscribe).toHaveBeenCalled();
+  });
 });

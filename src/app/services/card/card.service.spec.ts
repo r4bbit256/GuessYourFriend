@@ -7,7 +7,7 @@ import { TestRandomDataGeneratorModule } from '../random-data-generator/test-ran
 
 import { Card } from '../../models/card';
 
-fdescribe('CardsService', () => {
+describe('CardsService', () => {
   let cardService: CardService;
   const cardsStorageKey = 'cards';
   const storageService = new StorageService();
