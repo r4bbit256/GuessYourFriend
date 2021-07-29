@@ -11,8 +11,8 @@ import { Banner } from '../../../models/banner';
 })
 export class AdBannerComponent implements OnInit, OnDestroy {
   @Input() ads: BannerItem[];
-  currentAdIndex = -1;
   @ViewChild(AdDirective, { static: true }) appAd: AdDirective;
+  currentAdIndex = -1;
   interval: any;
 
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}

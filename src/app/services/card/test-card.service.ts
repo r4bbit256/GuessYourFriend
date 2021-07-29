@@ -1,10 +1,7 @@
-import { CardService } from './card.service';
 import { Card } from 'src/app/models/card';
 
 export class TestCardService {
-  // constructor(private cardsService: CardService) { }
-
-  cards: Array<Card> = [{ id: '1', firstName: 'Test', lastName: 'User', gender: 'male', job: 'QA', photo: 'photo.jpg' }];
+  cards: Array<Card> = [{ id: '1', firstName: 'Test', lastName: 'User', job: 'QA', gender: 'male', photo: 'photo.jpg' }];
 
   getAll(): Card[] {
     return this.cards;
@@ -16,5 +13,9 @@ export class TestCardService {
 
   addCards(cards: Card[]): void {
     this.cards = cards;
+  }
+
+  getCard(key: string): Card {
+    return this.cards[0];
   }
 }

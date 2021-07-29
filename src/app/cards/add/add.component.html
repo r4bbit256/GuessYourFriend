@@ -20,7 +20,7 @@
           <mat-label>{{jobPositionLabel}}</mat-label>
           <input matInput type="text" required placeholder="Ex. Software Engineer" formControlName="job">
         </mat-form-field>
-        <mat-radio-group required aria-label="Select gender" formControlName="gender">
+        <mat-radio-group required aria-label="Select gender">
           <mat-label>{{genderLabel}}</mat-label>
           <mat-radio-button class="radio" value="male">{{maleOptionLabel}}</mat-radio-button>
           <mat-radio-button class="radio" value="female">{{femaleOptionLabel}}</mat-radio-button>
@@ -28,7 +28,8 @@
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-flat-button color="primary" type="submit" (click)="addCard()" [disabled]="!newCard.valid">{{addButtonLabel}}</button>
+      <button mat-flat-button color="primary" type="submit" (click)="addCard()"
+        [disabled]="!newCard.valid">{{addButtonLabel}}</button>
     </mat-card-actions>
   </mat-card>
 </article>

@@ -3,8 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { CardService } from './card.service';
 import { StorageService } from '../storage/storage.service';
-import { TestRandomDataGeneratorModule } from '../random-data-generator/test-random-data-generator.module';
-
+import { TestRandomDataGeneratorService } from '../random-data-generator/test-random-data-generator.service';
 import { Card } from '../../models/card';
 
 describe('CardsService', () => {
@@ -42,15 +41,10 @@ describe('CardsService', () => {
     spyOn(storageService, 'delete');
 
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule, TestRandomDataGeneratorModule],
-      providers: [CardService, { provide: StorageService, useValue: storageService }],
+      imports: [HttpClientTestingModule],
+      providers: [CardService, TestRandomDataGeneratorService, { provide: StorageService, useValue: storageService }],
     });
     cardService = TestBed.inject(CardService);
-    storageService.clear();
-  });
-
-  afterEach(() => {
-    storageService.clear();
   });
 
   it('CardService should be created', () => {

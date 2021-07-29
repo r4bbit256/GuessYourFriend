@@ -15,8 +15,6 @@ export class TestRandomUserApiService {
   httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
   apiService = new BaseApiRequestsService(this.httpClientSpy as any, new LoggerService());
 
-  constructor() {}
-
   getRandomUsers(numberOfUsers: string): Observable<RandomUserDataGenerator> {
     const expectedUsers: RandomUserDataGenerator = {
       results: [

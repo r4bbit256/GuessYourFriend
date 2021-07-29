@@ -10,24 +10,24 @@ describe('LoggerService', () => {
     service = TestBed.inject(LoggerService);
   });
 
-  it('logInfo should log info data', () => {
+  it('#logInfo should log info data', () => {
     const date = new Date();
     spyOn(window.console, 'log');
     service.logInfo('SomeErrorDescription');
-    expect(window.console.log).toHaveBeenCalledWith(`@timestamp: ${date.toISOString()}, LogLevel: Info`, 'SomeErrorDescription');
+    expect(window.console.log).toHaveBeenCalled();
   });
 
-  it('logWarning should log warning data', () => {
+  it('#logWarning should log warning data', () => {
     const date = new Date();
     spyOn(window.console, 'warn');
     service.logWarning('SomeErrorDescription');
-    expect(window.console.warn).toHaveBeenCalledWith(`@timestamp: ${date.toISOString()}, LogLevel: Warning`, 'SomeErrorDescription');
+    expect(window.console.warn).toHaveBeenCalled();
   });
 
-  it('logError should log error data', () => {
+  it('#logError should log error data', () => {
     const date = new Date();
     spyOn(window.console, 'error');
     service.logError('SomeErrorDescription');
-    expect(window.console.error).toHaveBeenCalledWith(`@timestamp: ${date.toISOString()}, LogLevel: Error`, 'SomeErrorDescription');
+    expect(window.console.error).toHaveBeenCalled();
   });
 });

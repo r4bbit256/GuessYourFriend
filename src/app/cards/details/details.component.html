@@ -10,25 +10,29 @@
         </figure>
         <mat-form-field>
           <mat-label>{{firstNameLabel}}</mat-label>
-          <input matInput type="text" required [value]="editCard.get('firstName').value" placeholder="John" formControlName="firstName">
+          <input matInput type="text" required [value]="editCard.get('firstName').value" placeholder="John"
+            formControlName="firstName">
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{lastNameLabel}}</mat-label>
-          <input matInput type="text" required [value]="editCard.get('lastName').value" placeholder="Dow" formControlName="lastName">
+          <input matInput type="text" required [value]="editCard.get('lastName').value" placeholder="Dow"
+            formControlName="lastName">
         </mat-form-field>
         <mat-form-field>
           <mat-label>{{jobPositionLabel}}</mat-label>
-          <input matInput type="text" required [value]="editCard.get('job').value" placeholder="Ex. Software Engineer" formControlName="job">
+          <input matInput type="text" required [value]="editCard.get('job').value" placeholder="Ex. Software Engineer"
+            formControlName="job">
         </mat-form-field>
-        <mat-radio-group required aria-label="Select gender" formControlName="gender">
+        <mat-radio-group required aria-label="Select gender" [value]="editCard.get('gender').value">
           <mat-label>{{genderLabel}}</mat-label>
-          <mat-radio-button class="radio" value="male">{{maleOptionLabel}}</mat-radio-button>
+          <mat-radio-button class=" radio" value="male">{{maleOptionLabel}}</mat-radio-button>
           <mat-radio-button class="radio" value="female">{{femaleOptionLabel}}</mat-radio-button>
         </mat-radio-group>
       </form>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-flat-button color="primary" type="submit" (click)="updateCard()" [disabled]="!editCard.valid">{{editLabel}}</button>
+      <button mat-flat-button color="primary" type="submit" (click)="updateCard()"
+        [disabled]="!editCard.valid">{{editLabel}}</button>
     </mat-card-actions>
   </mat-card>
 </article>

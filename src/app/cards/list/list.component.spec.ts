@@ -73,7 +73,7 @@ describe('CardListComponent', () => {
     });
   });
 
-  it('#generateCards generate specific number of cards', () => {
+  xit('#generateCards generate specific number of cards', () => {
     spyOn(listComponent.cards$, 'next');
     spyOn(cardService, 'getAll');
     spyOn(cardService, 'addCards');

@@ -15,6 +15,7 @@ describe('NewAdsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NewAdsComponent);
     component = fixture.componentInstance;
+    component.data = { title: 'Title1', message: 'lorem ipsum1' };
     fixture.detectChanges();
   });
 

@@ -40,7 +40,7 @@ export class AccountService {
 
   login(loginData: User): boolean {
     if (!(loginData.password || loginData.username)) {
-      this.logger.logError(`User data cannot be null or empty!`);
+      this.logger.logError('User data cannot be null or empty!');
       return false;
     }
 
@@ -49,7 +49,7 @@ export class AccountService {
     );
 
     if (!userData) {
-      this.logger.logError(`User was not found!`);
+      this.logger.logError('User was not found!');
       return false;
     }
 
