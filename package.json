@@ -8,6 +8,7 @@
     "build:stats": "ng build --stats-json",
     "analyze": "webpack-bundle-analyzer dist/guess-your-friend/stats.json",
     "test": "ng test",
+    "test:headless": "ng test --watch=false --browsers=ChromeHeadless",
     "test:coverage": "ng test --no-watch --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
