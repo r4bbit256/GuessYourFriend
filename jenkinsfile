@@ -18,7 +18,7 @@ node() {
   }
 
   stage('Package build') {
-    sh 'tar -zcvf bundle.tar.gz guessyourfriend/'
+    sh 'tar -zcvf bundle.tar.gz dist/guessyourfriend/'
   }
 
   stage('Create artifacts') {
@@ -37,6 +37,6 @@ node('GYF-frontend') {
   unstash 'buildArtifacts'
   echo 'Artifacts copied'
   echo 'Copy'
-  sh 'yes | sudo cp -R bundle.tar.gz /var/www/html/dist && cd /var/www/html/dist && sudo tar -xfv bundle.tar.gz'
+  sh 'yes | sudo cp -R bundle.tar.gz /var/www/html && cd /var/www/html && sudo tar -xfv bundle.tar.gz'
   echo 'Deploy completed'
 }
