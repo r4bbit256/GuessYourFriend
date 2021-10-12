@@ -1,0 +1,42 @@
+node() {
+  stage('Cloning repo') {
+    checkout scm
+  }
+
+  stage('Install dependecies') {
+    nodejs('nodejs_14-18-0') {
+      sh 'npm install'
+      echo 'Packages installed'
+    }
+  }
+
+  stage('Build') {
+    nodejs('nodejs') {
+      sh 'npm run build'
+      echo 'Build completed'
+    }
+  }
+
+  stage('Package build') {
+    sh 'tar -zcvf bundle.tar.gz guessyourfriend/'
+  }
+
+  stage('Create artifacts') {
+    fingerprint 'bundle.tar.gz'
+    archiveArtrifacts 'bundle.tar.gz'
+    echo 'Artifacts ready'
+  }
+
+  stage('Stash changes as buildArtifacts') {
+    stash allowEmpty: true, includes: 'bundle.tar.gz', name: 'buildArtifacts'
+  }
+}
+
+node('GYF-frontend') {
+  echo 'Unstash'
+  unstash 'buildArtifacts'
+  echo 'Artifacts copied'
+  echo 'Copy'
+  sh 'yes | sudo cp -R bundle.tar.gz /var/www/html/dist && cd /var/www/html/dist && sudo tar -xfv bundle.tar.gz'
+  echo 'Deploy completed'
+}
