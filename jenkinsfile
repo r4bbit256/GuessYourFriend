@@ -11,7 +11,7 @@ node() {
   }
 
   stage('Build') {
-    nodejs('nodejs') {
+    nodejs('nodejs_14-18-0') {
       sh 'npm run build'
       echo 'Build completed'
     }
