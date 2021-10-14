@@ -12,13 +12,13 @@ node() {
 
   stage('Build') {
     nodejs('nodejs_14-18-0') {
-      sh 'npm run build'
+      sh 'npm run build:prod'
       echo 'Build completed'
     }
   }
 
   stage('Package build') {
-    sh 'tar -zcvf bundle.tar.gz /var/www/html/dist/guessyourfriend/'
+    sh 'tar -zcvf bundle.tar.gz /dist/guess-your-friend/'
   }
 
   stage('Create artifacts') {
