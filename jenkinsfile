@@ -32,7 +32,7 @@ node() {
   }
 }
 
-node('GYF-frontend') {
+node('digitaloceannode') {
   echo 'Unstash'
   unstash 'buildArtifacts'
   echo 'Artifacts copied'
