@@ -18,7 +18,7 @@ node() {
   }
 
   stage('Package build') {
-    sh 'tar -zcvf bundle.tar.gz /dist/guess-your-friend/'
+    sh 'tar -zcvf bundle.tar.gz dist/guess-your-friend/'
   }
 
   stage('Create artifacts') {
