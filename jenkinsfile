@@ -23,7 +23,7 @@ node() {
 
   stage('Create artifacts') {
     fingerprint 'bundle.tar.gz'
-    archiveArtrifacts 'bundle.tar.gz'
+    archiveArtifacts 'bundle.tar.gz'
     echo 'Artifacts ready'
   }
 
